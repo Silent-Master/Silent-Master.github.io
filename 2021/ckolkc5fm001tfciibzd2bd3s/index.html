@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    网口变压器相关知识 |  岛上书店
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="岛上书店" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2021-02-08-网口变压器相关知识" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  网口变压器相关知识
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/ckolkc5fm001tfciibzd2bd3s/" class="article-date">
+  <time datetime="2021-02-08T05:05:19.000Z" itemprop="datePublished">2021-02-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="网口变压器相关知识"><a href="#网口变压器相关知识" class="headerlink" title="网口变压器相关知识"></a>网口变压器相关知识</h1><p>这里介绍网络变压器分类和工作原理(抄袭快乐哈哈)</p>
+<a id="more"></a>
+
+<h2 id="1-网络变压器的介绍"><a href="#1-网络变压器的介绍" class="headerlink" title="1.网络变压器的介绍"></a>1.网络变压器的介绍</h2><p>网络变压器也被称作“数据汞”，也可称为网络隔离变压器。它在一块网络接口上所起的作用主要有两个，<strong>一是传输数据</strong>，它把PHY送出来的差分信号用差模耦合的线圈耦合滤波以增强信号，并且通过电磁场的转换耦合到不同电平的连接网线的另外一端；<strong>二是隔离网线连接的不同网络设备间的不同电平</strong>，以防止不同电压通过网线传输损坏设备。除此而外，数据汞还能对设备起到一定的防雷保护作用。它主要用在网络交换机、路由器、网卡、集线器里面，起到信号耦合、高压隔离、阻抗匹配、电磁干扰抑制等作用。</p>
+<img src="https://img.imgdb.cn/item/60213d523ffa7d37b3b754d6.jpg" style="zoom:50%;" />
+
+<h2 id="2、网络变压器分类"><a href="#2、网络变压器分类" class="headerlink" title="2、网络变压器分类"></a>2、网络变压器分类</h2><p>产品依据<strong>结构类型</strong>，可以分为两类:<br>a. <strong>离散性网络变压器</strong>(DiscreteLAN Magnetics Module)；<br>b. <strong>内部集成磁性变压器模块的RJ45连接器</strong> (RJ45 Connector with Integrated Magnetics,ICMs);</p>
+<p>产品依据客户<strong>焊接类型</strong>，可以分为两类:<br>a. 表面贴装元件 (SMT,Surface Mount Type)<br>b. 插件元件 (TH,Through-Hole Type)</p>
+<p>产品依据<strong>传输速率</strong>，可以分类四类:<br>a. 10Base-T,<br>b. 10/100Base-T,<br>c. 1000 Base-T,<br>d. 10G Base-T.</p>
+<p>(Base-T: Baseband，双绞线对。简而言之，Base-T是一种以bps速率工作的局域网（LAN）标准，它通常被称为快速以太网，并使用UTP（非屏蔽双绞线）铜质电缆。快速以太网有三种基本的实现方式：Base-FX、 Base-T、和1Base-T4。每一种规范除了接口电路外都是相同的，接口电路决定了它们使用哪种类型的电缆。为了实现时钟/数据恢复（CDR）功能，Base-T使用4B/5B曼彻斯特编码（Manchester Encoding）机制。(不好意思，确实菜，看不懂)</p>
+<h2 id="3、网络变压器的工作原理"><a href="#3、网络变压器的工作原理" class="headerlink" title="3、网络变压器的工作原理"></a>3、网络变压器的工作原理</h2><p>1、共模扼流圈（CMC：Common mode Choke）</p>
+<p>共模扼流圈(Common mode Choke)，也叫共模扼制电感，<strong>是在一个闭合磁环上对称绕制方向相反、匝数相同的线圈</strong>。理想的共模扼流圈对L（或N）与E 之间的共模干扰具有抑制作用，而对L 与N 之间存在的差模干扰无电感抑制作用。但实际线圈绕制的不完全对称会导致差模漏电感的产生。信号电流或电源电流在两个绕组中流过时方向相反，产生的磁通量相互抵消，扼流圈呈现低阻抗。共模噪声电流（包括地环路引起的骚扰电流，也处称作纵向电流）流经两个绕组时方向相同，产生的磁通量同向相加，扼流圈呈现高阻抗，从而起到抑制共模噪声的作用。共模电感实质上是一个双向滤波器：一方面要滤除信号线上共模电磁干扰，另一方面又要抑制本身不向外发出电磁干扰，避免影响同一电磁环境下其他电子设备的正常工作。</p>
+<p>共模扼流圈可以传输差模信号，直流和频率很低的差模信号都可以通过，而对于高频共模噪声则呈现很大的阻抗，所以它可以用来抑制共模电流骚扰。</p>
+<p><strong>共模电感扼流圈是开关电源、变频器、UPS 电源等设备中的一个重要部分。其工作原理：当工作电流流过两个绕向相反线圈时，产生两个相互抵消的磁场 H1、 H2 ，此时工作电流主要受线圈欧姆电阻以及可忽略不计的工作频率下小漏电感的阻尼。如果有干扰信号流过线圈时，线圈即呈现出高阻抗，产生很强的阻尼效果，达到衰减干扰信号作用。</strong></p>
+<p>CMC抑制共模信号：</p>
+<p>顾名思义，共模扼流圈是用来抑制共模噪声信号（无用的信号，干扰信号)的元件，它对共模噪声信号形成高阻抗，而对差模信号(有用的信号)基本上无影响。它是抑制EMI电磁干扰的主要元件，工作原理如下:</p>
+<p>共模信号是指在两输入端输入极性相同的信号。共模信号将导致电磁干扰。电磁干扰分为辐射干扰和传导干扰（进入电源线内）。信号传输不对称和阻抗不匹配时差模信号转换都将产生数字终端设备的共模信号。</p>
+<p>CMC对差模信号无影响：</p>
+<p>2、自耦合变压器(Center Tapped Auto-Transformer)</p>
+<p>自耦合变压器对差模信号形成高阻抗，对共模信号基本上无影响，按照以上的接线方式接入线路中，可以有效地进行信号传输，继而进一步减少及抑制了电磁干扰。</p>
+<p>3、扼流圈工作原理及插入损耗特性（或称阻抗特性）：</p>
+<p>变压器两脚加上信号电压(差模信号)时，经过磁路耦合作用在变压器的次级端感应出感生电压。对于信号电压，由于CMC两绕组同时流过的信号电流大小相等、方向相反，在CMC的铁芯磁路中产生了方向相反的磁通，相互抵消，不影响差模信号传输。而此时变压器Transformer两绕组流过的则是大小相等，方向相同的电流，致使变压器Transformer的作用相当于一个大的电阻，阻碍差模信号的通过，对载波信号的传输影响极少。所以差模信号被直接耦合加到负载上。而对共模信号来说，主要是通过变压器的初、次级间的分布电容耦合到次级，而此时CMC两绕组流过的是大小相等、方向相同的电流，这时CMC相当于一个大的电阻，阻止共模电流的传输，而变压器Transformer两绕组则是流过大小相等、方向相反的电流，对共模信号相当于短路，这样共模电压基本上不会被传送，而被耦合到负载上。从而既能使载波信号被很好的传输，又能抑制共模干扰信号。</p>
+<p>以下产品为带共模EMC,带自耦之网络变压器</p>
+<p><img src="https://img.imgdb.cn/item/60213e8a3ffa7d37b3b7f30a.jpg" alt=""></p>
+<h2 id="4、网络变压器PCB设计"><a href="#4、网络变压器PCB设计" class="headerlink" title="4、网络变压器PCB设计"></a>4、网络变压器PCB设计</h2><p>设计要点：</p>
+<p>一、营造一个无噪音，电源稳定的环境</p>
+<p>二、减少EMI、EMC对芯片的影响</p>
+<p>三、简单的信号布线，减小走线长度</p>
+<p>1、上图中模块A（电容、电阻）应当尽可能的靠PHY。模块B应当尽可能靠近变压器.(因为当发送时RTL8201从模块A吸收电流. 而当接收时,RTL8201将从模块B采集差分信号电压.</p>
+<p>2、 RJ-45和变压器的距离(L1) 应当尽可能的缩短.</p>
+<p>3、 Rtset信号应当尽可能靠近PHY, 并且如果可能的话应当远离TX+/-,RX+/-, 和时钟信号</p>
+<p>4、 晶体不应该放置在靠近I/O端口、电路板边缘和其他的高频设备、走线或磁性元件 周围.5、晶体的外壳良好接地，以避免EMC/EMI带来的外部噪音, 同样晶体的隔离线 （retaining straps of the Crystal）也需要良好的接地.6、磁性元件或客产生磁场的元件应当被隔离并且彼此保持90度的方向 . 高电流的元 件应当靠近电源以减少走线。 高电流走线将产生更多的EMI问题 。</p>
+<p>7、 终端电阻：如上所述的模块A和B,模 块A的电阻电容应当靠近PHY,两个 接收终端电阻可以靠近变压器。 为了更好的阻抗匹配,这些电阻/电容对应当仔细选 择 。</p>
+<p>8、 PHY和 变压器之间的距离 (L2)也应该尽可能的短。 为了实际操作的方便，这一点经常被放弃。但是， 保持Tx±, Rx± 信号走线得对称性是非常重要的 ， 而且 L2需要保持在一个合理的范围内 ，最大约10~300px</p>
+<p>设计实例：</p>
+<p>A、网口变压器没有集成在连接器里的网口电路PCB布局、布线规则<br><img src="https://img.imgdb.cn/item/60213ede3ffa7d37b3b81f35.jpg" alt=""></p>
+<p>参考上图，需要注意下面几点：</p>
+<p>1、变压器与RJ45之间，PHY层芯片与变压器之间的距离应控制在1inch 内。当布局条件限制时，应优先保证变压器与RJ45之间的距离在1 inch 内。</p>
+<p>2、器件布局按照信号流向放置，切勿绕来绕去。</p>
+<p>3、变压器下方的地平面要分割，分割线宽度不小于100MIL，网口变压器放置在GND和PGND的分隔线上。</p>
+<p>4、每对差分走线都要控制走线长度一致，同时注意控制阻抗为50欧姆</p>
+<p>5、注意PHY层芯片的的数字地和模拟地统一，数字电源和模拟电源使用磁珠进行隔离。同时要与变压器配合。注意PHY芯片的电源滤波，按照芯片要求设计。</p>
+<p>6、网口指示灯的电源线3.3V或者2.5V来自于电源平面，要对它们使用磁珠和电容进行退耦；指示灯驱动线要靠近PHY串连电阻，并在进入I/O区域之前进行电容滤波。这样防止噪声通过指示灯电源线耦合到差分线对区域。</p>
+<p>7、指示灯电源线和驱动信号线要靠近走线，尽量减小环路面积。见图左下脚。</p>
+<p>8、指示灯线和差分线对要进行必要的隔离，两者要保证距离足够远，如果必要使用GND平面进行隔离。</p>
+<p>9、注意网口变压器芯片侧中心抽头对地的滤波电容要尽量靠近变压器管脚，保证引线最短分布电感最小。</p>
+<p>10、用于连接GND和PGND的0欧姆电阻或者电容要放置在地分割线上。</p>
+<p>11、PHY芯片的模拟电源不要占用大面积平面，从局部铜皮通过走线、磁珠、走线拉到变压器芯片侧中心抽头上。</p>
+<p>12、PHY芯片与变压器之间已经没有VDD，将PHY芯片与变压器之间的平面层区域定义为GND，这样可以切断来自VDD平面的噪声途径。实际处理见下图。</p>
+<p>13、沿单板PCB的边缘（不用包住PGND，见图8）每隔250mil打一个接地过孔，这些过孔排可以切断单板噪声向外辐射的途径，减小对PGND静地的影响。</p>
+<p>14、单板的PGND、GND通过镙孔和结构相连接，保证系统地电位的统一。</p>
+<p>15、保证电源平面和地平面之间的良好退耦（低阻），电源平面最好和地平面相邻。 16、和电源平面相邻的信号线不要超出电源平面的投影区域。</p>
+<p>17、要保证和电源平面相邻的信号线的回流路径的完整性，否则就要改变平面的形状，使得信号线处在平面层内，回流路径的不完整会带来严重的EMC问题。</p>
+<p>18、推荐把所有的高速信号线、I/O线、差分线对优先靠近地平面走线，如果无法实现才以电源平面作为参考平面。</p>
+<p>19、差分线要远离其它信号线，放置其它信号线把噪声耦合到差分线上。 20、为了减小差分信号的噪声，数字信号线或电源要远离模拟信号线或电源。</p>
+<p>21、电源的去耦和旁路是十分重要的，它们可以为信号提供一个低阻抗通路，减小电源和地平面间的谐振。电容可以起到去耦和旁路的作用，但要保证退耦和旁路电容由电容、走线、过孔、焊盘组成的环路的面积尽量小，保证引线电感尽量小，见下图所示：</p>
+<p>从上图可见，最右边的情况有最小的环路面积。</p>
+<p>从上图可见，左边的布局中，电容要通过长线连接到平面上，存在很大的引线电感；而右边的布局中，退耦电容连线很短，保证了低引线电感的要求。</p>
+<p>B、采用一体化连接器的网口电路PCB布局、布线规则</p>
+<p>一体化连接器因为体积小，性能好的优点，应用越来越广泛。通过实际的应用，发现在一体化连接器可以有效降低网口的EMI。</p>
+<p>从上图可以看出，不同在于少了网口变压器，其它大都相同。下面只针对不同点进行描述。</p>
+<p>1、网口变压器是隔离器件，用于切断共模，因为已经被集成在连接器里，所以地平面不再进行分割处理。</p>
+<p>2、 一体化连接器的外壳应该连接到连续的地平面上。不要在连接器下面创建机架地。 3、 单板周围每隔250mil打接地过孔，将单板噪声屏蔽在板内。</p>
+<p>C、电源、地平面的布局</p>
+<p>尽管我们一直建议电源和地平面相邻，但是一些对价格敏感的单板可能并不能做到。下面的建议可以一定程度上减小电源的阻抗。见下图：</p>
+<p>电源层power2并没有与地平面相邻，对地阻抗可能较大，如果退耦不合理就会带来EMC问题。而且，如果POWER2层被同时分成多个电压区域，跨这些区域的信号线就会因为回流路径不连续产生较大的环路面积，从而导致出现EMC问题。</p>
+<p>如果我们在inner4层和bottom层进行地填充，就可以一定程度的降低电源的阻抗，为信号线创造低阻抗通路。</p>
+<p>D、差分线对布局、布线要求</p>
+<p>差分线对以差分形式存在，具有很强的共模抑制能力，但是如果布局布线不当，差模就可以转化为共模，带来共模噪声。因此对差分线的处理要注意：</p>
+<p>2、 差分线对间的距离要保持一致，大约等于线宽。 3、 差分线的特征阻抗要控制在100欧姆±10％。 4、建议在内层走线，并尽量和地平面相邻。</p>
+<p>5、 保持差分线对的对称，任何不对称都会造成差模向共模的转变。</p>
+<p>E、差分信号终端电阻、滤波电容的布局、布线</p>
+<p>49.9欧姆的终端电阻（有的PHY可能没有）必须靠近PHY芯片的TX和RX管脚放置，两个终端电阻的中间必须和地以尽可能短的连线相连。如下图所示：</p>
+<p>如上图所示：右侧的两个4.7PF电容对于高频噪声具有良好的抑制能力，但是只有保证了电容引线的低电感，才能起到应由的作用。两个滤波电容必须良好对称，保证平衡，否则差模可能转成共模，带来共模噪声。使用中还要注意，电容的取值不能太大，太大的电容会影响信号的质量甚至功能。</p>
+<p>另外，这两个4～7PF的电容可以通过平面来产生，大家知道，平面电容的分布电感是十分低的，在与地平面相邻的信号层无走线区域打一块补丁，就可以产生一个高性能电容。见下图：</p>
+<p>F、选择高共模抑制能力的变压器</p>
+<p>变压器的共模抑制能力可以降低差模向共模的转变，但是在变压器的datasheet里一般并不会列出EMC测试范围内的共模抑制性能。这样给变压器的选择带来困难。</p>
+<p>1、选择在线路侧有共模呃流圈的变压器。</p>
+<p>2、 使用支持自协商的变压器可能会降低共模抑制能力，这种变压器的收、发对称，而且收、发线圈的中心抽头连接在一起。</p>
+<p>变压器线路侧的共模电阻和高压电容</p>
+<p>变压器线路侧的75欧姆电阻和高压电容为UTP电缆提供了共模通路，在布局、布线时注意：</p>
+<p>1、 把这些共模电阻靠近变压器中心抽头放置。</p>
+<p>2、 电阻和电容的连接要使用短而粗的走线（10～15mil）。按照变压器结构的不同，主要可以分为下面两种情况：</p>
+<p>对于上图1的情况，推荐电阻的值取75欧姆，但这样做的前提是保证机架地是静地。对于下图2的情况，推荐电阻的值取0欧姆。</p>
+<p>G、改变差分线号的传输波形</p>
+<p>某些PHY芯片可以通过设置特定管脚内部的寄存器改变信号的上升、下降沿。一定程度的减缓信号的上升沿（或下降沿）可以一定长度的减少EMI。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/ckolkc5fm001tfciibzd2bd3s/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2021/ckolkc5fs0024fcii2ec9cxe8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Python实现将EXCEL绘制成精美图像
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/ckolkc5fq0020fcii66c33yib/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Linux相关知识</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'BX6xQGIDhs5gno5KEut4pOH5-gzGzoHsz',
+        app_key: 'Lxewu78LgA3pqBTYuWKHdUk5',
+        path: window.location.pathname,
+        notify: true,
+        verify: false,
+        avatar: 'monsterid',
+        placeholder: '老妹，可带劲了，给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> 基于图灵测试的聊天机器人-槑堃
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/favicon.jpg" alt="岛上书店"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://woshibushinidekuiyangpangtouyu.lofter.com/" target="_blank" rel="noopener">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我与友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['愿你在被打击时，记起你的珍贵，抵抗恶意。', '爱你所爱，行你所行，听从你心，无问西东。', '想要的都拥有，得不到的都释怀。'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=5307982&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

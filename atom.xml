@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>岛上书店</title>
+  
+  <subtitle>没有谁是一座孤岛，每本书都是一个世界。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2021-05-12T12:48:19.405Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>基于图灵测试的聊天机器人-槑堃</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DSP28335使用笔记</title>
+    <link href="http://yoursite.com/2021/ckolkc5g2002ifciiezxwe63l/"/>
+    <id>http://yoursite.com/2021/ckolkc5g2002ifciiezxwe63l/</id>
+    <published>2021-05-12T05:05:19.000Z</published>
+    <updated>2021-05-12T12:48:19.405Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo Gitbash Spawn Error解决办法</title>
+    <link href="http://yoursite.com/2021/ckolkc5fy002bfcii9qvseo59/"/>
+    <id>http://yoursite.com/2021/ckolkc5fy002bfcii9qvseo59/</id>
+    <published>2021-05-11T05:49:22.000Z</published>
+    <updated>2021-05-11T12:52:34.381Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;hexo-Gitbash-Spawn-Error解决办法&quot;&gt;&lt;a href=&quot;#hexo-Gitbash-Spawn-Error解决办法&quot; class=&quot;headerlink&quot; title=&quot;hexo Gitbash Spawn Error解决办法&quot;&gt;&lt;/a&gt;hexo Gitbash Spawn Error解决办法&lt;/h1&gt;&lt;p&gt;最近总是Pull Push中总是遇到Spawn Error的问题，经过相应查阅和实践，找到了以下一种切实可行的解决办法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EG2113D技术报告</title>
+    <link href="http://yoursite.com/2021/ckolkc5g4002pfciihwiw0hvq/"/>
+    <id>http://yoursite.com/2021/ckolkc5g4002pfciihwiw0hvq/</id>
+    <published>2021-05-06T05:05:19.000Z</published>
+    <updated>2021-05-11T12:19:05.298Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;EG2113D技术报告&quot;&gt;&lt;a href=&quot;#EG2113D技术报告&quot; class=&quot;headerlink&quot; title=&quot;EG2113D技术报告&quot;&gt;&lt;/a&gt;EG2113D技术报告&lt;/h1&gt;&lt;p&gt;最近因为需要用到全桥or半桥驱动芯片，因为实验室都是一直用购买的成品，成品虽然适用简单可靠性高，但是成品把5V的单路输出用作逻辑输入，所以并不能用驱动芯片给其它逻辑电路供电，刚好最近有时间便基于国产芯片设计了一款全桥驱动电路。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术报告" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>STM32F103使用笔记</title>
+    <link href="http://yoursite.com/2021/ckolkc5g0002ffciih7qke8jy/"/>
+    <id>http://yoursite.com/2021/ckolkc5g0002ffciih7qke8jy/</id>
+    <published>2021-03-13T05:05:19.000Z</published>
+    <updated>2021-05-12T12:00:51.568Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;STM32F103使用笔记&quot;&gt;&lt;a href=&quot;#STM32F103使用笔记&quot; class=&quot;headerlink&quot; title=&quot;STM32F103使用笔记&quot;&gt;&lt;/a&gt;STM32F103使用笔记&lt;/h1&gt;&lt;p&gt;本使用笔记根据野火资源和自己使用新的总结而成。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MOSFET和IGBT栅极驱动器电路基本原理</title>
+    <link href="http://yoursite.com/2021/ckolkc5fw0028fcii8foq8qvm/"/>
+    <id>http://yoursite.com/2021/ckolkc5fw0028fcii8foq8qvm/</id>
+    <published>2021-03-10T05:05:19.000Z</published>
+    <updated>2021-03-10T03:32:41.688Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;MOSFET和IGBT栅极驱动器基本原理&quot;&gt;&lt;a href=&quot;#MOSFET和IGBT栅极驱动器基本原理&quot; class=&quot;headerlink&quot; title=&quot;MOSFET和IGBT栅极驱动器基本原理&quot;&gt;&lt;/a&gt;MOSFET和IGBT栅极驱动器基本原理&lt;/h1&gt;&lt;p&gt;本文结合TI应用报告和自己的所思所想来讲述开关电路中核心本部分驱动电路的基本原理。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python实现将EXCEL绘制成精美图像</title>
+    <link href="http://yoursite.com/2021/ckolkc5fs0024fcii2ec9cxe8/"/>
+    <id>http://yoursite.com/2021/ckolkc5fs0024fcii2ec9cxe8/</id>
+    <published>2021-02-20T05:49:22.000Z</published>
+    <updated>2021-05-09T13:13:32.446Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Python-实现将-Excel-数据绘制成精美图像&quot;&gt;&lt;a href=&quot;#Python-实现将-Excel-数据绘制成精美图像&quot; class=&quot;headerlink&quot; title=&quot;Python 实现将 Excel 数据绘制成精美图像&quot;&gt;&lt;/a&gt;Python 实现将 Excel 数据绘制成精美图像&lt;/h1&gt;&lt;hr&gt;
+&lt;h4 id=&quot;内容介绍&quot;&gt;&lt;a href=&quot;#内容介绍&quot; class=&quot;headerlink&quot; title=&quot;内容介绍&quot;&gt;&lt;/a&gt;内容介绍&lt;/h4&gt;&lt;p&gt;利用Python实现科研绘图。&lt;/p&gt;
+&lt;h4 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;使用 xlrd 扩展包读取 Excel 数据&lt;/li&gt;
+&lt;li&gt;使用 Matplotlib 绘制二维图像&lt;/li&gt;
+&lt;li&gt;显示 LaTeX 风格公式&lt;/li&gt;
+&lt;li&gt;坐标点处透明化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网口变压器相关知识</title>
+    <link href="http://yoursite.com/2021/ckolkc5fm001tfciibzd2bd3s/"/>
+    <id>http://yoursite.com/2021/ckolkc5fm001tfciibzd2bd3s/</id>
+    <published>2021-02-08T05:05:19.000Z</published>
+    <updated>2021-02-08T13:38:52.357Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;网口变压器相关知识&quot;&gt;&lt;a href=&quot;#网口变压器相关知识&quot; class=&quot;headerlink&quot; title=&quot;网口变压器相关知识&quot;&gt;&lt;/a&gt;网口变压器相关知识&lt;/h1&gt;&lt;p&gt;这里介绍网络变压器分类和工作原理(抄袭快乐哈哈)&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux相关知识</title>
+    <link href="http://yoursite.com/2021/ckolkc5fq0020fcii66c33yib/"/>
+    <id>http://yoursite.com/2021/ckolkc5fq0020fcii66c33yib/</id>
+    <published>2021-02-05T05:05:19.000Z</published>
+    <updated>2021-02-05T14:33:55.898Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Linux相关知识&quot;&gt;&lt;a href=&quot;#Linux相关知识&quot; class=&quot;headerlink&quot; title=&quot;Linux相关知识&quot;&gt;&lt;/a&gt;Linux相关知识&lt;/h1&gt;&lt;p&gt;这里将归纳总结一些关于Linux方面的相关知识，在此之前你需要明确你的学习目的：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;搭建服务器、做程序开发、日常办公or娱乐游戏&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这里明确的时学习Linux操作系统本身而不是linux的一个发行版，linux学习路径大致如下：&lt;/p&gt;
+&lt;img src=&quot;https://img.imgdb.cn/item/601d56eb3ffa7d37b3096b4e.jpg&quot; style=&quot;zoom:67%;&quot; /&gt;
+
+&lt;p&gt;接下来开始阐述相关知识&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一个学期年度总结</title>
+    <link href="http://yoursite.com/2021/ckolkc5fo001xfcii25xkhjv8/"/>
+    <id>http://yoursite.com/2021/ckolkc5fo001xfcii25xkhjv8/</id>
+    <published>2021-01-28T05:05:19.000Z</published>
+    <updated>2021-01-30T14:05:25.028Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;研究生第一学期总结&quot;&gt;&lt;a href=&quot;#研究生第一学期总结&quot; class=&quot;headerlink&quot; title=&quot;研究生第一学期总结&quot;&gt;&lt;/a&gt;研究生第一学期总结&lt;/h1&gt;&lt;p&gt;研究生第一学期很快就过去了，这一学期以来确实经历了不少，收益颇多。本篇总结将从我得个人学习方面进行阐述。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="个人总结" scheme="http://yoursite.com/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="总结" scheme="http://yoursite.com/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pspice一些使用说明</title>
+    <link href="http://yoursite.com/2021/ckolkc5fl001qfcii4o0z3byf/"/>
+    <id>http://yoursite.com/2021/ckolkc5fl001qfcii4o0z3byf/</id>
+    <published>2021-01-15T05:05:19.000Z</published>
+    <updated>2021-01-28T06:31:43.600Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Pspice一些使用说明&quot;&gt;&lt;a href=&quot;#Pspice一些使用说明&quot; class=&quot;headerlink&quot; title=&quot;Pspice一些使用说明&quot;&gt;&lt;/a&gt;Pspice一些使用说明&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flask实现个人博客网站</title>
+    <link href="http://yoursite.com/2021/ckolkc5fi001lfcii0ebahqin/"/>
+    <id>http://yoursite.com/2021/ckolkc5fi001lfcii0ebahqin/</id>
+    <published>2021-01-07T05:05:19.000Z</published>
+    <updated>2021-05-11T12:13:54.153Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AD20使用心得和技巧</title>
+    <link href="http://yoursite.com/2020/ckolkc5fd001efciib2b19dx9/"/>
+    <id>http://yoursite.com/2020/ckolkc5fd001efciib2b19dx9/</id>
+    <published>2020-12-30T05:05:19.000Z</published>
+    <updated>2021-01-02T09:27:37.191Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Altium-Designer20使用规则和技巧&quot;&gt;&lt;a href=&quot;#Altium-Designer20使用规则和技巧&quot; class=&quot;headerlink&quot; title=&quot;Altium Designer20使用规则和技巧&quot;&gt;&lt;/a&gt;Altium Designer20使用规则和技巧&lt;/h1&gt;&lt;p&gt;Altium Designer 是原Protel软件开发商Altium公司推出的一体化的电子产品开发系统，主要运行在Windows操作系统。这套软件通过把原理图设计、电路仿真、PCB绘制编辑、拓扑逻辑自动布线、信号完整性分析和设计输出等技术的完美融合，为设计者提供了全新的设计解决方案，使设计者可以轻松进行设计，熟练使用这一软件使电路设计的质量和效率大大提高。目前最高版本为：Altium Designer 20.1.7。&lt;/p&gt;
+&lt;img src=&quot;https://pic.downk.cc/item/5febdf303ffa7d37b3af01ae.jpg&quot; style=&quot;zoom:67%;&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mathtype快捷键</title>
+    <link href="http://yoursite.com/2020/ckolkc5f90013fciigz728dya/"/>
+    <id>http://yoursite.com/2020/ckolkc5f90013fciigz728dya/</id>
+    <published>2020-12-24T05:05:19.000Z</published>
+    <updated>2020-12-24T08:35:31.662Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;详解MathType快捷键使用技巧&quot;&gt;&lt;a href=&quot;#详解MathType快捷键使用技巧&quot; class=&quot;headerlink&quot; title=&quot;详解MathType快捷键使用技巧&quot;&gt;&lt;/a&gt;详解MathType快捷键使用技巧&lt;/h1&gt;&lt;p&gt;巧妙使用&lt;a href=&quot;https://www.mathtype.cn/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MathType数学公式编辑器&lt;/a&gt;可加快数学符号的录入速度和效率，这将节约大量的时间成本，本教程将详解MathType快捷键使用的诸多技巧。&lt;/p&gt;
+&lt;p&gt;在MathType界面，将鼠标轻轻的放在某个符号上，在屏幕下方就会显示该符号的快捷键。当对MathType软件使用熟练时，这些快捷键也就在无形中记住了。经常的使用的快捷键主要有分式类、根式类、上下标类的快捷键。&lt;/p&gt;
+&lt;img src=&quot;https://pic.downk.cc/item/5fe44f483ffa7d37b3865831.jpg&quot; style=&quot;zoom:50%;&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode每日一题（持续更新）</title>
+    <link href="http://yoursite.com/2020/ckolkc5f7000zfcii9baq098a/"/>
+    <id>http://yoursite.com/2020/ckolkc5f7000zfcii9baq098a/</id>
+    <published>2020-11-10T03:49:22.000Z</published>
+    <updated>2020-12-01T03:42:25.147Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;LeetCode每日一题（持续更新）&quot;&gt;&lt;a href=&quot;#LeetCode每日一题（持续更新）&quot; class=&quot;headerlink&quot; title=&quot;LeetCode每日一题（持续更新）&quot;&gt;&lt;/a&gt;LeetCode每日一题（持续更新）&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;先力求能做出来，不那么考虑时间复杂度和空间复杂度。&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&quot;https://pic.downk.cc/item/5faa6a9a1cd1bbb86bbaaf98.jpg&quot; style=&quot;zoom: 50%;&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="算法笔记" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Programming for Everybody (Getting Started with Python)</title>
+    <link href="http://yoursite.com/2020/ckolkc5fc001bfcii6qyaem4n/"/>
+    <id>http://yoursite.com/2020/ckolkc5fc001bfcii6qyaem4n/</id>
+    <published>2020-11-07T03:49:22.000Z</published>
+    <updated>2020-11-08T12:12:59.766Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Programming-for-Everybody&quot;&gt;&lt;a href=&quot;#Programming-for-Everybody&quot; class=&quot;headerlink&quot; title=&quot;Programming for Everybody&quot;&gt;&lt;/a&gt;Programming for Everybody&lt;/h1&gt;&lt;p&gt;Recently, in order to review my python knowledge, with the suggestions of my friends, I participate in Coursera Class to feel the Full-English environment. That’s amazing, I find I have in fall with it. Let’s start it.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Coursera课程" scheme="http://yoursite.com/tags/Coursera%E8%AF%BE%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>硬件工程师基础设计知识</title>
+    <link href="http://yoursite.com/2020/ckolkc5fa0017fcii5jedh6bl/"/>
+    <id>http://yoursite.com/2020/ckolkc5fa0017fcii5jedh6bl/</id>
+    <published>2020-10-29T05:49:22.000Z</published>
+    <updated>2020-11-07T06:40:20.118Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>矩阵论手写笔记</title>
+    <link href="http://yoursite.com/2020/ckolkc5f4000sfcii51roh0va/"/>
+    <id>http://yoursite.com/2020/ckolkc5f4000sfcii51roh0va/</id>
+    <published>2020-10-07T05:49:22.000Z</published>
+    <updated>2020-10-10T07:50:13.519Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;矩阵论手写笔记&quot;&gt;&lt;a href=&quot;#矩阵论手写笔记&quot; class=&quot;headerlink&quot; title=&quot;矩阵论手写笔记&quot;&gt;&lt;/a&gt;矩阵论手写笔记&lt;/h1&gt;&lt;p&gt;研一的课程包含矩阵论，因为初中高中学习计算机的原因，很早的时候就接触了矩阵的相关知识，所以对这门课还是抱有浓厚的兴趣，所以想列一下相关PDF文件和自己做的笔记。&lt;/p&gt;
+&lt;img src=&quot;https://pic.downk.cc/item/5f805a5c1cd1bbb86ba3ff90.jpg&quot; style=&quot;zoom:50%;&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="课程" scheme="http://yoursite.com/tags/%E8%AF%BE%E7%A8%8B/"/>
+    
+      <category term="手写笔记" scheme="http://yoursite.com/tags/%E6%89%8B%E5%86%99%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模拟电子技术笔记</title>
+    <link href="http://yoursite.com/2020/ckolkc5f6000wfcii1la6cifv/"/>
+    <id>http://yoursite.com/2020/ckolkc5f6000wfcii1la6cifv/</id>
+    <published>2020-09-22T05:49:22.000Z</published>
+    <updated>2020-10-09T12:37:14.241Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;模拟电子技术基础——童诗白&quot;&gt;&lt;a href=&quot;#模拟电子技术基础——童诗白&quot; class=&quot;headerlink&quot; title=&quot;模拟电子技术基础——童诗白&quot;&gt;&lt;/a&gt;模拟电子技术基础——童诗白&lt;/h1&gt;&lt;p&gt;本科所学的模拟电子技术是华科康华光老师主编的，后来在本科的深入学习下我购买了童诗白的教材，相比而言我觉得童诗白的教材更加贴近读者，没有华科教材那么生涩难懂，希望趁此阶段能把这本书从头到尾过一遍。&lt;/p&gt;
+&lt;img src=&quot;https://pic.downk.cc/item/5f699f90160a154a672be08a.jpg&quot; style=&quot;zoom:50%;&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="课程" scheme="http://yoursite.com/tags/%E8%AF%BE%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>畅谈C语言</title>
+    <link href="http://yoursite.com/2020/ckolkc5ez000kfcii6obkac32/"/>
+    <id>http://yoursite.com/2020/ckolkc5ez000kfcii6obkac32/</id>
+    <published>2020-09-14T05:49:22.000Z</published>
+    <updated>2020-09-22T13:53:37.849Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;畅谈C语言&quot;&gt;&lt;a href=&quot;#畅谈C语言&quot; class=&quot;headerlink&quot; title=&quot;畅谈C语言&quot;&gt;&lt;/a&gt;畅谈C语言&lt;/h1&gt;&lt;p&gt;好久没有回滚c语言了，作为大学入门编程语言的精髓，趁着现在对之前所学习的知识做一个简单回顾和总结。本片文章就不介绍c语言的产生背景等等因素了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术笔记" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解计算机系统(二)</title>
+    <link href="http://yoursite.com/2020/ckolkc5ey000hfciida9k4642/"/>
+    <id>http://yoursite.com/2020/ckolkc5ey000hfciida9k4642/</id>
+    <published>2020-09-07T05:49:22.000Z</published>
+    <updated>2020-09-07T11:37:14.889Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;深入理解计算机系统-二&quot;&gt;&lt;a href=&quot;#深入理解计算机系统-二&quot; class=&quot;headerlink&quot; title=&quot;深入理解计算机系统(二)&quot;&gt;&lt;/a&gt;深入理解计算机系统(二)&lt;/h2&gt;&lt;img src=&quot;https://pic.downk.cc/item/5f17cc9c14195aa59431705a.png&quot; style=&quot;zoom:33%;&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+</feed>
