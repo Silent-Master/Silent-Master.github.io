@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Python实现将EXCEL绘制成精美图像 |  岛上书店
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="岛上书店" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2021-02-20-Python实现将EXCEL绘制成精美图像" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python实现将EXCEL绘制成精美图像
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/ckomy3eaa002124ii1ewte8ob/" class="article-date">
+  <time datetime="2021-02-20T05:49:22.000Z" itemprop="datePublished">2021-02-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="Python-实现将-Excel-数据绘制成精美图像"><a href="#Python-实现将-Excel-数据绘制成精美图像" class="headerlink" title="Python 实现将 Excel 数据绘制成精美图像"></a>Python 实现将 Excel 数据绘制成精美图像</h1><hr>
+<h4 id="内容介绍"><a href="#内容介绍" class="headerlink" title="内容介绍"></a>内容介绍</h4><p>利用Python实现科研绘图。</p>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
+<li>使用 xlrd 扩展包读取 Excel 数据</li>
+<li>使用 Matplotlib 绘制二维图像</li>
+<li>显示 LaTeX 风格公式</li>
+<li>坐标点处透明化</li>
+</ul>
+<hr>
+<a id="more"></a>
+
+<p>首先上官网的教学代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">=======================================</span></span><br><span class="line"><span class="string">plot图的线型设置以及自定义虚线段</span></span><br><span class="line"><span class="string">=======================================</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">500</span>)</span><br><span class="line">dashes = [<span class="number">10</span>, <span class="number">5</span>, <span class="number">100</span>, <span class="number">5</span>] <span class="comment"># 虚线参数，10和100是实点，5是虚点</span></span><br><span class="line"> </span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">line1, = ax.plot(x, np.sin(x), <span class="string">'--'</span>, linewidth=<span class="number">2</span>, label=<span class="string">'Dashesset retroactively'</span>)</span><br><span class="line">line1.set_dashes(dashes)   <span class="comment">#   设置虚线参数</span></span><br><span class="line">line2, = ax.plot(x,<span class="number">-1</span>* np.sin(x), dashes=[<span class="number">30</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">5</span>], label=<span class="string">'Dashes set proactively'</span>)</span><br><span class="line"><span class="comment">#  几种常用的线型的演示</span></span><br><span class="line">line3, = ax.plot(x, np.sin(x)/<span class="number">2</span>, <span class="string">':'</span>, label=<span class="string">'..style'</span>)</span><br><span class="line">line4, = ax.plot(x,-np.sin(x)/<span class="number">2</span>, <span class="string">'-.'</span>, label=<span class="string">'-.style'</span>)</span><br><span class="line">line5, = ax.plot(x,np.sin(x)/<span class="number">4</span>, <span class="string">'--'</span>, label=<span class="string">'--style'</span>)</span><br><span class="line">line6, = ax.plot(x,-np.sin(x)/<span class="number">4</span>, <span class="string">'^'</span>, label=<span class="string">'--style'</span>)</span><br><span class="line"> </span><br><span class="line">ax.legend(loc=<span class="string">'lowerright'</span>)   <span class="comment">#   显示图例，loc设置图例位置</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p> <strong>教学代码：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">500</span>)</span><br><span class="line">dashes = [<span class="number">10</span>, <span class="number">5</span>, <span class="number">100</span>, <span class="number">5</span>]  <span class="comment"># A circle for line which is aimed at length</span></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">line1, = ax.plot(x, np.sin(x), <span class="string">'--'</span>, linewidth=<span class="number">2</span>,</span><br><span class="line">                 label=<span class="string">'Dashes set retroactively'</span>)</span><br><span class="line">line1.set_dashes(dashes)</span><br><span class="line"></span><br><span class="line">line2, = ax.plot(x, <span class="number">-1</span> * np.sin(x), dashes=[<span class="number">30</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">5</span>],</span><br><span class="line">                 label=<span class="string">'Dashes set proactively'</span>)</span><br><span class="line"></span><br><span class="line">ax.legend(loc=<span class="string">'lower right'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-xlrd-扩展包"><a href="#使用-xlrd-扩展包" class="headerlink" title="使用 xlrd 扩展包"></a>使用 xlrd 扩展包</h3><p>xlrd 顾名思义，就是 Excel 文件的后缀名 <code>.xl</code> 文件 <code>read</code> 的扩展包。这个包只能读取文件，不能写入。写入需要使用另外一个包。但是这个包，其实也能读取<code>.xlsx</code>文件。</p>
+<p>从 Excel 中读取数据的过程比较简单，首先从 xlrd 包导入 <code>open_workbook</code>，然后打开 Excel 文件，把每个 <code>sheet</code> 里的每一行每一列数据都读取出来即可。很明显，这是个循环过程。</p>
+<ul>
+<li>打开一个 Excel 文件后，首先对文件内的 <code>sheet</code> 进行循环，这是最外层循环。</li>
+<li>在每个 <code>sheet</code> 内，进行第二次循环，行循环。</li>
+<li>在每行内，进行列循环，这是第三层循环。</li>
+</ul>
+<p>在最内层列循环内，取出行列值，复制到新建的 <code>values</code> 列表内，很明显，源数据有几列，<code>values</code> 列表就有几个元素。我们例子中的 Excel 文件有两列，分别对应角度和 DC 值。所以在列循环结束后，我们将取得的数据保存到 <code>x_data1</code> 和 <code>y_data1</code> 这两个列表中。</p>
+<h3 id="绘制图像-V1"><a href="#绘制图像-V1" class="headerlink" title="绘制图像 V1"></a>绘制图像 V1</h3><p>第一个版本的功能很简单，从 Excel 中读取数据，然后绘制成图像。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_xlsx</span><span class="params">(name)</span>:</span></span><br><span class="line">    wb = open_workbook(name)</span><br><span class="line">    x_data = []</span><br><span class="line">    y_data = []</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> wb.sheets():</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> range(s.nrows):</span><br><span class="line">            values = []</span><br><span class="line">            <span class="keyword">for</span> col <span class="keyword">in</span> range(s.ncols):</span><br><span class="line">                values.append(s.cell(row, col).value)</span><br><span class="line">            x_data.append(values[<span class="number">0</span>])</span><br><span class="line">            y_data.append(values[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> x_data, y_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x_data, y_data = read_xlsx(<span class="string">'yourdocument.xlsx'</span>)</span><br><span class="line">plt.plot(x_data, y_data, <span class="string">'bo-'</span>, label=<span class="string">u"Phase curve"</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">plt.title(<span class="string">u"TR14 phase detector"</span>)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">u"input-deg"</span>)</span><br><span class="line">plt.ylabel(<span class="string">u"output-V"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>从 Excel 中读取数据的程序，上面已经解释过了。这段代码后面的函数是 Matplotlib 绘图的基本格式，此处的输入格式为：<code>plt.plot(x 轴数据, y 轴数据, 曲线类型, 图例说明, 曲线线宽)</code>。图片顶部的名称，由 <code>plt.title(u&quot;TR14 phase detector&quot;)</code> 语句定义。最后，使用 <code>plt.legend()</code> 使能显示图例。</p>
+<h3 id="绘制图像-V2"><a href="#绘制图像-V2" class="headerlink" title="绘制图像 V2"></a>绘制图像 V2</h3><p>这个图只绘制了一个表格的数据，我们一共有三个表格。但是就这个一个已经够丑了，我们先来美化一下。首先，坐标轴的问题：横轴的 0 点对应着纵轴的 8，这个明显不行。我们来移动一下坐标轴，使之 0 点重合：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> gca</span><br><span class="line"></span><br><span class="line">plt.plot(x_data, y_data, <span class="string">'bo-'</span>, label=<span class="string">u"Phase curve"</span>, linewidth=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">u"TR14 phase detector"</span>)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">ax = gca()</span><br><span class="line">ax.spines[<span class="string">'right'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.xaxis.set_ticks_position(<span class="string">'bottom'</span>)</span><br><span class="line">ax.spines[<span class="string">'bottom'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line">ax.yaxis.set_ticks_position(<span class="string">'left'</span>)</span><br><span class="line">ax.spines[<span class="string">'left'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">u"input-deg"</span>)</span><br><span class="line">plt.ylabel(<span class="string">u"output-V"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>好的，移动坐标轴后，图片稍微顺眼了一点，我们也能明显的看出来，图像与横轴的交点大约在 180 度附近。</p>
+<p>解释一下移动坐标轴的代码：我们要移动坐标轴，首先要把旧的坐标拆了。怎么拆呢？原图是上下左右四面都有边界刻度的图像，我们首先把右边界拆了不要了，使用语句 <code>ax.spines[&#39;right&#39;].set_color(&#39;none&#39;)</code>。</p>
+<p>把右边界的颜色设置为不可见，右边界就拆掉了。同理，再把上边界拆掉 <code>ax.spines[&#39;top&#39;].set_color(&#39;none&#39;)</code>。</p>
+<p>拆完之后，就只剩下我们关心的左边界和下边界了，这俩就是 <code>x</code> 轴和 <code>y</code> 轴。然后我们移动这两个轴，使他们的零点对应起来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ax.xaxis.set_ticks_position(&#39;bottom&#39;)</span><br><span class="line">ax.spines[&#39;bottom&#39;].set_position((&#39;data&#39;, 0))</span><br><span class="line">ax.yaxis.set_ticks_position(&#39;left&#39;)</span><br><span class="line">ax.spines[&#39;left&#39;].set_position((&#39;data&#39;, 0))</span><br></pre></td></tr></table></figure>
+
+<p>这样，就完成了坐标轴的移动。</p>
+<h3 id="绘制图像-V3"><a href="#绘制图像-V3" class="headerlink" title="绘制图像 V3"></a>绘制图像 V3</h3><p>我们能不能给图像过零点加个标记呢？显示的告诉看图者，过零点在哪，就免去看完图还得猜，要么就要问作报告的人。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(x_data, y_data, <span class="string">'bo-'</span>, label=<span class="string">u"Phase curve"</span>, linewidth=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">plt.annotate(<span class="string">'zero point'</span>, xy=(<span class="number">180</span>, <span class="number">0</span>), xytext=(<span class="number">60</span>, <span class="number">3</span>),</span><br><span class="line">             arrowprops=dict(facecolor=<span class="string">'black'</span>, shrink=<span class="number">0.05</span>),)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">u"TR14 phase detector"</span>)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">ax = gca()</span><br><span class="line">ax.spines[<span class="string">'right'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.xaxis.set_ticks_position(<span class="string">'bottom'</span>)</span><br><span class="line">ax.spines[<span class="string">'bottom'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line">ax.yaxis.set_ticks_position(<span class="string">'left'</span>)</span><br><span class="line">ax.spines[<span class="string">'left'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">u"input-deg"</span>)</span><br><span class="line">plt.ylabel(<span class="string">u"output-V"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>好的，加上标注的图片，显示效果更好了。标注的添加，使用 <code>plt.annotate(标注文字, 标注的数据点, 标注文字坐标, 箭头形状)</code> 语句。这其中，标注的数据点是我们感兴趣的，需要说明的数据，而标注文字坐标，需要我们根据效果进行调节，既不能遮挡原曲线，又要醒目。</p>
+<h3 id="绘制图像-V4"><a href="#绘制图像-V4" class="headerlink" title="绘制图像 V4"></a>绘制图像 V4</h3><p>我们把三组数据都画在这幅图上，方便对比，此外，再加上一组理想数据进行对照。这一次我们再做些改进，把横坐标的单位用 LaTeX 引擎显示；不光标记零点，把两边的非线性区也标记出来；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">plt.annotate(<span class="string">'Close loop point'</span>, size=<span class="number">18</span>, xy=(<span class="number">180</span>, <span class="number">0.1</span>), xycoords=<span class="string">'data'</span>,</span><br><span class="line">             xytext=(<span class="number">-100</span>, <span class="number">40</span>), textcoords=<span class="string">'offset points'</span>,</span><br><span class="line">             arrowprops=dict(arrowstyle=<span class="string">"-&gt;"</span>, connectionstyle=<span class="string">"arc3,rad=.2"</span>)</span><br><span class="line">             )</span><br><span class="line">plt.annotate(<span class="string">' '</span>, xy=(<span class="number">0</span>, <span class="number">-0.1</span>), xycoords=<span class="string">'data'</span>,</span><br><span class="line">             xytext=(<span class="number">200</span>, <span class="number">-90</span>), textcoords=<span class="string">'offset points'</span>,</span><br><span class="line">             arrowprops=dict(arrowstyle=<span class="string">"-&gt;"</span>, connectionstyle=<span class="string">"arc3,rad=-.2"</span>)</span><br><span class="line">             )</span><br><span class="line">plt.annotate(<span class="string">'Zero point in non-monotonic region'</span>, size=<span class="number">18</span>, xy=(<span class="number">360</span>, <span class="number">0</span>), xycoords=<span class="string">'data'</span>,</span><br><span class="line">             xytext=(<span class="number">-290</span>, <span class="number">-110</span>), textcoords=<span class="string">'offset points'</span>,</span><br><span class="line">             arrowprops=dict(arrowstyle=<span class="string">"-&gt;"</span>, connectionstyle=<span class="string">"arc3,rad=.2"</span>)</span><br><span class="line">             )</span><br><span class="line"></span><br><span class="line">plt.plot(x_data, y_data, <span class="string">'b'</span>, label=<span class="string">u"Faster D latch and XOR"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">x_data1, y_data1 = read_xlsx(<span class="string">'phase_detector.xlsx'</span>)</span><br><span class="line">plt.plot(x_data1, y_data1, <span class="string">'g'</span>, label=<span class="string">u"Original"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">x_data2, y_data2 = read_xlsx(<span class="string">'phase_detector2.xlsx'</span>)</span><br><span class="line">plt.plot(x_data2, y_data2, <span class="string">'r'</span>, label=<span class="string">u"Move the pullup resistor"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">x_data3 = []</span><br><span class="line">y_data3 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">360</span>):</span><br><span class="line">    x_data3.append(i)</span><br><span class="line">    y_data3.append((i<span class="number">-180</span>)*<span class="number">0.052</span><span class="number">-0.092</span>)</span><br><span class="line">plt.plot(x_data3, y_data3, <span class="string">'c'</span>, label=<span class="string">u"The Ideal Curve"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">u"$2\pi$ phase detector"</span>, size=<span class="number">20</span>)</span><br><span class="line">plt.legend(loc=<span class="number">0</span>)  <span class="comment"># 显示 label</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移动坐标轴代码</span></span><br><span class="line">ax = gca()</span><br><span class="line">ax.spines[<span class="string">'right'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.xaxis.set_ticks_position(<span class="string">'bottom'</span>)</span><br><span class="line">ax.spines[<span class="string">'bottom'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line">ax.yaxis.set_ticks_position(<span class="string">'left'</span>)</span><br><span class="line">ax.spines[<span class="string">'left'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">u"$\phi/deg$"</span>, size=<span class="number">20</span>)</span><br><span class="line">plt.ylabel(<span class="string">u"$DC/V$"</span>, size=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<p>LaTeX 表示数学公式，使用 <code>$$</code> 表示两个符号之间的内容是数学符号。圆周率就可以简单表示为 π\pi<em>π</em>，简单到哭，显示效果却很好看。同样的，ϕ\phi<em>ϕ</em> 表示角度符号，书写和读音相近，很好记。</p>
+<p>对于圆周率，角度公式这类数学符号，使用 LaTeX 来表示，是非常方便的。这张图比起上面的要好看得多了。但是，依然觉得还是有些丑。好像用平滑线画出来的图像，并不如用点线画出来的好看。而且点线更能反映实际的数据点。此外，我们的图像跟坐标轴重叠的地方，把坐标和数字都挡住了，看着不太美。</p>
+<p>图中的理想曲线的数据，是根据电路原理纯计算出来的，要讲清楚需要较大篇幅，这里就不展开了，只是为了配合比较而用，这部分代码，大家知道即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(360):</span><br><span class="line">    x_data3.append(i)</span><br><span class="line">    y_data3.append((i-180)*0.052-0.092)</span><br><span class="line">plt.plot(x_data3, y_data3, &#39;c&#39;, label&#x3D;u&quot;The Ideal Curve&quot;, linewidth&#x3D;2)</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制图像-V5"><a href="#绘制图像-V5" class="headerlink" title="绘制图像 V5"></a>绘制图像 V5</h3><p>我们再就上述问题，进行优化。优化的过程包括：改变横坐标的显示，使用弧度显示；优化图像与横坐标相交的部分，透明显示；增加网络标度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">plt.annotate(<span class="string">'The favorite close loop point'</span>, size=<span class="number">16</span>, xy=(<span class="number">1</span>, <span class="number">0.1</span>), xycoords=<span class="string">'data'</span>,</span><br><span class="line">             xytext=(<span class="number">-180</span>, <span class="number">40</span>), textcoords=<span class="string">'offset points'</span>,</span><br><span class="line">             arrowprops=dict(arrowstyle=<span class="string">"-&gt;"</span>, connectionstyle=<span class="string">"arc3,rad=.2"</span>)</span><br><span class="line">             )</span><br><span class="line">plt.annotate(<span class="string">' '</span>, xy=(<span class="number">0.02</span>, <span class="number">-0.2</span>), xycoords=<span class="string">'data'</span>,</span><br><span class="line">             xytext=(<span class="number">200</span>, <span class="number">-90</span>), textcoords=<span class="string">'offset points'</span>,</span><br><span class="line">             arrowprops=dict(arrowstyle=<span class="string">"-&gt;"</span>, connectionstyle=<span class="string">"arc3,rad=-.2"</span>)</span><br><span class="line">             )</span><br><span class="line">plt.annotate(<span class="string">'Zero point in non-monotonic region'</span>, size=<span class="number">16</span>, xy=(<span class="number">1.97</span>, <span class="number">-0.3</span>), xycoords=<span class="string">'data'</span>,</span><br><span class="line">             xytext=(<span class="number">-290</span>, <span class="number">-110</span>), textcoords=<span class="string">'offset points'</span>,</span><br><span class="line">             arrowprops=dict(arrowstyle=<span class="string">"-&gt;"</span>, connectionstyle=<span class="string">"arc3,rad=.2"</span>)</span><br><span class="line">             )</span><br><span class="line"></span><br><span class="line">plt.plot(x_data, y_data, <span class="string">'bo--'</span>, label=<span class="string">u"Faster D latch and XOR"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">plt.plot(x_data3, y_data3, <span class="string">'c'</span>, label=<span class="string">u"The Ideal Curve"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">u"$2\pi$ phase detector"</span>, size=<span class="number">20</span>)</span><br><span class="line">plt.legend(loc=<span class="number">0</span>)  <span class="comment"># 显示 label</span></span><br><span class="line"><span class="comment"># 移动坐标轴代码</span></span><br><span class="line">ax = gca()</span><br><span class="line">ax.spines[<span class="string">'right'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.xaxis.set_ticks_position(<span class="string">'bottom'</span>)</span><br><span class="line">ax.spines[<span class="string">'bottom'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line">ax.yaxis.set_ticks_position(<span class="string">'left'</span>)</span><br><span class="line">ax.spines[<span class="string">'left'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">u"$\phi/rad$"</span>, size=<span class="number">20</span>)  <span class="comment"># 角度单位为 pi</span></span><br><span class="line">plt.ylabel(<span class="string">u"$DC/V$"</span>, size=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">plt.xticks([<span class="number">0</span>, <span class="number">0.5</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>], [<span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>,</span><br><span class="line">                                 <span class="string">r'$\pi$'</span>, <span class="string">r'$1.5\pi$'</span>, <span class="string">r'$2\pi$'</span>], size=<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> label <span class="keyword">in</span> ax.get_xticklabels() + ax.get_yticklabels():</span><br><span class="line">    label.set_bbox(dict(facecolor=<span class="string">'white'</span>, edgecolor=<span class="string">'None'</span>, alpha=<span class="number">0.65</span>))</span><br><span class="line"></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>与我们最开始那张图比起来，是不是有种脱胎换骨的感觉？这其中，对图像与坐标轴相交的部分，做了透明化处理，代码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for label in ax.get_xticklabels() + ax.get_yticklabels():</span><br><span class="line">    label.set_bbox(dict(facecolor&#x3D;&#39;white&#39;, edgecolor&#x3D;&#39;None&#39;, alpha&#x3D;0.65))</span><br></pre></td></tr></table></figure>
+
+<p>透明度由其中的参数 <code>alpha=0.65</code> 控制，如果想更透明，就把这个数改到更小，<code>0</code> 代表完全透明，<code>1</code> 代表不透明。而改变横轴坐标显示方式的代码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xticks([0, 0.5, 1, 1.5, 2], [r&#39;$0$&#39;, r&#39;$\pi&#x2F;2$&#39;,</span><br><span class="line">                                 r&#39;$\pi$&#39;, r&#39;$1.5\pi$&#39;, r&#39;$2\pi$&#39;], size&#x3D;16)</span><br></pre></td></tr></table></figure>
+
+<p>这里直接手动指定 <code>x</code> 轴的标度。依然是使用 LaTeX 引擎来表示数学公式。</p>
+<h3 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h3><p>本次实验使用 Python 的绘图包 Matplotlib 绘制了一副图像。图像的数据来源于 Excel 数据表。与使用数据表画图相比，通过程序控制绘图，得到了更加灵活和精细的控制，最终绘制除了一幅精美的图像。</p>
+<p><strong>Label 位置移动(思考)</strong></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/ckomy3eaa002124ii1ewte8ob/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2021/ckomy3eab002424iie85d2yyh/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            MOSFET和IGBT栅极驱动器电路基本原理
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/ckomy3ea7001y24iic5nn9pop/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">网口变压器相关知识</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'BX6xQGIDhs5gno5KEut4pOH5-gzGzoHsz',
+        app_key: 'Lxewu78LgA3pqBTYuWKHdUk5',
+        path: window.location.pathname,
+        notify: true,
+        verify: false,
+        avatar: 'monsterid',
+        placeholder: '老妹，可带劲了，给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> 基于图灵测试的聊天机器人-槑堃
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/favicon.jpg" alt="岛上书店"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://woshibushinidekuiyangpangtouyu.lofter.com/" target="_blank" rel="noopener">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我与友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['愿你在被打击时，记起你的珍贵，抵抗恶意。', '爱你所爱，行你所行，听从你心，无问西东。', '想要的都拥有，得不到的都释怀。'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=5307982&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

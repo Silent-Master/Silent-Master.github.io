@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    AD20使用心得和技巧 |  岛上书店
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="岛上书店" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2020-12-30-AD20使用心得和技巧" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  AD20使用心得和技巧
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckomy3ea2001m24ii049q93m6/" class="article-date">
+  <time datetime="2020-12-30T05:05:19.000Z" itemprop="datePublished">2020-12-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="Altium-Designer20使用规则和技巧"><a href="#Altium-Designer20使用规则和技巧" class="headerlink" title="Altium Designer20使用规则和技巧"></a>Altium Designer20使用规则和技巧</h1><p>Altium Designer 是原Protel软件开发商Altium公司推出的一体化的电子产品开发系统，主要运行在Windows操作系统。这套软件通过把原理图设计、电路仿真、PCB绘制编辑、拓扑逻辑自动布线、信号完整性分析和设计输出等技术的完美融合，为设计者提供了全新的设计解决方案，使设计者可以轻松进行设计，熟练使用这一软件使电路设计的质量和效率大大提高。目前最高版本为：Altium Designer 20.1.7。</p>
+<img src="https://pic.downk.cc/item/5febdf303ffa7d37b3af01ae.jpg" style="zoom:67%;" />
+
+<a id="more"></a>
+
+<p>此教程绝大部分根据凡亿教育智能车4层板绘制流程编写。如有技术上不足和问题，希望指正和解答。</p>
+<h2 id="1-AD的工程文件和组成"><a href="#1-AD的工程文件和组成" class="headerlink" title="1.AD的工程文件和组成"></a>1.AD的工程文件和组成</h2><p>在Altium Designer中，工程是单个文件相互之间的关联和设计的相关设置的集合体，所有的文件比如原理图，元件库，PCB文件等等都是集合在一个工程下面的，方便设计的时候对它们这些文件进行集中的管理。那么，在工程之外的文件就被称为“Free Documents”，所有针对它的设置及操作和工程是无关的，所以设计当中应当尽量避免出现。</p>
+<ol>
+<li><p><strong>打开软甲，我们再菜单命令里面找到 文件-新的-项目：</strong></p>
+<p><img src="https://www.fanyedu.com/public/uploads/ueditor/image/20200806/1596678474541941.png" alt="image.png"></p>
+</li>
+<li><p><strong>点击项目进入工程编辑界面：</strong></p>
+</li>
+</ol>
+<p><img src="https://www.fanyedu.com/public/uploads/ueditor/image/20200806/1596678478818432.png" alt="image.png"></p>
+<p>Project Name:：就是我们要给这个工程的命名。</p>
+<p>Folder：就是为我们工程的保存路径。</p>
+<p>以上两者都设置完成之后，我们就可以点击右下角的“Create”，我们的工程就创建完成了。</p>
+<ol start="3">
+<li><strong>如果我们对新创建的工程路径或者是名称想要进行修改的时候，又是如何操作的呢？</strong></li>
+</ol>
+<p><strong>首先我们在新建立的工程文件上鼠标单击右键，选择“Save As……”</strong></p>
+<p><img src="https://www.fanyedu.com/public/uploads/ueditor/image/20200806/1596678483929954.png" alt="image.png"></p>
+<p>进入了另保存为的设置界面：</p>
+<p><img src="https://www.fanyedu.com/public/uploads/ueditor/image/20200806/1596678489375232.png" alt="image.png"></p>
+<p>在文件名中：更改自己想要得工程名称。</p>
+<p>更改工程保存路径：就在上面的各个文件夹中选择对应自己想要更改保存的路径。</p>
+<p>完成之后我们再点击保存，那么更改工程名称与保存路径的操作就已经完成了。</p>
+<p>以上就是我们如何在AD中创建一个新的工程文件和保存路径，以及前面两者更改的操作。其实很简单，也是跟一般的基本软件的操作差不多。</p>
+<p>操作中多注意使用Ctrl + S即使更新所做的操作。</p>
+<p>上述信息转载于<a href="https://www.fanyedu.com/content/901.html" target="_blank" rel="noopener">https://www.fanyedu.com/content/901.html</a></p>
+<h2 id="2-元件库介绍和电阻容模型的创建"><a href="#2-元件库介绍和电阻容模型的创建" class="headerlink" title="2.元件库介绍和电阻容模型的创建"></a>2.元件库介绍和电阻容模型的创建</h2><p>元件符号概述：</p>
+<p><img src="https://pic.downk.cc/item/5febe7133ffa7d37b3bceefc.jpg" alt=""></p>
+<p>元件符号指的是元件在原理图上的表现形式、主要使由元件边框、管脚(包括管脚序号和名称)、元件名称及元件说明组成，通过放置的管脚建立电气连接关系，值得注意的一点是管脚有一边带有印记的是具有电气连接属性的，图形不一定和实物完全一样，但对于管脚序号和名称，一定要严格按照元件规格书中的说明一一对应好。</p>
+<p><strong>1.熟悉原件库编辑器</strong></p>
+<img src="https://pic.downk.cc/item/5febeb883ffa7d37b3c4c09a.jpg" style="zoom:50%;" />
+
+<p>具体的编辑界面如上图所示，操作跟其它EDA软件大差不差。</p>
+<p><strong>2.掌握单部件元件的创建</strong></p>
+<p>简单来说，单部元件就是没有子件的元件，整个原理图可以只有一个部分构成，关于绘制元件符号简单步骤如下(在顺序下面会有图片列出来)</p>
+<ol>
+<li>绘制元件符号边框</li>
+<li>矩形框属性设置</li>
+<li>放置管脚以及管脚属性设置<ul>
+<li>Designator：管脚序号，和PCB封装管脚唯一匹配的序号，如“1” “2” “3“或者极性元件“A” “K”等等</li>
+<li>Name：管脚名称，方便设计者对信号功能的识别，如“VCC” “GND” “USB_DM”</li>
+<li>Input：输入管脚</li>
+<li>I/O：输入/输出管脚，既有信号输入又有输出的信号</li>
+<li>Output：输出管脚，用于输出信号</li>
+<li>Open Collector：集电极开路管脚</li>
+<li>Passive：无源管脚</li>
+<li>Hiz：高阻抗管脚</li>
+<li>Open Emitter：发射机管脚</li>
+<li>Power：电源管脚</li>
+</ul>
+</li>
+<li>元件属性设置<ul>
+<li>Designator：元件位号，即识别元件的编码，常见有C? R? U？</li>
+<li>Comment：一般用来填写元件的大小参数或者型号参数，相当于Value值的功能</li>
+<li>Description：描述，用来填写元件的一些备注信息</li>
+</ul>
+</li>
+<li>封装属性设置</li>
+</ol>
+<img src="https://pic.downk.cc/item/5fefe78a3ffa7d37b32cd422.jpg" style="zoom:50%;" />
+
+<p><a href="https://imgchr.com/i/sSY6xO" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/02/sSY6xO.png" alt="sSY6xO.png" style="zoom:50%;" /></a></p>
+<img src="https://pic.downk.cc/item/5fefe8313ffa7d37b32d76ff.jpg" style="zoom:50%;" />
+
+<img src="https://pic.downk.cc/item/5fefe89c3ffa7d37b32ddb4e.jpg" style="zoom:50%;" />
+
+<p><a href="https://imgchr.com/i/sSY0aR" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/02/sSY0aR.png" alt="sSY0aR.png" style="zoom:50%;" /></a></p>
+<p><strong>3.熟悉多子件元件的创建</strong></p>
+<p>当一个元件封装包含多个相对独立的部分的时候，可以使用子件。</p>
+<p>原则上来说，任何一个元件都可以被任意划分为多个部件。</p>
+<p>只需要使用工具栏中的新部件即可实现相应部件的设计。</p>
+<h2 id="3-原理图的设计准备"><a href="#3-原理图的设计准备" class="headerlink" title="3.原理图的设计准备"></a>3.原理图的设计准备</h2><p>关于软件中一些复制粘贴，这里就不会作过多介绍，因为任何一个理工科男生都会掌握一款EDA，而根据软件设计标准，类似于一些简单的操作各个软件都是大体相似的，所以本文也只是面向电源设计将简单重要的设计步骤拎出来总结。</p>
+<p><img src="https://pic.downk.cc/item/5fefed763ffa7d37b3323ebc.jpg" alt=""></p>
+<p>上图是一张已经绘制好的智能车主板原理图，下面针对里面会出现的具体问题作简单阐述(电气连接线就不作描述)</p>
+<ol>
+<li>注意合理区分<strong>电气连接线(有电气属性和没有电气属性)</strong></li>
+<li>模块化绘制，<strong>电气连接线可以用设置Set Label来实现电气连接</strong></li>
+<li><strong>Value值的核对</strong>，这一点比较重要，因为绘制了板子之后，你会根据你所绘制的原理图打印出来再根据原理图进行焊接，因为毕竟不是全部板子直接给别人焊接，所以这点很重要</li>
+<li>封装的统一管理，原理图绘制完后要为每一个期间匹配封装，不然无法生成相应的PCB文件，利用工具中的封装管理器实现即可</li>
+<li>原理图的编译和检查，在工程中工程选项中Error Reporter</li>
+</ol>
+<ul>
+<li><strong>Duplicate Part Designators:位号重复</strong></li>
+<li><strong>Floating net labels:网络悬浮</strong></li>
+<li><strong>Nets with only one pin:单端网络</strong></li>
+</ul>
+<p>单端网络的确认可以用防止里面指示的通用No ERC标号</p>
+<h2 id="4-PCB的绘制"><a href="#4-PCB的绘制" class="headerlink" title="4.PCB的绘制"></a>4.PCB的绘制</h2><p>在AD20中关于PCB库的绘制一般分为两种，一种是自己根据datasheet直接根据相应的机械图绘制PCB，另一个是利用IPC封装创建向导快速创建封装，两种方法第二种要简单一些，可以很简单地根据流水线创建出常见的封装类型，关于3D模型的创建和导入这里也不做太多表述，因为3D模型主要使看板子绘制成后器件之间的距离看是否符合规范和重叠，对PCB的绘制并无太大的指导意义。</p>
+<p>这里列举IPC封装简单使用对比</p>
+<img src="https://pic.downk.cc/item/5ff012143ffa7d37b350d6ad.jpg" style="zoom:70%;" />
+
+<img src="https://pic.downk.cc/item/5ff013c23ffa7d37b3521a40.jpg" style="zoom:50%;" />
+
+<p>焊盘的设计根据是通孔还是表贴来设计，焊盘的设计根据datasheet的图片来设定，一般来说<strong>设定的器件内距小于机械图中内距，外距大于机械图中的外距</strong>，这样就能保证稍微焊歪一些也能对的上。</p>
+<img src="https://pic.downk.cc/item/5ff014c13ffa7d37b352d87c.jpg" style="zoom:50%;" />
+
+<p>上图是一个IC器件类型的封装图</p>
+<p>往往来说IC器件类型的封装必须包含以下这几点信息</p>
+<ol>
+<li><strong>1脚标识</strong></li>
+<li><strong>管脚位号</strong></li>
+<li><strong>丝印(包含器件正方形，丝印最好不要和焊盘绘制在一起)</strong></li>
+</ol>
+<p>关于IC器件类型的设计推荐使用IPC封装向导快速创建，因为经过个人实操发现手工和IPC向导封装差别不大，都能正常运行。</p>
+<p>相关需要使用到的快捷键和相应命令：</p>
+<p><strong>测量距离：Ctrl + M</strong></p>
+<p><strong>清除测量距离：Ctrl + S</strong></p>
+<p><strong>设置到中心位置：E+F+C(有先后顺序)</strong></p>
+<p><strong>特殊粘贴</strong></p>
+<p>封装绘制完成后就是PCB的更新：</p>
+<p>PCB封装绘制完成后就需要Updata PCB Document相应文件，具体操作在设计的菜单栏里</p>
+<p>这里会出现相应错误提醒，根据相应提醒继续排除ERROR就行</p>
+<p>主要会出现的三种报错如下：</p>
+<ol>
+<li><strong>没有封装—手动添加封装即可</strong></li>
+<li><strong>封装管脚确实—根据原理图绘制对应管脚或者重新绘制PCB封装即可</strong></li>
+<li><strong>管脚号不匹配—结合原理图和datasheet看管脚号对应情况，并在PCB封装绘制界面做出修改</strong></li>
+</ol>
+<p>PCB导入成功后就是PCB板子的绘制了，这里<strong>刚刚导入的PCB板子会有很多绿色报错，这是因为设置的自动布线规则所致</strong>，解决办法是在工具栏中的<strong>设计规则检查中只勾选电气性能规则</strong></p>
+<p>具体规则的查询可以在<a href="https://www.fanyedu.com/course/168.html中进行查阅" target="_blank" rel="noopener">https://www.fanyedu.com/course/168.html中进行查阅</a></p>
+<p>这个时候就可以开始确定板宽和叠层了，鉴于开关电源一般只是用双层板，所以关于四层板的描述这里只做简单介绍。</p>
+<p><strong>板宽的设计利用器件摆放在矩形框内规则摆放来实现</strong></p>
+<p>而四层板的设计需要在设计工具栏里面层叠管理器来设计</p>
+<p>相应的层的名称对应如下</p>
+<p><strong>Top Overlay：丝印层</strong></p>
+<p><strong>TOP Soldier：阻焊层</strong></p>
+<p><strong>Top Layer：信号层</strong></p>
+<p><strong>Bottom Layer：信号层</strong></p>
+<p>需要添加层数直接在信号层插入象形需要添加的层即可(其中signal是正片层，plane是负片层/正片层就是平常用于走线的信号层,直观上看到的地方就是铜皮。负片层正好相反，就是默认敷铜，就是生成一个负片层之后整一层就已经敷铜了Core是芯板而Prepreg是PCB的薄片绝缘材料，总的来说两者的区别：</p>
+<p>Prepreg是PCB的薄片绝缘材料。Prepreg在被层压前未半固化片，又称为预浸材料，主要用于多层印制板的内层导电图形的粘合材料及绝缘材料。在Prepreg被层压后，半固化的环氧树脂被挤压开来，开始流动并凝固，将多层电路板粘合在一起，并形成一层可靠的绝缘体。</p>
+<p>Core则是制作印制板的基础材料。Core又称之为芯板，具有一定的硬度及厚度，并且双面包铜。所以，多层板其实就是Core与Prepreg压合而成的</p>
+<p>1、Prepreg在PCB中属于一种材料，前者材质半固态，类似于纸板，后者材质坚硬，类似于铜板；</p>
+<p>2、Prepreg类似于粘合剂+绝缘体；而Core则是PCB的基础材料，两种是完全不同的功能作用；</p>
+<p>3、Prepreg能够卷曲而Core无法弯曲；</p>
+<p>4、Prepreg不导电，而Core两面均有铜层，是印制板的导电介质。</p>
+<p>从PCB业界简单的来讲，prepreg半固化片就相当于胶水的作用，用prepreg把几张core用lamination层压的方法连结成多层板。)</p>
+<p>Surface Finish指的是表面处理</p>
+<p>设计阶段中的四层板往往如下这样的结构</p>
+<ol>
+<li><strong>TOP：正片层</strong></li>
+<li><strong>GND02：负片层</strong></li>
+<li><strong>PWR03：负片层</strong></li>
+<li><strong>Bottom：正片层</strong></li>
+</ol>
+<p>关于模块化布局的介绍这里不作太多介绍，因为所谓的模块化布局就是在一个稍微大的系统中，不同电源的网络布局在一起，并且尽可能器件之间的距离走得很近。如滤波电容就要放在距离器件很近的位置，这里这一部分就介绍到这里。</p>
+<p><strong>Class、参数设计、规则的创建</strong></p>
+<p>这一部分很<strong>重要</strong>，所以重点介绍</p>
+<p>Class：需要区分电源走线和信号走线，在PCB绘制的过程可以将相应的电源线设为一个类也就是class</p>
+<p>电源线主要是用来载流的(需要加粗)，信号线主要是用来做信号通讯的</p>
+<p>Design里面规则设置进行修改设置</p>
+<p>间距规则  ：6 &gt;X&gt;4   越细的线宽线距设计成本越高，往往设置为6mil</p>
+<p>关于电源线可以根据实际情况修改，往往一个小的嵌入式系统电源走线在15mil-60mil之间</p>
+<p>通过设置优先级来更改默认线宽选取</p>
+<p>线宽规则 ：同上<br>过孔规则  ：2*H+-2MIL  10  20  18  22   12  24  22  26</p>
+<p><strong>过孔规则需要在设置的PCB Editor中Default中设置Hole Size和Diameter 必须勾选tender盖油处理</strong>(孔铜是否露出)</p>
+<p>Power Plane Connect Style:内垫层连接方式</p>
+<p>Power Plane Clearance:反焊盘连接方式 默认20mil 修改为8mil</p>
+<p>Polygon Connect Style:正片连接方式  一般设置为全连接(焊盘设置为十字连接，大电流用全连接,载流)</p>
+<p>对象与丝印层的最小间距一般设置为2mil</p>
+<p>扇孔的处理和敷铜插件的使用</p>
+<p>扇孔的目的有两个：一个是打孔占位，减小回流路径，比如GND孔，就近扇孔可以做到缩短路径的目的，预先打孔是为了防止不打孔，后面走线的时候很密集的时候无法打卡下去，绕很远连一根GND线，这种就很长的回流路径。</p>
+<p>信号线和电源线在两层板设计中注意线宽和电气规则，尽可能尽，走135°角即可。</p>
+<p>敷铜将很尖的铜皮挖掉</p>
+<p>最后需要将要打印的PCB文件的生产文件进行输出及整理</p>
+<ol>
+<li>装配图的输出</li>
+<li>BOM文件的输出</li>
+<li>Gerber文件的输出</li>
+<li>文件的整理</li>
+</ol>
+<p>最后再将文件传到立创平台上进行打印，推荐直接打包成一个压缩包，立创平台可以自己读取。</p>
+<p><strong>相关其它的一些知识可以通过吴传斌的博客去查看，下面列写一些可能有用的相关知识网站</strong></p>
+<p>以下类容为转载：</p>
+<p>[<strong>开关电源及其PCB Layout,不看后悔,超过30年经验的老外大牛的分享</strong>]<a href="https://www.mr-wu.cn/switching-power-supply-pcb-layout-seminar/" target="_blank" rel="noopener">https://www.mr-wu.cn/switching-power-supply-pcb-layout-seminar/</a></p>
+<p>[<strong>PCB电路设计10大基本原则</strong>]<a href="https://www.mr-wu.cn/top-10-printed-circuit-board-design-checks/" target="_blank" rel="noopener">https://www.mr-wu.cn/top-10-printed-circuit-board-design-checks/</a></p>
+<p>[<strong>PCB布线-高速 PCB 设计指南</strong>]<a href="https://www.mr-wu.cn/high-speed-pcb-design-routing/" target="_blank" rel="noopener">https://www.mr-wu.cn/high-speed-pcb-design-routing/</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/ckomy3ea2001m24ii049q93m6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2021/ckomy3e9y001e24ii3g7ugmwk/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Flask实现个人博客网站
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/ckomy3e9v001724iidb81f3c2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Mathtype快捷键</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'BX6xQGIDhs5gno5KEut4pOH5-gzGzoHsz',
+        app_key: 'Lxewu78LgA3pqBTYuWKHdUk5',
+        path: window.location.pathname,
+        notify: true,
+        verify: false,
+        avatar: 'monsterid',
+        placeholder: '老妹，可带劲了，给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> 基于图灵测试的聊天机器人-槑堃
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/favicon.jpg" alt="岛上书店"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://woshibushinidekuiyangpangtouyu.lofter.com/" target="_blank" rel="noopener">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我与友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['愿你在被打击时，记起你的珍贵，抵抗恶意。', '爱你所爱，行你所行，听从你心，无问西东。', '想要的都拥有，得不到的都释怀。'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=5307982&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>
