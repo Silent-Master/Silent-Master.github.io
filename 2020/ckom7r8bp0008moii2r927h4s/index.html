@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    深入理解计算机系统 |  岛上书店
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="岛上书店" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2020-07-22-深入理解计算机系统" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  深入理解计算机系统
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckom7r8bp0008moii2r927h4s/" class="article-date">
+  <time datetime="2020-07-22T05:49:22.000Z" itemprop="datePublished">2020-07-22</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="深入理解计算机系统（一）"><a href="#深入理解计算机系统（一）" class="headerlink" title="深入理解计算机系统（一）"></a>深入理解计算机系统（一）</h1><p>这可以说是计算机科学丛书中最重要的一本了，本书由12章构成，每一章分量都特别多也特别引人入胜，这个专栏将会从这本书里深入展开。</p>
+<img src="https://pic.downk.cc/item/5f17cc9c14195aa59431705a.png" style="zoom:33%;" />
+
+<a id="more"></a>
+
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>计算机系统漫游</li>
+<li>信息的表示和处理</li>
+<li>程序的机器级表示</li>
+<li>处理器体系结构</li>
+<li>优化程序性能</li>
+<li>存储器层次结构</li>
+<li>链接</li>
+<li>异常控制流</li>
+<li>虚拟内存</li>
+<li>系统级I/O</li>
+<li>网络编程</li>
+<li>并发编程</li>
+</ol>
+<h3 id="计算机系统漫游（简述）"><a href="#计算机系统漫游（简述）" class="headerlink" title="计算机系统漫游（简述）"></a>计算机系统漫游（简述）</h3><p>计算机系统是由硬件和系统软件组成的 ，它们共同工作来运行应用程序 。虽然系统的具体实现方式随着时间不断变化，但是系统内在的概念却没有改变 。所有计算机系统都有相似的硬件和软件组件，它们又执行着相似的功能。</p>
+<h4 id="1-1信息就是位-上下文"><a href="#1-1信息就是位-上下文" class="headerlink" title="1.1信息就是位+上下文"></a>1.1信息就是位+上下文</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;studio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;hello,world&#x2F;n&quot;)</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hello.c程序的生命周期是从一个源程序（或者说源文件）开始的，即程序员通过编辑器创 建并保存的文本文件，文件名是hello.c源程序实际上就是一个由值0和1组成的位（又称为比特）序列，8个位被组织成一组，称为字节。每个字节表示程序中的某些文本字符。</p>
+<p>大部分的现代计算机系统都使用ASCII标准来表示文本字符，这种方式实际上就是用 一个唯一的单字节大小的整数值。</p>
+<p>像hello.c这样只由ASCII字符构成 的文件称为文本文件，所有其他文件都称为二进制文件。</p>
+<h4 id="1-2程序被其他程序翻译成不同给的格式"><a href="#1-2程序被其他程序翻译成不同给的格式" class="headerlink" title="1.2程序被其他程序翻译成不同给的格式"></a>1.2程序被其他程序翻译成不同给的格式</h4><img src="https://pic.downk.cc/item/5f1fc0ff14195aa5948c2238.png" style="zoom:67%;" />
+
+<p>整个流程分为以下这几个阶段：</p>
+<ol>
+<li>预处理阶段</li>
+<li>编译阶段</li>
+<li>汇编阶段</li>
+<li>连接阶段</li>
+</ol>
+<h4 id="1-3了解编译系统如何工作是大有益处的"><a href="#1-3了解编译系统如何工作是大有益处的" class="headerlink" title="1.3了解编译系统如何工作是大有益处的"></a>1.3了解编译系统如何工作是大有益处的</h4><ol>
+<li>优化程序性能——例如一个switch语句是否总比一系列的if-else语句高效得多？</li>
+<li>理解链接时出现的错误——例如无法解析一个引用？静态变量和全局变量区别是什么？c文件中定义了两个全局变量会发生什么？静态库和动态库的区别是什么？</li>
+<li>避免安全漏洞——学习安全编程的第一步就是理解数据和控制信息存 储在程序栈上的方式会引起的后果。作为学习汇编语言的一部分，堆栈原理和缓冲区溢出错误非常重要。我们还将学习程序员、编译器和操作系统可以 用来降低攻击威胁的方法。</li>
+</ol>
+<h4 id="1-4处理器读并解释储存在内存中的指令"><a href="#1-4处理器读并解释储存在内存中的指令" class="headerlink" title="1.4处理器读并解释储存在内存中的指令"></a>1.4处理器读并解释储存在内存中的指令</h4><p>此刻，hello.c源程序已经被编译系统翻译成了可执行目标文件hello,并被存放在 磁盘上。要想在Unix系统上运行该可执行文件，我们将它的文件名输入到称为shell的应用程序中：</p>
+<p>linux&gt; ./hello</p>
+<p>hello,world</p>
+<p>linux&gt;</p>
+<p>shell是一个命令行解释器，它输出一个提示符，等待输入一个命令行，然后执行这 个命令。如果该命令行的第一个单词不是一个内置的shell命令，那么shell就会假设这是 一个可执行文件的名字，它将加载并运行这个文件。所以在此例中，shell将加载并运行 hell。程序，然后等待程序终止。hell。程序在屏幕上输出它的消息，然后终止。shell 随后输出一个提示符，等待下一个输入的命令行。</p>
+<h5 id="1-4-1系统的硬件组成"><a href="#1-4-1系统的硬件组成" class="headerlink" title="1.4.1系统的硬件组成"></a>1.4.1系统的硬件组成</h5><ol>
+<li>总线</li>
+<li>I/O设备</li>
+<li>主存</li>
+<li>处理器</li>
+</ol>
+<h5 id="1-4-2运行hello程序"><a href="#1-4-2运行hello程序" class="headerlink" title="1.4.2运行hello程序"></a>1.4.2运行hello程序</h5><img src="https://pic.downk.cc/item/5f1fc87e14195aa594953744.png" style="zoom:75%;" />
+
+<p>​                                从键盘上读取hello命令</p>
+<img src="https://pic.downk.cc/item/5f1fc8e714195aa59495a374.jpg" style="zoom:75%;" />
+
+<p>​                            从磁盘加载可执行文件到主存</p>
+<img src="https://pic.downk.cc/item/5f1fc99914195aa594965704.jpg" style="zoom:75%;" />
+
+<p>​                            将输出字符串从存储器到显示器</p>
+<h4 id="1-5高速缓存至关重要"><a href="#1-5高速缓存至关重要" class="headerlink" title="1.5高速缓存至关重要"></a>1.5高速缓存至关重要</h4><p><img src="https://pic.downk.cc/item/5f1fca0014195aa59496bf27.jpg" alt=""></p>
+<p>​                                    高速缓存存储器</p>
+<h4 id="1-6存储设备形成层次结构"><a href="#1-6存储设备形成层次结构" class="headerlink" title="1.6存储设备形成层次结构"></a>1.6存储设备形成层次结构</h4><img src="C:\Users\hasee\AppData\Roaming\Typora\typora-user-images\image-20200728145001138.png" alt="image-20200728145001138" style="zoom:67%;" />
+
+<p>​                                    存储器结构示意图</p>
+<h4 id="1-7操作系统管理硬件"><a href="#1-7操作系统管理硬件" class="headerlink" title="1.7操作系统管理硬件"></a>1.7操作系统管理硬件</h4><p>操作系统可以看做是应用程序和硬件之间插入的一层软件。所有应用程序对硬件的操作尝试都必须通过操作系统。</p>
+<p>操作系统有以下两个基本功能：</p>
+<p>（1）防止硬件被失控的应用程序滥用。</p>
+<p>（2）向应用程序提供简单一致的机制来控制复杂而又通常大 不相同的低级硬件设备。</p>
+<h5 id="1-7-1进程"><a href="#1-7-1进程" class="headerlink" title="1.7.1进程"></a>1.7.1进程</h5><p>进程是操作系统对一个正在运行程序的一种抽象，在一个系统上可以同时运行多个进程，而每个进程都好像独占硬件，然而实际上是交错运行的。</p>
+<h5 id="1-7-2线程"><a href="#1-7-2线程" class="headerlink" title="1.7.2线程"></a>1.7.2线程</h5><p>尽管通常我们认为一个进程只有单一的控制流，但是在现代系统中，一个进程实际可以由多个称为线程的执行单元组成，每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。由于网络服务器中对并行处理的需求，线程成为越来越重要的编程模型，因为多线程之间比多进程之间更容易共享数据，也因为线程一般来说都比进程更高效。当有多处理器可用的时候，多线程也是一种使得程序可以运行得更快的方法。</p>
+<h5 id="1-7-3虚拟内存"><a href="#1-7-3虚拟内存" class="headerlink" title="1.7.3虚拟内存"></a>1.7.3虚拟内存</h5><p>虚拟内存是一个抽象概念，它为每个进程提供了一个假象，即每个进程都在独占地使用主存。每个进程看到的内存都是一致的，称为虚拟地址空间。下图所示的是Linux进程的虚拟地址空间（其他Unix系统的设计也与此类似）。在Linux中，地址空间最上面的区域 保留给操作系统中的代码和数据的，这对所有进程来说都是一样。地址空间的底部区域存放用户进程定义的代码和数据。请注意，图中的地址是从下往上增大的。</p>
+<img src="https://pic.downk.cc/item/5f1fcfba14195aa5949d08cf.jpg" style="zoom:67%;" />
+
+<p>•程序代码和数据。对所有的进程来说，代码是从同一固定地址开始，紧接着的是和 .C全局变量相对应的数据位置。代码和数据区是直接按照可执行目标文件的内容初始化的，在示例中就是可执行文件hello。</p>
+<p>•堆。代码和数据区后紧随着的是运行时堆。代码和数据区在进程一开始运行时就被 指定了大小，与此不同，当调用像malloc和free这样的C标准库函数时，堆可以在运行时动态地扩展和收缩。在第9章学习管理虚拟内存时，我们将更详细地研究堆。</p>
+<p>•共享库。大约在地址空间的中间部分是一块用来存放像C标准库和数学库这样的共 享库的代码和数据的区域。共享库的概念非常强大，也相当难憧。在第7章介绍动态链接时，将学习共享库是如何工作的。</p>
+<p>•栈。位于用户虚拟地址空间顶部的是用户栈，编译器用它来实现函数调用。和堆一样，用户栈在程序执行期间可以动态地扩展和收缩。特别地，每次我们调用一个函数时，栈就会增长；从一个函数返回时，栈就会收缩。</p>
+<p>•内核虚拟内存。地址空间顶部的区域是为内核保留的。不允许应用程序读写这个区 域的内容或者直接调用内核代码定义的函数。相反，它们必须调用内核来执行这些 操作。</p>
+<p>虚拟内存的运作需要硬件和操作系统软件之间精密复杂的交互，包括对处理器生成的每 个地址的硬件翻译。基本思想是把一个进程虚拟内存的内容存储在磁盘上，然后用主存作为 磁盘的高速缓存。第9章将解释它如何工作，以及为什么对现代系统的运行如此重要。</p>
+<h4 id="1-8系统之间利用网络通信"><a href="#1-8系统之间利用网络通信" class="headerlink" title="1.8系统之间利用网络通信"></a>1.8系统之间利用网络通信</h4><p>系统漫游至此，我们一直是把系统视为一个孤立的硬件和软件的集合体。实际上，现代系统经常通过网络和其他系统连接到一起。从一个单独的系统来看，网络可视为一个 I/O设备，如下图所示。当系统从主存复制一串字节到网络适配器时，数据流经过网络 到达另一台机器，而不是比如说到达本地磁盘驱动器。相似地，系统可以读取从其他机器 发送来的数据，并把数据复制到自己的主存。</p>
+<img src="https://pic.downk.cc/item/5f1fd1c614195aa5949f57a0.jpg" style="zoom:75%;" />
+
+<p>随着Internet这样的全球网络的出现，从一台主机复制信息到另外一台主机已经成为 计算机系统最重要的用途之一。比如，像电子邮件、即时通信、万维网、FTP和telnet这 样的应用都是基于网络复制信息的功能。</p>
+<p>回到hello示例，我们可以使用熟悉的telnet应用在一个远程主机上运行hello程序。假设用本地主机上的telnet客户端连接远程主机上的telnet服务器。在我们登录到远 程主机并运行shell后，远端的shell就在等待接收输入命令。此后在远端运行hello程序，基本步骤如下所示。</p>
+<h4 id="1-9重要主题"><a href="#1-9重要主题" class="headerlink" title="1.9重要主题"></a>1.9重要主题</h4><p>在此，小结一下我们旋风式的系统漫游。这次讨论得出一个很重要的观点，那就是系统不仅仅只是硬件。系统是硬件和系统软件互相交织的集合体，它们必须共同协作以达到 运行应用程序的最终目的。本书的余下部分会讲述硬件和软件的详细内容，通过了解这些 详细内容，你可以写出更快速、更可靠和更安全的程序。</p>
+<p>作为本章的结束，我们在此强调几个贯穿计算机系统所有方面的重要概念。我们会在本书中的多处讨论这些概念的重要性。</p>
+<h5 id="1-9-1Amdahl定律"><a href="#1-9-1Amdahl定律" class="headerlink" title="1.9.1Amdahl定律"></a>1.9.1Amdahl定律</h5><p>假设系统某部分所需执行时间与 该时间的比例为a,而该部分性能提升比例为奴k即该部分初始所需时间为现在所需时间为aTold，所以现在所需时间为（aTold）/k。</p>
+<p>定律总结如下：若想提高计算机整体性能必须提高大部分计算机整体性能。</p>
+<h5 id="1-9-2并发和并行"><a href="#1-9-2并发和并行" class="headerlink" title="1.9.2并发和并行"></a>1.9.2并发和并行</h5><p><strong>并发是一个通用的概念，指一个同事具有多个活动的系统</strong></p>
+<p><strong>并行指的是用并发来使一个系统运行得更快</strong></p>
+<p>下面是系统层次结构中由高到低的顺序重点强调三个层次。</p>
+<p>1.超线程并发</p>
+<p>2.指令级并行</p>
+<p>3.单指令、多数据并行</p>
+<h5 id="1-9-3计算机系统中抽象的重要性"><a href="#1-9-3计算机系统中抽象的重要性" class="headerlink" title="1.9.3计算机系统中抽象的重要性"></a>1.9.3计算机系统中抽象的重要性</h5><p>例子：API，虚拟机。</p>
+<h4 id="1-10总结"><a href="#1-10总结" class="headerlink" title="1.10总结"></a>1.10总结</h4><p>计算机系统是由硬件和系统软件组成的，它们共同协作以运行应用程序。计算机内部的信息被表示 为一组组的位，它们依据上下文有不同的解释方式。程序被其他程序翻译成不同的形式，开始时是 ASCII文本，然后被编译器和链接器翻译成二进制可执行文件。</p>
+<p>处理器读取并解释存放在主存里的二逬制指令。因为计算机花费了大量的时间在内存、I/O设备和 CPU寄存器之间复制数据，所以将系统中的存储设备划分成层次结构一CPU寄存器在顶部，接着是多 层的硬件髙速缓存存储器、DRAM主存和磁盘存储器。在层次模型中，位于更高层的存储设备比低层的 存储设备要更快，单位比特造价也更高。层次结构中较高层次的存储设备可以作为较低层次设备的高速 缓存。通过理解和运用这种存储层次结构的知识，程序员可以优化C程序的性能。</p>
+<p>操作系统内核是应用程序和硬件之间的媒介。它提供三个基本的抽象：1)文件是对I/O设备的抽掣； 2)虚拟内存是对主存和磁盘的抽象；3)进程是处理器、主存和I/O设备的抽象。</p>
+<p>最后，网络提供了计算机系统之间通信的手段。从特殊系统的角度来看，网络就是一种I/O设备。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/ckom7r8bp0008moii2r927h4s/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/ckom7r8c0000dmoii8bni8q7p/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Pyrosim自学笔记(3)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/ckom7r8bf0003moii990qei4b/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">关于电缆沟和电缆摆放相关知识</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'BX6xQGIDhs5gno5KEut4pOH5-gzGzoHsz',
+        app_key: 'Lxewu78LgA3pqBTYuWKHdUk5',
+        path: window.location.pathname,
+        notify: true,
+        verify: false,
+        avatar: 'monsterid',
+        placeholder: '老妹，可带劲了，给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> 基于图灵测试的聊天机器人-槑堃
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/favicon.jpg" alt="岛上书店"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://woshibushinidekuiyangpangtouyu.lofter.com/" target="_blank" rel="noopener">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我与友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['愿你在被打击时，记起你的珍贵，抵抗恶意。', '爱你所爱，行你所行，听从你心，无问西东。', '想要的都拥有，得不到的都释怀。'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=5307982&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

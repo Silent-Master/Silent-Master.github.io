@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    VHDL知识点 |  岛上书店
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="岛上书店" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2020-08-20-VHDL知识点" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  VHDL知识点
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckom7r8bk0007moii62bk6au7/" class="article-date">
+  <time datetime="2020-08-20T05:05:19.000Z" itemprop="datePublished">2020-08-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="VHDL相关知识介绍"><a href="#VHDL相关知识介绍" class="headerlink" title="VHDL相关知识介绍"></a>VHDL相关知识介绍</h2><p>VHDL全称VHSIC HARDWARE DESCRIPTION LAUNGUAGE，也就是非常高速集成电路硬件描述语言，接下来将从它的设计单元展开叙述。</p>
+<a id="more"></a>
+
+<h3 id="VHDL的设计单元"><a href="#VHDL的设计单元" class="headerlink" title="VHDL的设计单元"></a>VHDL的设计单元</h3><ol>
+<li>Entity(实体):l<strong>用来说明模型的外部输入输出特征</strong></li>
+<li>Architecture（构造体）:<strong>用来定义模型的内容和功能</strong></li>
+</ol>
+<p><strong>每一个构造体必须有一个实体与它对应，所以两者都是成对存在。</strong></p>
+<h4 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h4><p>类似一个“黑盒”，实体描述了“黑盒”的输入输出口</p>
+<img src="https://pic.downk.cc/item/5f4914c6160a154a67c2f2e1.png" style="zoom:67%;" />
+
+<p>举例如下：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENTITY</span> black_box <span class="keyword">IS</span> </span><br><span class="line"><span class="keyword">Generic</span> ( <span class="keyword">constant</span> <span class="literal">width</span> : <span class="built_in">integer</span> := <span class="number">7</span>；);</span><br><span class="line"><span class="keyword">PORT</span> (</span><br><span class="line">		clk, rst:	<span class="keyword">IN</span>	<span class="built_in">std_logic</span>;</span><br><span class="line">		d:		<span class="keyword">IN</span> 	<span class="built_in">std_logic_vector</span>(<span class="literal">width</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);</span><br><span class="line">		q:		<span class="keyword">OUT</span>	<span class="built_in">std_logic_vector</span>(<span class="literal">width</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);</span><br><span class="line">		co:		<span class="keyword">OUT</span> 	<span class="built_in">std_logic</span>);</span><br><span class="line"><span class="keyword">END</span> black_box;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中ENTITY为关键字，定义的Generic为类属参量，PORT为端口定义，END为结束标志，端口定义中OUT std_logic分别为端口模式和端口数据类型。</p>
+<p>下面介绍一下端口：</p>
+<p>端口（PORT）是实体的一部分</p>
+<p>–<strong>PORT</strong> <strong>类似于器件的管脚，主要用于信号的传输</strong></p>
+<p>–<strong>PORT</strong> <strong>一般有</strong> <strong>Name</strong>, <strong>Mode</strong>, <strong>和</strong> <strong>Type</strong></p>
+<p><strong>端口说明格式</strong></p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">PORT</span>（[<span class="keyword">SIGNAL</span>]  Name：Mode <span class="keyword">Type</span> [<span class="keyword">BUS</span>]							[:=表达式 ] ，… ）</span><br></pre></td></tr></table></figure>
+
+<p>端口模式如下：</p>
+<p>IN： 数据只能从端口流入实体</p>
+<p>OUT：  数据只能从端口流出实体</p>
+<p>INOUT： 数据从端口流入或流出实体</p>
+<p>BUFFER： 数据从端口流出实体，同时可被内部反馈</p>
+<img src="https://pic.downk.cc/item/5f4914f0160a154a67c30053.png" style="zoom: 50%;" />
+
+<p>Std_logic数据类型如下：</p>
+<p>1.它是数字电路设计的工业标准逻辑类型<br>2.它增加了VHDL语言编程、综合和仿真的灵活性<br>3.在多值逻辑系统中STD_LOGIC和 STD_LOGIC_VECTOR 用于取代 BIT 和 BIT_VECTOR<br>1.若电路中有三态逻辑(Z) 必须用STD_LOGIC 和 STD_LOGIC _VECTOR<br>2.要使用这种类型代码中必须申明库和程序包说明语句    </p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line">		<span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">ALL</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="构造体"><a href="#构造体" class="headerlink" title="构造体"></a>构造体</h4><p>1.用来描述实体的内部结构和逻辑功能<br>2.必须和实体（ENTITY）相联系<br>3.一个实体（ENTITY）可以有多个构造体<br>4.构造体的运行是并发的</p>
+<p>构造体描述方式包括：</p>
+<ol>
+<li>行为描述</li>
+<li>结构描述</li>
+<li>混合描述</li>
+</ol>
+<p>其结构大致如下所示：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ARCHITECTURE</span> &lt;architecture_name&gt; <span class="keyword">OF</span>         &lt;entity_name&gt; <span class="keyword">IS</span></span><br><span class="line">——说明语句</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">——并行语句信号赋值</span><br><span class="line">——进程（<span class="keyword">process</span>)，顺序语句描述设计</span><br><span class="line">——元件例化（<span class="keyword">component</span> instantiations)</span><br><span class="line"><span class="keyword">END</span> &lt;architecture_name&gt; ;</span><br></pre></td></tr></table></figure>
+
+<p>实体和构造体之间的关系</p>
+<img src="https://pic.downk.cc/item/5f491528160a154a67c314db.png" style="zoom:67%;" />
+
+<img src="https://pic.downk.cc/item/5f491553160a154a67c32162.png" style="zoom:67%;" />
+
+<p><strong>For example：</strong></p>
+<p>2X8 Input AND gate：<img src="https://pic.downk.cc/item/5f491567160a154a67c32878.png" style="zoom: 33%;" /></p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENTITY</span> black_box <span class="keyword">IS</span> <span class="keyword">PORT</span> (</span><br><span class="line">		a, b:		<span class="keyword">IN</span>	<span class="built_in">std_logic_vector</span>(<span class="number">7</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);</span><br><span class="line">		y:		<span class="keyword">OUT</span>	<span class="built_in">std_logic_vector</span>(<span class="number">7</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>));</span><br><span class="line"><span class="keyword">END</span> black_box;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> example <span class="keyword">OF</span> black_box <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	 y &lt;= a <span class="keyword">AND</span> b;</span><br><span class="line"><span class="keyword">END</span> example;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据对象"><a href="#数据对象" class="headerlink" title="数据对象"></a>数据对象</h4><h5 id="常数"><a href="#常数" class="headerlink" title="常数"></a>常数</h5><p>1.指在设计中不会变的值<br>2.改善代码可读性，便于代码修改<br>3.必须在程序包、实体、构造体或进程的说明区域加以说明，是全局量<br>4.一般要赋一初始值<br>5.保留字——CONSTANT</p>
+<h5 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h5><p>可代表连线、内连元件或端口。<br>用“&lt;=”来给信号赋值</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SIGNAL</span></span><br><span class="line"><span class="keyword">SIGNAL</span> Count: <span class="built_in">Bit_Vector</span>(<span class="number">3</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">IF</span> Rising_Edge(clk) <span class="keyword">THEN</span>				   			Count&lt;=Count+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">IF</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>信号在Package、Entity、Architecture 中声明，是全局量。</strong></p>
+<p><strong>For example：</strong></p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line"><span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">all</span>;</span><br><span class="line"><span class="keyword">ENTITY</span> simp <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">PORT</span>(a, b, c, d : <span class="keyword">IN</span> <span class="built_in">Std_Logic</span>;</span><br><span class="line">			g : <span class="keyword">OUT</span> <span class="built_in">Std_Logic</span>);</span><br><span class="line"><span class="keyword">END</span> simp;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> logic <span class="keyword">OF</span> simp <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">SIGNAL</span> e，f : <span class="built_in">Std_Logic</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">e &lt;= a <span class="keyword">or</span> b;</span><br><span class="line">f&lt;=<span class="keyword">not</span>(c <span class="keyword">or</span> d);</span><br><span class="line">g &lt;=e <span class="keyword">and</span> f;</span><br><span class="line"><span class="keyword">END</span> logic;</span><br></pre></td></tr></table></figure>
+
+<p>端口信号可以在构造体内声明内部连接信号</p>
+<img src="https://pic.downk.cc/item/5f49158b160a154a67c332e2.png" style="zoom:67%;" />
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SIGNAL</span> temp : <span class="built_in">Std_Logic_Vector</span> (<span class="number">7</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">整体赋值:temp &lt;= “<span class="number">10101010</span>”;temp &lt;= x”AA” ; </span><br><span class="line">逐位赋值:temp(<span class="number">7</span>) &lt;= ‘<span class="number">1</span>’;</span><br><span class="line">多位赋值:</span><br><span class="line">temp (<span class="number">7</span> <span class="keyword">downto</span> <span class="number">4</span>) &lt;= “<span class="number">1010</span>”；</span><br></pre></td></tr></table></figure>
+
+<p>以上是信号赋值相关内容</p>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>1.仅用于进程和子程序<br>2.必须在进程和子程序的说明性区域说明<br>3.不能表达连线和存储元件<br>4.保留字</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">VARIABLE</span></span><br><span class="line"><span class="keyword">VARIABLE</span> tmp : <span class="built_in">Bit</span>;</span><br><span class="line">tmp:=‘<span class="number">1</span>’;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">整体赋值：temp := “<span class="number">10101010</span>”;temp := x”AA” ; </span><br><span class="line">逐位赋值：temp(<span class="number">7</span>) := ‘<span class="number">1</span>’;</span><br><span class="line">多位赋值temp (<span class="number">7</span> <span class="keyword">downto</span> <span class="number">4</span>) := “<span class="number">1010</span>”;</span><br></pre></td></tr></table></figure>
+
+<p>以上为变量赋值</p>
+<p><strong>在结构体中不同位置的变量定义是大抵不太相同的</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>信号</strong></th>
+<th><strong>变量</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>赋值符号</strong></td>
+<td><strong>&lt;=</strong></td>
+<td><strong>:=</strong></td>
+</tr>
+<tr>
+<td><strong>功能</strong></td>
+<td><strong>电路的内部连接</strong></td>
+<td><strong>内部数据交换</strong></td>
+</tr>
+<tr>
+<td><strong>作用范围</strong></td>
+<td><strong>全局，进程和进程之间的通信</strong></td>
+<td><strong>进程的内部</strong></td>
+</tr>
+<tr>
+<td><strong>行为</strong></td>
+<td><strong>延迟一定时间后才赋值</strong></td>
+<td><strong>立即赋值</strong></td>
+</tr>
+</tbody></table>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p>VHDL主要的就是函数类的属性</p>
+<p>信号属性函数属于函数类属性，用来返回有关信号行为功能的信息</p>
+<p> 典型：’event ，它的值为布尔型，如果信号有变化，则其取值为True,否则为False。利用此属性可以判断时钟是否发生。</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">时钟边沿表示：</span><br><span class="line">    如果定义：<span class="keyword">SIGNAL</span> clk: <span class="keyword">IN</span> <span class="built_in">std_logic</span>;</span><br><span class="line">        则：clk’event <span class="keyword">AND</span> clk=‘<span class="number">1</span>’ 表示时钟变化了，</span><br><span class="line">                且为上升边沿</span><br><span class="line">                clk’event <span class="keyword">AND</span> clk=‘<span class="number">0</span>’表示时钟的下降沿</span><br></pre></td></tr></table></figure>
+
+<img src="https://pic.downk.cc/item/5f4915a7160a154a67c33d12.png" style="zoom:50%;" />
+
+<h5 id="相关语句的学习"><a href="#相关语句的学习" class="headerlink" title="相关语句的学习"></a>相关语句的学习</h5><h6 id="WIth-Select-Then选择信号语句"><a href="#WIth-Select-Then选择信号语句" class="headerlink" title="WIth_Select_Then选择信号语句"></a>WIth_Select_Then选择信号语句</h6><p>1.所有的“WHEN”子句必须是互斥的<br>2.一般用  “When Others”来处理未考虑到的情况<br>3.只有一个参考信号和赋值符 (&lt;=)<br>4.每一子句结尾是逗号，最后一句是分号</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> selection_signal <span class="keyword">SELECT</span></span><br><span class="line">	signal_name &lt;= 	value_1 <span class="keyword">WHEN</span> value_a,</span><br><span class="line">			  	  		value_2 <span class="keyword">WHEN</span> value_b,</span><br><span class="line">		  	  	...</span><br><span class="line">			  	  		value_n <span class="keyword">WHEN</span> value_n,</span><br><span class="line">			  	  		value_x <span class="keyword">WHEN</span> <span class="keyword">OTHERS</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line"><span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">all</span>;</span><br><span class="line"><span class="keyword">ENTITY</span> cmpl_sig <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">PORT</span> ( a, b,c,d : <span class="keyword">IN</span> <span class="built_in">STD_LOGIC</span>;</span><br><span class="line">                        s：<span class="keyword">in</span> std_logci_vector(<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">			x : <span class="keyword">OUT</span> <span class="built_in">STD_LOGIC</span>);</span><br><span class="line"><span class="keyword">END</span> cmpl_sig;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> logic <span class="keyword">OF</span> cmpl_sig <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">BEGIN</span>    </span><br><span class="line"><span class="keyword">WITH</span> s <span class="keyword">SELECT</span></span><br><span class="line">     x &lt;=a <span class="keyword">WHEN</span> “<span class="number">00</span>”, </span><br><span class="line">    	 b <span class="keyword">WHEN</span> “<span class="number">01</span>”,</span><br><span class="line">          	c <span class="keyword">WHEN</span> “<span class="number">10</span>”,</span><br><span class="line">          	d <span class="keyword">WHEN</span> <span class="keyword">OTHERS</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">每个<span class="keyword">WHEN</span>子句可以包含多个条件:</span><br><span class="line">	<span class="keyword">WITH</span> s <span class="keyword">SELECT</span></span><br><span class="line">     x &lt;= a <span class="keyword">WHEN</span> ”<span class="number">000</span>” | “<span class="number">001</span>” | “<span class="number">010</span>”,</span><br><span class="line">          b <span class="keyword">WHEN</span> <span class="string">"101"</span> | <span class="string">"111"</span>,	 </span><br><span class="line">			  c <span class="keyword">WHEN</span> <span class="keyword">OTHERS</span>;</span><br><span class="line">上述第二段代码中用逻辑表达式对x进行赋值</span><br></pre></td></tr></table></figure>
+
+<h6 id="With-Else选择信号语句"><a href="#With-Else选择信号语句" class="headerlink" title="With_Else选择信号语句"></a>With_Else选择信号语句</h6><p>1.根据指定条件对信号赋值，条件可以为任意表达式<br>2.根据条件的出现的先后次序隐含优先权<br>3.最后一个 ELSE子句隐含了所有未列出的条件<br>4.每一子句的结尾没有标点，只有最后一句有分号</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">signal_name &lt;=	value_1 <span class="keyword">WHEN</span> condition1 <span class="keyword">ELSE</span></span><br><span class="line">				  	value_2 <span class="keyword">WHEN</span> condition2 <span class="keyword">ELSE</span></span><br><span class="line">				 	...</span><br><span class="line">				 	value_n <span class="keyword">WHEN</span> conditionn <span class="keyword">ELSE</span></span><br><span class="line">				 	value_x;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x &lt;= a <span class="keyword">when</span> (s = “<span class="number">00</span>”) <span class="keyword">else</span></span><br><span class="line">     b <span class="keyword">when</span> (s = “<span class="number">01</span>”) <span class="keyword">else</span> <span class="comment">--隐含了优先权</span></span><br><span class="line">     c <span class="keyword">when</span> (s = “<span class="number">10</span>”) <span class="keyword">else</span></span><br><span class="line">     d ;<span class="comment">--隐含了所有未列出的条件</span></span><br><span class="line">         </span><br><span class="line"></span><br><span class="line">j &lt;= 	w <span class="keyword">when</span> (a = ‘<span class="number">1</span>’) <span class="keyword">else</span></span><br><span class="line">      	x <span class="keyword">when</span> (b = ‘<span class="number">1</span>’) <span class="keyword">else</span></span><br><span class="line">      	y <span class="keyword">when</span> (c = ‘<span class="number">1</span>’) <span class="keyword">else</span></span><br><span class="line">			z <span class="keyword">when</span> (d = ‘<span class="number">1</span>’) <span class="keyword">else</span></span><br><span class="line">			‘<span class="number">0</span>’ ;</span><br><span class="line"><span class="comment">--允许有多个控制信号</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="进程语句"><a href="#进程语句" class="headerlink" title="进程语句"></a>进程语句</h6><p>1.VHDL中最重要的语句，具有并行和顺序行为的双重性<br>2.进程和进程语句之间是并行关系<br>3.进程内部是一组连续执行的顺序语句<br>4.进程语句与构造体中的其余部分进行信息交流是靠信号完成的<br>基本格式：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[进程标号：] <span class="keyword">PROCESS</span> [（信号敏感表）] <span class="keyword">IS</span></span><br><span class="line">    〈说明区〉</span><br><span class="line">    <span class="keyword">BEGIN</span></span><br><span class="line">        〈顺序语句〉</span><br><span class="line">        <span class="keyword">END</span> <span class="keyword">PROCESS</span> [进程标号]；</span><br></pre></td></tr></table></figure>
+
+<img src="https://pic.downk.cc/item/5f4915b8160a154a67c342ba.png" style="zoom:50%;" />
+
+<p>这里提出一个叫<strong>信号敏感表</strong>的东西，这是进程十分依赖的。</p>
+<p>1.进程赖以启动的敏感表。对于表中列出的任何信号的改变，都将启动进程，执行进程内相应顺序语句<br>2.一些VHDL综合器，综合后，对应进程的硬件系统对进程中的所有输入的信号都是敏感的，不论在源程序的进程中是否把所有的信号都列人敏感表中<br>3.为了使软件仿真与综合后的硬件仿真对应起来，应当将进程中的所有输人信号都列入敏感表中</p>
+<h6 id="顺序语句"><a href="#顺序语句" class="headerlink" title="顺序语句"></a>顺序语句</h6><p>1.每一条顺序语句的执行(指仿真执行)顺序是与它们的书写顺序基本一致的<br>2.顺序语句只能出现在进程(Process) 、函数（Funcation)和过程（Procedure)中<br>3.顺序语句包括：赋值语句、流程控制语句、等待语句、子程序调用语句、返回语句、空操作语句</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line"><span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">all</span>;</span><br><span class="line"><span class="keyword">ENTITY</span> if_case <span class="keyword">IS</span> <span class="keyword">PORT</span></span><br><span class="line">	 ( a, b, c, d : <span class="keyword">IN</span> <span class="built_in">Std_Logic</span>;</span><br><span class="line">	  sel : <span class="keyword">IN</span> <span class="built_in">Std_Logic_Vector</span>(<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span>);</span><br><span class="line">	  y, z : <span class="keyword">OUT</span> <span class="built_in">Std_Logic</span>);</span><br><span class="line"><span class="keyword">END</span> if_case;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> logic <span class="keyword">OF</span> if_case <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">if_label: <span class="keyword">PROCESS</span>(a, b, c, d, sel)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">IF</span> sel=<span class="string">"00"</span> <span class="keyword">THEN</span>  y &lt;= a;</span><br><span class="line"><span class="keyword">ELSIF</span> sel=<span class="string">"01"</span> <span class="keyword">THEN</span>  y &lt;= b;</span><br><span class="line"><span class="keyword">ELSIF</span> sel=<span class="string">"10"</span> <span class="keyword">THEN</span>  y &lt;= c;</span><br><span class="line"><span class="keyword">ELSE</span>  y &lt;= d;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">PROCESS</span> if_label;</span><br><span class="line"></span><br><span class="line">case_label: </span><br><span class="line"><span class="keyword">PROCESS</span>(a, b, c, d, sel)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">CASE</span> sel <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">WHEN</span> <span class="string">"00"</span> =&gt;z &lt;= a;</span><br><span class="line"><span class="keyword">WHEN</span> <span class="string">"01"</span> =&gt;z &lt;= b;</span><br><span class="line"><span class="keyword">WHEN</span> <span class="string">"10"</span> =&gt;z &lt;= c;</span><br><span class="line"><span class="keyword">WHEN</span> <span class="string">"11"</span> =&gt;z &lt;= d;</span><br><span class="line"><span class="keyword">WHEN</span> <span class="keyword">OTHERS</span> =&gt;z &lt;= <span class="string">'0'</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">PROCESS</span> case_label;</span><br><span class="line"><span class="keyword">END</span> logic;</span><br><span class="line"><span class="comment">--以上两段程序是并发的，并且依靠进程中参数的变化而变化</span></span><br><span class="line"><span class="comment">--如果敏感表不代入输入的所有参数，那么仿真的波形会报错</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line"><span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">all</span>;</span><br><span class="line"><span class="keyword">ENTITY</span> ttt1 <span class="keyword">IS</span> <span class="keyword">PORT</span></span><br><span class="line">	 (en	: <span class="keyword">in</span> <span class="built_in">std_logic</span>; </span><br><span class="line">	 y	: <span class="keyword">OUT</span> <span class="built_in">Std_Logic_vector</span>(<span class="number">0</span> <span class="keyword">to</span> <span class="number">7</span>));</span><br><span class="line"><span class="keyword">END</span> ttt1;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> logic <span class="keyword">OF</span> ttt1 <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">SIGNAL</span> s1,s2	:<span class="built_in">Std_logic</span>;</span><br><span class="line"><span class="keyword">SIGNAL</span> t:<span class="built_in">Std_Logic_vector</span> (<span class="number">0</span> <span class="keyword">to</span> <span class="number">7</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">PROCESS</span>(s1,s2,en)</span><br><span class="line"><span class="keyword">Variable</span> v1,v2:<span class="built_in">Std_logic</span>;</span><br><span class="line"><span class="keyword">Begin</span></span><br><span class="line"><span class="keyword">if</span> en=<span class="string">'1'</span> <span class="keyword">then</span></span><br><span class="line">	V1:=<span class="string">'1'</span>;	V2:=<span class="string">'1'</span>;</span><br><span class="line">	s1&lt;=<span class="string">'1'</span>;	s2&lt;=<span class="string">'1'</span>;</span><br><span class="line">	t(<span class="number">0</span>)&lt;=v1;	t(<span class="number">1</span>)&lt;=v2;</span><br><span class="line">	t(<span class="number">2</span>)&lt;=s1;	t(<span class="number">3</span>)&lt;=s2;</span><br><span class="line">	v1:=<span class="string">'0'</span>;	v2:=<span class="string">'0'</span>;</span><br><span class="line">	s2&lt;=<span class="string">'0'</span>;	t(<span class="number">4</span>)&lt;=v1;</span><br><span class="line">	t(<span class="number">5</span>)&lt;=v2;	t(<span class="number">6</span>)&lt;=s1;</span><br><span class="line">	t(<span class="number">7</span>)&lt;=s2;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">process</span>;</span><br><span class="line">y&lt;=t;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="comment">--顺序语句赋值</span></span><br></pre></td></tr></table></figure>
+
+<p>一下是顺序赋值语句和数电图</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ARCHITECTURE</span> reg1 <span class="keyword">OF</span> reg1 <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">SIGNAL</span> a, b : <span class="built_in">BIT</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">PROCESS</span> (clk)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">IF</span> rising_edge(clk) <span class="keyword">THEN</span></span><br><span class="line">		a &lt;= d;</span><br><span class="line">		b &lt;= a;</span><br><span class="line">		q &lt;= b;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">PROCESS</span>;</span><br><span class="line"><span class="keyword">END</span> reg1;</span><br><span class="line">    <span class="comment">--顺序语句赋值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENTITY</span> reg1 <span class="keyword">IS</span> <span class="keyword">PORT</span> ( d : <span class="keyword">in</span> <span class="built_in">BIT</span>;</span><br><span class="line">				   clk : <span class="keyword">in</span> <span class="built_in">BIT</span>;</span><br><span class="line">				      q : <span class="keyword">out</span> <span class="built_in">BIT</span>);</span><br><span class="line"><span class="keyword">END</span> reg1;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> reg1 <span class="keyword">OF</span> reg1 <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">SIGNAL</span> a, b : <span class="built_in">BIT</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">PROCESS</span> (clk)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">IF</span> rising_edge(clk) <span class="keyword">THEN</span></span><br><span class="line">a &lt;= d;</span><br><span class="line">b &lt;= a;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">PROCESS</span>;</span><br><span class="line">q &lt;= b;</span><br><span class="line"><span class="keyword">END</span> reg1;</span><br><span class="line">	<span class="comment">--并行语句赋值</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">ENTITY</span> reg1 <span class="keyword">IS</span> <span class="keyword">PORT</span> ( d : <span class="keyword">in</span> <span class="built_in">BIT</span>;</span><br><span class="line">				     clk : <span class="keyword">in</span> <span class="built_in">BIT</span>;</span><br><span class="line">				        q : <span class="keyword">out</span> <span class="built_in">BIT</span>);</span><br><span class="line"><span class="keyword">END</span> reg1;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> reg1 <span class="keyword">OF</span> reg1 <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">PROCESS</span> (clk)</span><br><span class="line"><span class="keyword">VARIABLE</span> a, b : <span class="built_in">BIT</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">IF</span> rising_edge(clk) <span class="keyword">THEN</span></span><br><span class="line">		a := d;</span><br><span class="line">		b := a;</span><br><span class="line">		q &lt;= b;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">PROCESS</span>;</span><br><span class="line"><span class="keyword">END</span> reg1;</span><br><span class="line">	<span class="comment">--变量定义的顺序语句赋值</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码的数电图如下所示</p>
+<img src="https://pic.downk.cc/item/5f4915d6160a154a67c34b70.png" style="zoom:67%;" />
+
+<p>对变量定义的时序电路赋值中要注意以下几点</p>
+<p>1.变量在IF语句中被赋值，以用来表示随时钟的变化，不会产生触发器<br>2.变量只代表临时存储，不反映实际硬件<br>3.变量可用在表示一数据立即变化的表达式中，然后再将变量的值赋给信号</p>
+<h6 id="IF-THEN-ELSE语句"><a href="#IF-THEN-ELSE语句" class="headerlink" title="IF_THEN_ELSE语句"></a>IF_THEN_ELSE语句</h6><p>1.只能在进程内使用<br>2.至少应有一个条件句，条件句必须由布尔表达式构成。<br>3.根据条件句产生的判断结果TRUE或FALSE，有条件地选择执行其后的顺序语句。</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--三种结构</span></span><br><span class="line"><span class="keyword">IF</span>  条件句 <span class="keyword">Then</span></span><br><span class="line">    顺序语句</span><br><span class="line">ENDIF</span><br><span class="line"></span><br><span class="line"><span class="keyword">IF</span>  条件句 <span class="keyword">THEN</span></span><br><span class="line">  顺序语句</span><br><span class="line"><span class="keyword">ELSE</span></span><br><span class="line">  顺序语句</span><br><span class="line">ENDIF</span><br><span class="line"></span><br><span class="line"><span class="keyword">IF</span> 条件句 <span class="keyword">Then</span></span><br><span class="line">    顺序语句</span><br><span class="line">  <span class="keyword">ELSIF</span>  条件句 <span class="keyword">Then</span></span><br><span class="line">    顺序语句</span><br><span class="line">  <span class="keyword">ELSE</span></span><br><span class="line">    顺序语句</span><br><span class="line">ENDIF</span><br></pre></td></tr></table></figure>
+
+<p><strong>进程中的参数必须要在进程内使用</strong></p>
+<h6 id="CASE-WHEN语句"><a href="#CASE-WHEN语句" class="headerlink" title="CASE_WHEN语句"></a>CASE_WHEN语句</h6><p>1.表达式可以是一个整数类型或枚举类型的值，也可以是由这些数据类型的值构成的数组<br>2.条件句中的选择值必在表达式的取值范围内。<br> 3.除非所有条件句中的选择值能完整覆盖CASE语句中表达式的取值，否则最末一个条件句中的选择必须用“OTHERS”表示。<br>4.CASE语句中每一条件句的选择值只能出现一次，不能有相同选择值的条件语句出现。<br>5.CASE语句执行中必须选中，且只能选中所列条件语句中的一条。</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mux4_1: <span class="keyword">PROCESS</span> (a,b,c,d,s)</span><br><span class="line">		<span class="keyword">BEGIN</span></span><br><span class="line">			<span class="keyword">CASE</span> s <span class="keyword">IS</span></span><br><span class="line">				<span class="keyword">WHEN</span> <span class="string">"00"</span>   =&gt;  x &lt;= a;</span><br><span class="line">				<span class="keyword">WHEN</span> <span class="string">"01"</span>   =&gt;  x &lt;= b;</span><br><span class="line">				<span class="keyword">WHEN</span> <span class="string">"10”   =&gt;  x &lt;= c;</span></span><br><span class="line"><span class="string">				WHEN OTHERS =&gt;  x &lt;= d;</span></span><br><span class="line"><span class="string">			END CASE;</span></span><br><span class="line"><span class="string">		END PROCESS mux4_1;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="LOOP语句"><a href="#LOOP语句" class="headerlink" title="LOOP语句"></a>LOOP语句</h6><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">基本格式：</span><br><span class="line">[<span class="keyword">LOOP</span>标号:]</span><br><span class="line">[重复模式] <span class="keyword">LOOP</span></span><br><span class="line">	顺序语句；</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">LOOP</span> [<span class="keyword">LOOP</span>标号]</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">NEXT</span> </span><br><span class="line">[<span class="keyword">LOOP</span>标号] [<span class="keyword">WHEN</span> 语句]</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">FOR</span> &lt;条件表达式&gt; <span class="keyword">IN</span> &lt;范围&gt; <span class="keyword">LOOP</span></span><br><span class="line">	顺序语句</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">LOOP</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">WHILE</span> &lt;条件表达式&gt; <span class="keyword">LOOP</span></span><br><span class="line">	顺序语句</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">LOOP</span>;</span><br><span class="line"></span><br><span class="line">[<span class="keyword">LOOP</span>标号:] <span class="keyword">LOOP</span></span><br><span class="line">顺序语句</span><br><span class="line"><span class="keyword">EXIT</span> [<span class="keyword">LOOP</span>标号] ;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">LOOP</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h5><p>标志一个已存在的数据对象<br>引用别名等效于引用原始数据对象<br>给别名赋值等效于给原始数据赋值<br>常作为标识一组数据类型<br>保留字：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALIAS</span></span><br><span class="line"><span class="keyword">ALIAS</span> Bank:<span class="built_in">Bit_Vector</span>(<span class="number">0</span> <span class="keyword">to</span> <span class="number">3</span>) <span class="keyword">IS</span> Address(<span class="number">24</span> <span class="keyword">to</span> <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="状态机设计"><a href="#状态机设计" class="headerlink" title="状态机设计"></a>状态机设计</h4><p><img src="https://pic.downk.cc/item/5f4915f4160a154a67c35400.png" style="zoom:67%;" /><img src="https://pic.downk.cc/item/5f491602160a154a67c35807.png" alt=""></p>
+<p>状态机有以下几种：</p>
+<p>1.二进制状态机编码</p>
+<p>2.格雷码状态机编码</p>
+<p>3.ONE HOT状态机编码</p>
+<p><strong>状态机的每一个状态用二进制位来编码</strong></p>
+<p>例：实现4状态的状态机，其二进制编码可为 </p>
+<p>状态1＝“00”  </p>
+<p>状态2＝“01”</p>
+<p>状态3＝“10”</p>
+<p>状态4＝“11”<br>特点：触发器使用较少，速度较慢，可能产生两位同时翻转的情况。如：“01”－&gt;“10”</p>
+<p><strong>格雷码编码每次仅一个状态位的值发生变化</strong> </p>
+<p>例：实现4状态的状态机，其格雷码编码可为      </p>
+<p>状态1＝“00”</p>
+<p>状态2＝“01”</p>
+<p>状态3＝“11”</p>
+<p>状态4＝“10”<br>特点：触发器使用较少，速度较慢，不会产生两位同时翻转的情况。当状态位的输出被异步应用时，格雷码编码是特别有益的</p>
+<p><strong>ONE HOT的编码方案对每一个状态采用一个触发器，即4个状态的状态机需4个触发器。同一时间仅1个状态位处于逻辑“l”电平</strong></p>
+<p>例：实现4状态的状态机，其ONE HOT编码可为      </p>
+<p>状态1＝“0001”</p>
+<p>状态2＝“0010”</p>
+<p>状态3＝“0100”</p>
+<p>状态4＝“1000”<br>特点：触发器使用较多，但逻辑简单，速度快</p>
+<p><strong>对于编码方式的选择由以下3种</strong></p>
+<p><strong>1.根据状态机复杂程度：</strong>状态特别多的系统只能采用2进制编码或格雷码编码</p>
+<p><strong>2.根据器件类型：</strong>FPGA一般采用ONE HOT编码，CPLD一般采用2进制编码或格雷码编码</p>
+<p><strong>3.从非法状态中退出：</strong>在选择编码方案时，必须考虑状态机可能进入的潜在的非法状态数目。如果违反了状态位触发器的建立或保持时间，又没有定义所有可能出现的状态，则你的设计会终止在非法状态上。</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--状态机设计——实体描述</span></span><br><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line">		<span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">ALL</span>;</span><br><span class="line">		<span class="keyword">ENTITY</span> state_machine <span class="keyword">IS</span> <span class="keyword">PORT</span> (</span><br><span class="line">			clock, reset: 		<span class="keyword">IN</span>  <span class="built_in">std_logic</span>;</span><br><span class="line">			timer1, timer2, timer3:    <span class="keyword">IN</span>  <span class="built_in">std_logic</span>;</span><br><span class="line">			r, y, g:			<span class="keyword">OUT</span> <span class="built_in">std_logic</span>);</span><br><span class="line">		<span class="keyword">END</span> state_machine;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> arch_1 <span class="keyword">OF</span> state_machine <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">TYPE</span> traffic_states <span class="keyword">IS</span> (red, yellow, green); </span><br><span class="line"><span class="keyword">SIGNAL</span> sm: traffic_states;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	fsm: <span class="keyword">PROCESS</span> (clock, reset)</span><br><span class="line">				<span class="keyword">BEGIN</span>                     	</span><br><span class="line">				<span class="keyword">IF</span> reset = <span class="string">'1'</span> <span class="keyword">THEN</span>   sm &lt;= red; </span><br><span class="line">				<span class="keyword">ELSIF</span> rising_edge(clock) <span class="keyword">THEN</span></span><br><span class="line">				<span class="keyword">CASE</span> sm <span class="keyword">IS</span></span><br><span class="line">				<span class="keyword">WHEN</span> red  =&gt; <span class="keyword">IF</span> timer1=‘<span class="number">1</span>’ <span class="keyword">THEN</span> sm &lt;= green;   </span><br><span class="line">					        <span class="keyword">END</span> <span class="keyword">IF</span>;	</span><br><span class="line">				<span class="keyword">WHEN</span> green =&gt; <span class="keyword">IF</span> timer2=’<span class="number">1</span>' <span class="keyword">THEN</span> sm &lt;= yellow;</span><br><span class="line">					           <span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">WHEN</span> yellow =&gt; <span class="keyword">IF</span> timer3=’<span class="number">1</span>' <span class="keyword">THEN</span> sm &lt;= red;</span><br><span class="line">		           	   <span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line">			<span class="keyword">WHEN</span> <span class="keyword">others</span> =&gt; sm &lt;= red;</span><br><span class="line">			<span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br><span class="line">		<span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line">   <span class="keyword">END</span> <span class="keyword">PROCESS</span> fsm;</span><br><span class="line">	r &lt;= <span class="string">'1'</span> <span class="keyword">WHEN</span> (sm = red) <span class="keyword">ELSE</span> <span class="string">'0'</span>;</span><br><span class="line">	g &lt;= <span class="string">'1'</span> <span class="keyword">WHEN</span> (sm = green) <span class="keyword">ELSE</span> <span class="string">'0'</span>;</span><br><span class="line">	y &lt;= <span class="string">'1'</span> <span class="keyword">WHEN</span> (sm = yellow) <span class="keyword">ELSE</span> <span class="string">'0'</span>;		</span><br><span class="line">	<span class="keyword">END</span> arch_1;</span><br></pre></td></tr></table></figure>
+
+<h4 id="VHDL-结构化设计基本单元"><a href="#VHDL-结构化设计基本单元" class="headerlink" title="VHDL 结构化设计基本单元"></a>VHDL 结构化设计基本单元</h4><p><strong>COMPONENTs：</strong>    已设计好的一个实体<br>可被其它模块或高层模块引用<br><strong>PACKAGEs：</strong>    类似于库，使实体和结构体内的数据类型、常量、子程序等对于其他设计单元可见，包括包体单元和说明单元<br><strong>LIBRARIES：</strong>    存放预先编译好的程序包和数据的集合体</p>
+<h4 id="层次化设计管理"><a href="#层次化设计管理" class="headerlink" title="层次化设计管理"></a>层次化设计管理</h4><p><img src="https://pic.downk.cc/item/5f491602160a154a67c35807.png" alt=""></p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line"><span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">ALL</span>;</span><br><span class="line"><span class="keyword">ENTITY</span> mux2to1 <span class="keyword">IS</span> <span class="keyword">PORT</span> (</span><br><span class="line">	a, b, sel: <span class="keyword">IN</span>  <span class="built_in">std_logic</span>;         </span><br><span class="line">	c:         <span class="keyword">OUT</span> <span class="built_in">std_logic</span>);</span><br><span class="line"><span class="keyword">END</span> mux2to1;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> archmux2to1 <span class="keyword">OF</span> mux2to1 <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    c &lt;= (a <span class="keyword">AND</span> <span class="keyword">NOT</span> sel) <span class="keyword">OR</span> (b <span class="keyword">AND</span> sel);</span><br><span class="line"><span class="keyword">END</span> archmux2to1</span><br><span class="line"><span class="comment">--Entity/Architecture File (VHDL)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">LIBRARY</span> ieee;</span><br><span class="line"><span class="keyword">USE</span> ieee.std_logic_1164.<span class="keyword">ALL</span>;</span><br><span class="line"><span class="keyword">ENTITY</span> mux2to1 <span class="keyword">IS</span> <span class="keyword">PORT</span> (</span><br><span class="line">	a, b, sel: <span class="keyword">IN</span>  <span class="built_in">std_logic</span>;         </span><br><span class="line">	c:         <span class="keyword">OUT</span> <span class="built_in">std_logic</span>);</span><br><span class="line"><span class="keyword">END</span> mux2to1;</span><br><span class="line"><span class="keyword">ARCHITECTURE</span> archmux2to1 <span class="keyword">OF</span> mux2to1 <span class="keyword">IS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    c &lt;= (a <span class="keyword">AND</span> <span class="keyword">NOT</span> sel) <span class="keyword">OR</span> (b <span class="keyword">AND</span> sel);</span><br><span class="line"><span class="keyword">END</span> archmux2to1</span><br><span class="line"><span class="comment">--Package and Component Declaration File (VHDL)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>以上便是VHDL的一般语法规则介绍了</strong></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/ckom7r8bk0007moii62bk6au7/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/ckom7r8bt0009moii4ezqfh0d/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Python 知识点归纳
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/ckom7r8c0000dmoii8bni8q7p/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Pyrosim自学笔记(3)</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'BX6xQGIDhs5gno5KEut4pOH5-gzGzoHsz',
+        app_key: 'Lxewu78LgA3pqBTYuWKHdUk5',
+        path: window.location.pathname,
+        notify: true,
+        verify: false,
+        avatar: 'monsterid',
+        placeholder: '老妹，可带劲了，给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> 基于图灵测试的聊天机器人-槑堃
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/favicon.jpg" alt="岛上书店"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://woshibushinidekuiyangpangtouyu.lofter.com/" target="_blank" rel="noopener">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我与友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['愿你在被打击时，记起你的珍贵，抵抗恶意。', '爱你所爱，行你所行，听从你心，无问西东。', '想要的都拥有，得不到的都释怀。'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=5307982&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>
