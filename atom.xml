@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-05-13T13:45:12.937Z</updated>
+  <updated>2021-05-18T14:02:33.371Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,9 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>中期总结</title>
+    <link href="http://yoursite.com/2021/ckowu6h1u002fw0iicgyweozs/"/>
+    <id>http://yoursite.com/2021/ckowu6h1u002fw0iicgyweozs/</id>
+    <published>2021-05-18T05:05:19.000Z</published>
+    <updated>2021-05-18T14:02:33.371Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;研究生中期总结&quot;&gt;&lt;a href=&quot;#研究生中期总结&quot; class=&quot;headerlink&quot; title=&quot;研究生中期总结&quot;&gt;&lt;/a&gt;研究生中期总结&lt;/h1&gt;&lt;p&gt;最近焦虑感比较严重，所以有感而发写这篇中期总结，来给自己一点思考并给自己一点展望未来的遐想。整个中期总结我将会分为以下这几点——1.从自己本身的问题出发 2.从观测的周围环境(与周围环境和自己) 3.思维和心态的变化过程 4.未来的展望和规划&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="个人总结" scheme="http://yoursite.com/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="总结" scheme="http://yoursite.com/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>元器件学习过程</title>
-    <link href="http://yoursite.com/2021/ckomy3eai002j24iidwidab1v/"/>
-    <id>http://yoursite.com/2021/ckomy3eai002j24iidwidab1v/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1r0028w0iigl8ugpnj/"/>
+    <id>http://yoursite.com/2021/ckowu6h1r0028w0iigl8ugpnj/</id>
     <published>2021-05-13T05:05:19.000Z</published>
     <updated>2021-05-13T13:45:12.937Z</updated>
     
@@ -47,8 +68,8 @@
   
   <entry>
     <title>DSP28335使用笔记</title>
-    <link href="http://yoursite.com/2021/ckomy3ead002824ii1vh3djlo/"/>
-    <id>http://yoursite.com/2021/ckomy3ead002824ii1vh3djlo/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1p0024w0ii7gmigkkc/"/>
+    <id>http://yoursite.com/2021/ckowu6h1p0024w0ii7gmigkkc/</id>
     <published>2021-05-12T05:05:19.000Z</published>
     <updated>2021-05-12T12:48:19.405Z</updated>
     
@@ -76,8 +97,8 @@
   
   <entry>
     <title>hexo Gitbash Spawn Error解决办法</title>
-    <link href="http://yoursite.com/2021/ckomy3eag002f24iihanvatpv/"/>
-    <id>http://yoursite.com/2021/ckomy3eag002f24iihanvatpv/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1z002pw0ii8nred32z/"/>
+    <id>http://yoursite.com/2021/ckowu6h1z002pw0ii8nred32z/</id>
     <published>2021-05-11T05:49:22.000Z</published>
     <updated>2021-05-11T12:52:34.381Z</updated>
     
@@ -97,8 +118,8 @@
   
   <entry>
     <title>EG2113D技术报告</title>
-    <link href="http://yoursite.com/2021/ckomy3ean002q24iidogp5z6h/"/>
-    <id>http://yoursite.com/2021/ckomy3ean002q24iidogp5z6h/</id>
+    <link href="http://yoursite.com/2021/ckowu6h22002ww0ii074nc39r/"/>
+    <id>http://yoursite.com/2021/ckowu6h22002ww0ii074nc39r/</id>
     <published>2021-05-06T05:05:19.000Z</published>
     <updated>2021-05-11T12:19:05.298Z</updated>
     
@@ -118,10 +139,10 @@
   
   <entry>
     <title>STM32F103使用笔记</title>
-    <link href="http://yoursite.com/2021/ckomy3eap002v24ii3a4s5mt6/"/>
-    <id>http://yoursite.com/2021/ckomy3eap002v24ii3a4s5mt6/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1t002bw0ii0l4l2jf6/"/>
+    <id>http://yoursite.com/2021/ckowu6h1t002bw0ii0l4l2jf6/</id>
     <published>2021-03-13T05:05:19.000Z</published>
-    <updated>2021-05-12T12:00:51.568Z</updated>
+    <updated>2021-05-20T11:45:45.488Z</updated>
     
     <summary type="html">
     
@@ -141,8 +162,8 @@
   
   <entry>
     <title>MOSFET和IGBT栅极驱动器电路基本原理</title>
-    <link href="http://yoursite.com/2021/ckomy3eab002424iie85d2yyh/"/>
-    <id>http://yoursite.com/2021/ckomy3eab002424iie85d2yyh/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1x002mw0ii937d3ye3/"/>
+    <id>http://yoursite.com/2021/ckowu6h1x002mw0ii937d3ye3/</id>
     <published>2021-03-10T05:05:19.000Z</published>
     <updated>2021-03-10T03:32:41.688Z</updated>
     
@@ -164,8 +185,8 @@
   
   <entry>
     <title>Python实现将EXCEL绘制成精美图像</title>
-    <link href="http://yoursite.com/2021/ckomy3eaa002124ii1ewte8ob/"/>
-    <id>http://yoursite.com/2021/ckomy3eaa002124ii1ewte8ob/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1w002iw0ii8y8fdb8u/"/>
+    <id>http://yoursite.com/2021/ckowu6h1w002iw0ii8y8fdb8u/</id>
     <published>2021-02-20T05:49:22.000Z</published>
     <updated>2021-05-09T13:13:32.446Z</updated>
     
@@ -195,8 +216,8 @@
   
   <entry>
     <title>网口变压器相关知识</title>
-    <link href="http://yoursite.com/2021/ckomy3ea7001y24iic5nn9pop/"/>
-    <id>http://yoursite.com/2021/ckomy3ea7001y24iic5nn9pop/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1k0020w0iihwyo2i1s/"/>
+    <id>http://yoursite.com/2021/ckowu6h1k0020w0iihwyo2i1s/</id>
     <published>2021-02-08T05:05:19.000Z</published>
     <updated>2021-02-08T13:38:52.357Z</updated>
     
@@ -216,8 +237,8 @@
   
   <entry>
     <title>Linux相关知识</title>
-    <link href="http://yoursite.com/2021/ckomy3ea5001t24ii1uba2l8i/"/>
-    <id>http://yoursite.com/2021/ckomy3ea5001t24ii1uba2l8i/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1f001lw0ii0m12hli7/"/>
+    <id>http://yoursite.com/2021/ckowu6h1f001lw0ii0m12hli7/</id>
     <published>2021-02-05T05:05:19.000Z</published>
     <updated>2021-02-05T14:33:55.898Z</updated>
     
@@ -244,8 +265,8 @@
   
   <entry>
     <title>第一个学期年度总结</title>
-    <link href="http://yoursite.com/2021/ckomy3ea3001q24ii1r3cb3g7/"/>
-    <id>http://yoursite.com/2021/ckomy3ea3001q24ii1r3cb3g7/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1j001xw0ii9i0c5mky/"/>
+    <id>http://yoursite.com/2021/ckowu6h1j001xw0ii9i0c5mky/</id>
     <published>2021-01-28T05:05:19.000Z</published>
     <updated>2021-01-30T14:05:25.028Z</updated>
     
@@ -265,8 +286,8 @@
   
   <entry>
     <title>Pspice一些使用说明</title>
-    <link href="http://yoursite.com/2021/ckomy3ea0001j24iiakml99te/"/>
-    <id>http://yoursite.com/2021/ckomy3ea0001j24iiakml99te/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1h001sw0iidoa2dr0r/"/>
+    <id>http://yoursite.com/2021/ckowu6h1h001sw0iidoa2dr0r/</id>
     <published>2021-01-15T05:05:19.000Z</published>
     <updated>2021-01-28T06:31:43.600Z</updated>
     
@@ -288,8 +309,8 @@
   
   <entry>
     <title>Flask实现个人博客网站</title>
-    <link href="http://yoursite.com/2021/ckomy3e9y001e24ii3g7ugmwk/"/>
-    <id>http://yoursite.com/2021/ckomy3e9y001e24ii3g7ugmwk/</id>
+    <link href="http://yoursite.com/2021/ckowu6h1c001ew0ii4buc5ahn/"/>
+    <id>http://yoursite.com/2021/ckowu6h1c001ew0ii4buc5ahn/</id>
     <published>2021-01-07T05:05:19.000Z</published>
     <updated>2021-05-11T12:13:54.153Z</updated>
     
@@ -317,8 +338,8 @@
   
   <entry>
     <title>AD20使用心得和技巧</title>
-    <link href="http://yoursite.com/2020/ckomy3ea2001m24ii049q93m6/"/>
-    <id>http://yoursite.com/2020/ckomy3ea2001m24ii049q93m6/</id>
+    <link href="http://yoursite.com/2020/ckowu6h1e001iw0iied8e3ily/"/>
+    <id>http://yoursite.com/2020/ckowu6h1e001iw0iied8e3ily/</id>
     <published>2020-12-30T05:05:19.000Z</published>
     <updated>2021-01-02T09:27:37.191Z</updated>
     
@@ -341,8 +362,8 @@
   
   <entry>
     <title>Mathtype快捷键</title>
-    <link href="http://yoursite.com/2020/ckomy3e9v001724iidb81f3c2/"/>
-    <id>http://yoursite.com/2020/ckomy3e9v001724iidb81f3c2/</id>
+    <link href="http://yoursite.com/2020/ckowu6h150013w0iidwpoasm3/"/>
+    <id>http://yoursite.com/2020/ckowu6h150013w0iidwpoasm3/</id>
     <published>2020-12-24T05:05:19.000Z</published>
     <updated>2020-12-24T08:35:31.662Z</updated>
     
@@ -366,8 +387,8 @@
   
   <entry>
     <title>LeetCode每日一题（持续更新）</title>
-    <link href="http://yoursite.com/2020/ckomy3e9x001b24ii9ojv3geo/"/>
-    <id>http://yoursite.com/2020/ckomy3e9x001b24ii9ojv3geo/</id>
+    <link href="http://yoursite.com/2020/ckowu6h170016w0iigxx064r5/"/>
+    <id>http://yoursite.com/2020/ckowu6h170016w0iigxx064r5/</id>
     <published>2020-11-10T03:49:22.000Z</published>
     <updated>2020-12-01T03:42:25.147Z</updated>
     
@@ -390,8 +411,8 @@
   
   <entry>
     <title>Programming for Everybody (Getting Started with Python)</title>
-    <link href="http://yoursite.com/2020/ckomy3e9u001424ii0g2y3w1t/"/>
-    <id>http://yoursite.com/2020/ckomy3e9u001424ii0g2y3w1t/</id>
+    <link href="http://yoursite.com/2020/ckowu6h1a001aw0ii3x7p0vqv/"/>
+    <id>http://yoursite.com/2020/ckowu6h1a001aw0ii3x7p0vqv/</id>
     <published>2020-11-07T03:49:22.000Z</published>
     <updated>2020-11-08T12:12:59.766Z</updated>
     
@@ -413,8 +434,8 @@
   
   <entry>
     <title>硬件工程师基础设计知识</title>
-    <link href="http://yoursite.com/2020/ckomy3e9h000p24iia636gm4d/"/>
-    <id>http://yoursite.com/2020/ckomy3e9h000p24iia636gm4d/</id>
+    <link href="http://yoursite.com/2020/ckowu6h12000ww0iieza0cths/"/>
+    <id>http://yoursite.com/2020/ckowu6h12000ww0iieza0cths/</id>
     <published>2020-10-29T05:49:22.000Z</published>
     <updated>2020-11-07T06:40:20.118Z</updated>
     
@@ -442,8 +463,8 @@
   
   <entry>
     <title>矩阵论手写笔记</title>
-    <link href="http://yoursite.com/2020/ckomy3e9p000x24ii5yikgx1l/"/>
-    <id>http://yoursite.com/2020/ckomy3e9p000x24ii5yikgx1l/</id>
+    <link href="http://yoursite.com/2020/ckowu6h0w000pw0iia5ojgasf/"/>
+    <id>http://yoursite.com/2020/ckowu6h0w000pw0iia5ojgasf/</id>
     <published>2020-10-07T05:49:22.000Z</published>
     <updated>2020-10-10T07:50:13.519Z</updated>
     
@@ -466,8 +487,8 @@
   
   <entry>
     <title>模拟电子技术笔记</title>
-    <link href="http://yoursite.com/2020/ckomy3e9s001024iih7a2cg5x/"/>
-    <id>http://yoursite.com/2020/ckomy3e9s001024iih7a2cg5x/</id>
+    <link href="http://yoursite.com/2020/ckowu6h14000zw0ii98no9zlw/"/>
+    <id>http://yoursite.com/2020/ckowu6h14000zw0ii98no9zlw/</id>
     <published>2020-09-22T05:49:22.000Z</published>
     <updated>2020-10-09T12:37:14.241Z</updated>
     
@@ -485,27 +506,6 @@
       <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="课程" scheme="http://yoursite.com/tags/%E8%AF%BE%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>畅谈C语言</title>
-    <link href="http://yoursite.com/2020/ckomy3e9k000t24ii6iicaah3/"/>
-    <id>http://yoursite.com/2020/ckomy3e9k000t24ii6iicaah3/</id>
-    <published>2020-09-14T05:49:22.000Z</published>
-    <updated>2020-09-22T13:53:37.849Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;畅谈C语言&quot;&gt;&lt;a href=&quot;#畅谈C语言&quot; class=&quot;headerlink&quot; title=&quot;畅谈C语言&quot;&gt;&lt;/a&gt;畅谈C语言&lt;/h1&gt;&lt;p&gt;好久没有回滚c语言了，作为大学入门编程语言的精髓，趁着现在对之前所学习的知识做一个简单回顾和总结。本片文章就不介绍c语言的产生背景等等因素了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="技术笔记" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

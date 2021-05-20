@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    STM32F103使用笔记 |  岛上书店
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="岛上书店" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2021-03-13-STM32F103使用笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  STM32F103使用笔记
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/ckowu6h1t002bw0ii0l4l2jf6/" class="article-date">
+  <time datetime="2021-03-13T05:05:19.000Z" itemprop="datePublished">2021-03-13</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">6.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">24 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="STM32F103使用笔记"><a href="#STM32F103使用笔记" class="headerlink" title="STM32F103使用笔记"></a>STM32F103使用笔记</h1><p>本使用笔记根据野火资源和自己使用新的总结而成。</p>
+<a id="more"></a>
+
+<h2 id="1-初识STM32"><a href="#1-初识STM32" class="headerlink" title="1.初识STM32"></a>1.初识STM32</h2><h3 id="1-什么是STM32"><a href="#1-什么是STM32" class="headerlink" title="1.什么是STM32"></a>1.什么是STM32</h3><p>STM32，从字面上来理解，ST是意法半导体，M是 Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，SIM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。</p>
+<h3 id="2-STM32怎么选型"><a href="#2-STM32怎么选型" class="headerlink" title="2.STM32怎么选型"></a>2.STM32怎么选型</h3><p>STM32有很多系列，可以满足市场的各种需求，从内核上分有 Cortex-MO、M3、M4和M7这几种，每个内核又大概分为主流、高性能和低功耗。具体的见如下表格</p>
+<p><img src="https://pic.imgdb.cn/item/609bc2ead1a9ae528fbea96f.png" alt=""></p>
+<p>关于STM32的命名方法如下所示</p>
+<p>这里我们以野火F103霸道用的型号STM32F103ZET6来讲解下STM32的命名方法。</p>
+<p><img src="https://pic.imgdb.cn/item/609bc2ffd1a9ae528fbf25c4.png" alt=""></p>
+<p><img src="https://pic.imgdb.cn/item/609bc300d1a9ae528fbf2f3c.png" alt=""></p>
+<p>了解了STM32的分类和命名方法之后，就可以根据项目的具体需求先大概选择哪类内核的MCU，普通应用，不需要接大屏幕的一般选择 Cortex-M3内核的F系列，如果要追求高性能，需要大量的数据运算，且需要外接RGB大屏幕的则选择 Cortex-M4内核的F429系列。<br>明确了大方向之后，接下来就是细分选型，先确定引脚，引脚多的功能就多，价格也，具体得根据实际项目中需要使用到什么功能，够用就好。确定好了引脚数目之后再选择 FLASH大小，相同引脚数的MCU会有不同的 FLASH大小可供选择，这个也是根据实际需要选择，程序大的就选择大点的 FLASH。</p>
+<h4 id="如何分配原理图IO"><a href="#如何分配原理图IO" class="headerlink" title="如何分配原理图IO"></a>如何分配原理图IO</h4><p>在绘制原理图之前，一般的做法是先将引脚分类好，然后才开始画原理图，引脚分类具体如下。</p>
+<p><img src="https://pic.imgdb.cn/item/609bc31cd1a9ae528fbfcc29.png" alt=""></p>
+<p><img src="https://pic.imgdb.cn/item/609bc324d1a9ae528fbffb26.png" alt=""></p>
+<h4 id="如何寻找IO的功能说明"><a href="#如何寻找IO的功能说明" class="headerlink" title="如何寻找IO的功能说明"></a>如何寻找IO的功能说明</h4><p>要想根据功能来分配IO，那就得先知道每个IO的功能说明，这个我们可以从官方的数据手册里面找到。在学习的时候，有两个官方资料我们会经常用到，一个是参考手册<br>（英文叫 Reference manual），另外一个是数据手册（英文叫 Data sheet）。</p>
+<p><img src="https://pic.imgdb.cn/item/609bc32fd1a9ae528fc033c5.png" alt=""></p>
+<p>句话概括：数据手册主要用于芯片选型和设计原理图时参考，参考手册主要用于在编程的时候査阅。官方的这两个文档可以从官方网址里面下载<a href="http://www.stmcu.org/document/list/index/category-150，也可以从我们配置的光盘资料里面找在数据手册中，有关引脚定义的部分在" target="_blank" rel="noopener">http://www.stmcu.org/document/list/index/category-150，也可以从我们配置的光盘资料里面找在数据手册中，有关引脚定义的部分在</a> Pinouts and pin description这个小节中。</p>
+<p><img src="https://pic.imgdb.cn/item/609bc33cd1a9ae528fc07edb.png" alt=""></p>
+<p><img src="https://pic.imgdb.cn/item/609bc345d1a9ae528fc0b63f.png" alt=""></p>
+<h4 id="开始分配原理图IO"><a href="#开始分配原理图IO" class="headerlink" title="开始分配原理图IO"></a>开始分配原理图IO</h4><p>比如我们的F103使用的MCU型号是STM32F103ZET6，封装为LQFP144，我们在数据手册中找到这个封装的引脚定义，然后根据引脚序号，一个一个复制出来，整理成 excel表。</p>
+<h4 id="芯片里面有什么"><a href="#芯片里面有什么" class="headerlink" title="芯片里面有什么"></a>芯片里面有什么</h4><p>我们看到的STM32芯片是已经封装好的成品，主要由内核和片上外设组成。若与电脑比，内核与外设就如同电脑上的CPU与主板、内存、显卡、硬盘的关系STM32F103采用的是 Cortex-M3内核，内核即CPU，由ARM公司设计。ARM公司不生产芯片，而是出售其芯片技术授权。芯片生产厂商（SOC如ST、TI、 Freescale，负在内核之外设计部件并生产整个芯片，这些内核之外的部件被称为核外外设或片上外设GPIO、 USART（串口）、12C、SPI等都叫做片上外设。具体见图。</p>
+<p><img src="https://pic.imgdb.cn/item/609bc350d1a9ae528fc0fa74.png" alt=""></p>
+<p>芯片（这里指内核，或者叫CPU）和外设之间通过各种总线连接，其中驱动单元有4个，被动单元也有4个。为了方便理解，我们都可以把驱动单元理解成是CPU部分，被动单元都理解成外设。下面我们简单介绍下驱动单元和被动单元的各个部件。</p>
+<h5 id="1-ICode总线"><a href="#1-ICode总线" class="headerlink" title="1.ICode总线"></a>1.ICode总线</h5><p>ICode中的I表示Istruction，即指令。我们写好的程序编译之后都是一条条指令，存放在 FLASH中，内核要读取这些指令来执行程序就必须通过 ICode总线，它几乎每时每刻都需要被使用，它是专门用来取址的。</p>
+<h5 id="2-驱动单元"><a href="#2-驱动单元" class="headerlink" title="2.驱动单元"></a>2.驱动单元</h5><p>DCode中的D表示Data，即数据，那说明这条总线是用来取数的。我们在写程序的时候，数据有常量和变量两种，常量就是固定不变的，用C语言中的 const关键字修饰，是放到内部的 FLASH当中的，变量是可变的，不管是全局变量还是局部变量都放在内部的SRAM。因为数据可以被 Dcode总线和DMA总线访问，所以为了避免访问冲突，在取数的时候需要经过一个总线矩阵来仲裁，决定哪个总线在取数。</p>
+<p><strong>系统总线</strong></p>
+<p>系统总线主要是访问外设的寄存器，我们通常说的寄存器编程，即读写寄存器都是通过这根系统总线来完成的</p>
+<p><strong>DMA总线</strong></p>
+<p>DMA总线也主要是用来传输数据，这个数据可以是在某个外设的数据寄存器，可以在SRAM，可以在内部的FASH。因为数据可以被 Dcode总线和DMA总线访问，所以为了避免访问冲突，在取数的时候需要经过一个总线矩阵来仲裁，决定哪个总线在取数。</p>
+<h5 id="3-被动单元"><a href="#3-被动单元" class="headerlink" title="3.被动单元"></a>3.被动单元</h5><p><strong>内部的闪存存储器</strong></p>
+<p>内部的闪存存储器即 FLASH，我们编写好的程序就放在这个地方。内核通过ICode总线来取里面的指令。</p>
+<p><strong>内部的SRAM</strong></p>
+<p>内部的SRAM，即我们通常说的RAM，程序的变量，堆栈等的开销都是基于内部的SRAM。内核通过 DCode总线来访问它。</p>
+<p><strong>FSMC</strong></p>
+<p> FSMC的英文全称是 Flexible static memory controller，叫灵活的静态的存储器控制器是STM32F10xx中一个很有特色的外设，通过FSMC，我们可以扩展内存，如外部的SRAM, NANDFLASH和 NORFLASH。但有一点我们要注意的是，FSMC<strong>只能扩展静态的内存</strong>，即名称里面的S:static，不能是动态的内存，比如 SDRAM就不能扩展。</p>
+<p><strong>AHB到APB的桥</strong></p>
+<p>从AHB总线延伸出来的两条APB2和APB1总线，上面挂载着STM32各种各样的特色外设。我们经常说的GPO、串口、I2C、SP这些外设就挂载在这两条总线上，这个是我们学习STM32的重点，就是要学会编程这些外设去驱动外部的各种设备。</p>
+<p>(不包括互联型)</p>
+<p><img src="https://pic.imgdb.cn/item/609bc35cd1a9ae528fc13ff9.png" alt=""></p>
+<h5 id="4-存储器映射"><a href="#4-存储器映射" class="headerlink" title="4.存储器映射"></a>4.存储器映射</h5><p>存储器本身不具有地址信息，它的地址是由芯片厂商或用户分配，给存储器分配地址的过程就称为存储器映射，具体见图.如果给存储器再分配一个地址就叫存储器重映射。</p>
+<p><img src="https://pic.imgdb.cn/item/609bc365d1a9ae528fc17467.png" alt=""></p>
+<h5 id="5-寄存器映射"><a href="#5-寄存器映射" class="headerlink" title="5.寄存器映射"></a>5.寄存器映射</h5><p>在存储器Block2中，STM32设计的是片上外设，它们以四个字节为一个单元，也就是32bit，每一个单元对应着不同的功能，当我们控制这些单元时就可以驱动外设工作。我们可以找到每个单元的起始地址，然后通过C语言指针的操作方式来访问这些单元。</p>
+<p>现在以一个简单的说明来表述GPIO的数据寄存器ODR，现在以GPIOB的ODR为例</p>
+<p>ODR是32位寄存器，低16位有效，这对应着外部的16个IO口，下面分三种形式来介绍访问内存单元。</p>
+<p>1.通过绝对地址访问内存单元</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*(<span class="keyword">unsigned</span> <span class="keyword">int</span>*)(<span class="number">0x4001</span> <span class="number">0</span>C0C) = <span class="number">0xFFFF</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.通过寄存器别名方式访问内存单元</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GPIO_ODR     (unsigned int*)(GPIOB_BASE+0x0C)</span></span><br><span class="line">* GPIO_ODR = <span class="number">0xFF</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3.通过寄存器别名访问内存单元</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GPIO_ODR     *(unsigned int*)(GPIOB_BASE+0x0C)</span></span><br><span class="line">GPIO_ODR = <span class="number">0xFF</span>;</span><br></pre></td></tr></table></figure>
+
+<p>0x40010c0C在我们看来是 GPIOB端口ODR的地址，但是在编译器看来，这只是个普通的变量，是一个立即数，要想让编译器也认为是指针，我们得进行强制类型转换把它转换成指针，即 unsigned int）0x40010c0C，然后再对这个指针进行*操作。</p>
+<p>片上外设区分为三条总线，根据外设速度的不同，不同总线挂载着不同的外设，APB挂载低速外设，APB2和AHB挂载高速外设。相应总线的最低地址我们称为该总线的基地址，总线基地址也是挂载在该总线上的首个外设的地址。其中APB1总线的地址最低，片上外设从这里开始，也叫外设基地址。</p>
+<p><img src="https://pic.imgdb.cn/item/60a61b0e6ae4f77d35f56584.jpg" alt=""></p>
+<p>总线上挂载着各种外设，这些外设也有自己的地址范围，特定外设的首个地址称为<br>“XX外设基地址”，也叫XX外设的边界地址。具体有关STM32F10xx外设的边界地址请参考《STM32F10xx参考手册》的2.3小节的存储器映射的表1：STM32F10xx寄存器边界地址这里面我们以GPIO这个外设来讲解外设的基地址，GPO属于高速的外设，挂载到APB2总线上，具体见表格。</p>
+<p><img src="https://pic.imgdb.cn/item/60a61b4e6ae4f77d35f818be.jpg" alt=""></p>
+<p>在XX外设的地址范围内，分布着的就是该外设的寄存器。以GPO外设为例，GPIO是通用输入输出端口的简称，简单来说就是STM32可控制的引脚，基本功能是控制引脚输出高电平或者低电平。最简单的应用就是把GPIo的引脚连接到LED灯的阴极，LED灯的阳极接电源，然后通过STM32控制该引脚的电平，从而实现控制LED灯的亮灭。<br>GPIO有很多个寄存器，每一个都有特定的功能。每个寄存器为32bit，占四个字节在该外设的基地址上按照顺序排列，寄存器的位置都以相对该外设基地址的偏移地址来描述。这里我们以 GPIOB端口为例，来说明GPIO都有哪些寄存器，具体见表格。</p>
+<p><img src="https://pic.imgdb.cn/item/60a61bab6ae4f77d35fb29e1.jpg" alt=""></p>
+<p>一旦有了具体地址就可以用指针进行读写。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*控制 GPIOB引脚0输出低电平（BSRR寄存器的BR0置1）*/</span></span><br><span class="line">*（<span class="keyword">unsigned</span> <span class="keyword">int</span> *）GPIOB BSRR =（<span class="number">0x01</span>&lt;&lt;（<span class="number">16</span>+<span class="number">0</span>）；</span><br><span class="line"><span class="comment">/*控制 GPIOB引脚0输出高电平（BSRR寄存器的Bs0置1）*/</span></span><br><span class="line">*（<span class="keyword">unsigned</span> <span class="keyword">int</span> *）GPIOB BSRR =<span class="number">0x01</span>&lt;&lt;<span class="number">0</span>； <span class="keyword">unsigned</span> <span class="keyword">int</span> temp；</span><br><span class="line"><span class="comment">/*读取GIOB端口所有引脚的电平（读IDR寄存器）*/</span> temp；</span><br><span class="line">*（<span class="keyword">unsigned</span> <span class="keyword">int</span> *）GPIOB IDR：</span><br></pre></td></tr></table></figure>
+
+<p>这里介绍一个极其重要的GPIO寄存器，在实际的工程开发项目中有奇用。</p>
+<p><img src="https://pic.imgdb.cn/item/60a61d2f6ae4f77d35076f89.jpg" alt=""></p>
+<p>规则：<br>一、置GPIOD-&gt;BSRR低16位的某位为’1’，则对应的I/O端口置’1’；而置GPIOD-&gt;BSRR低16位的某位为’0’，则对应的I/O端口不变。<br>二、置GPIOD-&gt;BSRR高16位的某位为’1’，则对应的I/O端口置’0’；而置GPIOD-&gt;BSRR高16位的某位为’0’，则对应的I/O端口不变。<br>三、置GPIOD-&gt;BRR低16位的某位为’1’，则对应的I/O端口置’0’；而置GPIOD-&gt;BRR低16位的某位为’0’，则对应的I/O端口不变。</p>
+<p>例如：<br>1）要设置D0、D5、D10、D11为高，而保持其它I/O口不变，只需一行语句：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIOD-&gt;BSRR = <span class="number">0x0C21</span>；<span class="comment">// 使用规则一</span></span><br></pre></td></tr></table></figure>
+
+<p>2）要设置D1、D3、D14、D15为低，而保持其它I/O口不变，只需一行语句：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIOD-&gt;BRR = <span class="number">0xC00A</span>；<span class="comment">// 使用规则三</span></span><br></pre></td></tr></table></figure>
+
+<p>3）要同时设置D0、D5、D10、D11为高，设置D1、D3、D14、D15为低，而保持其它I/O口不变，也只需一行语句：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIOD-&gt;BSRR = <span class="number">0xC00A0C21</span>；<span class="comment">// 使用规则一和规则二</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用了PD口的PD8-PD15高8位，假设data为8位要写入的数据:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIO_SetBits(GPIOD, data &amp; <span class="number">0xff00</span>);</span><br><span class="line">GPIO_ResetBits(GPIOD, (~data &amp; <span class="number">0xff00</span>));</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接操作这两个寄存器：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIOD-&gt;BSRR = data &amp; <span class="number">0xff00</span>;</span><br><span class="line">GPIOD-&gt;BRR = ~data &amp; <span class="number">0xff00</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用了PD口的PD0-PD7低8位，假设data为8位要写入的数据:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIO_SetBits(GPIOD, data &amp; <span class="number">0x00ff</span>);</span><br><span class="line">GPIO_ResetBits(GPIOD, (~data &amp; <span class="number">0x00ff</span>));</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接操作这两个寄存器：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPIOD-&gt;BSRR = data &amp; <span class="number">0x00ff</span>;</span><br><span class="line">GPIOD-&gt;BRR = ~data &amp; <span class="number">0x00ff</span>;</span><br></pre></td></tr></table></figure>
+
+<p>另外关于结构体对GPIO寄存器的封装如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> uint32t；<span class="comment">/*无符号32位变量*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> short <span class="keyword">int</span> uint16t；<span class="comment">/*无符号16位变量*/</span></span><br><span class="line"><span class="comment">/*GPIO寄存器列表*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line"><span class="keyword">uint32_t</span> CRL; <span class="comment">/*GPIO 端口配置低寄存器 地址偏移: 0x00 */</span></span><br><span class="line"><span class="keyword">uint32_t</span> CRH; <span class="comment">/*GPIO 端口配置高寄存器 地址偏移: 0x04 */</span></span><br><span class="line"><span class="keyword">uint32_t</span> IDR; <span class="comment">/*GPIO 数据输入寄存器 地址偏移: 0x08 */</span></span><br><span class="line"><span class="keyword">uint32_t</span> ODR; <span class="comment">/*GPIO 数据输出寄存器 地址偏移: 0x0C */</span></span><br><span class="line"><span class="keyword">uint32_t</span> BSRR; <span class="comment">/*GPIO 位设置/清除寄存器 地址偏移: 0x10 */</span></span><br><span class="line"><span class="keyword">uint32_t</span> BRR; <span class="comment">/*GPIO 端口位清除寄存器 地址偏移: 0x14 */</span></span><br><span class="line"><span class="keyword">uint16_t</span> LCKR; <span class="comment">/*GPIO 端口配置锁定寄存器 地址偏移: 0x18 */</span></span><br><span class="line">&#125; GPIO_TypeDef;</span><br></pre></td></tr></table></figure>
+
+<p>通过结构体指针访问寄存器</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GPIO_TypeDef * GPIOx; <span class="comment">//定义一个GPIO_TypeDef 型结构体指针GPIOx</span></span><br><span class="line">GPIOx = GPIOB_BASE; <span class="comment">//把指针地址设置为宏GPIOH_BASE 地址</span></span><br><span class="line">GPIOx-&gt;IDR = <span class="number">0xFFFF</span>;</span><br><span class="line">GPIOx-&gt;ODR = <span class="number">0xFFFF</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint32_t</span> temp;</span><br><span class="line">temp = GPIOx-&gt;IDR; <span class="comment">//读取GPIOB_IDR 寄存器的值到变量temp 中</span></span><br></pre></td></tr></table></figure>
+
+<p>这里更是要着重强调一下修改寄存器的位操作方法</p>
+<p>1.把变量的某一位清零</p>
+<p>此处我们以变量a 代表寄存器，并假设寄存器中本来已有数值，此时我们需要把变量<br>a 的某一位清零，且其它位不变。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个变量a = 1001 1111 b (二进制数)</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> a = <span class="number">0x9f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//对bit2 清零</span></span><br><span class="line"></span><br><span class="line">a &amp;= ~(<span class="number">1</span>&lt;&lt;<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//括号中的1 左移两位，(1&lt;&lt;2)得二进制数：0000 0100 b</span></span><br><span class="line"><span class="comment">//按位取反，~(1&lt;&lt;2)得1111 1011 b</span></span><br><span class="line"><span class="comment">//假如a 中原来的值为二进制数： a = 1001 1111 b</span></span><br><span class="line"><span class="comment">//所得的数与a 作”位与&amp;”运算，a = (1001 1111 b)&amp;(1111 1011 b),</span></span><br><span class="line"><span class="comment">//经过运算后，a 的值 a=1001 1011 b</span></span><br><span class="line"><span class="comment">// a 的bit2 位被被零，而其它位不变。</span></span><br></pre></td></tr></table></figure>
+
+<p>2.把变量的某几个连续位清零</p>
+<p>由于寄存器中有时会有连续几个寄存器位用于控制某个功能，现假设我们需要把寄存<br>器的某几个连续位清零，且其它位不变，方法见代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若把a 中的二进制位分成2 个一组</span></span><br><span class="line"><span class="comment">//即bit0、bit1 为第0 组，bit2、bit3 为第1 组，</span></span><br><span class="line"><span class="comment">// bit4、bit5 为第2 组，bit6、bit7 为第3 组</span></span><br><span class="line"><span class="comment">//要对第1 组的bit2、bit3 清零</span></span><br><span class="line"></span><br><span class="line">a &amp;= ~(<span class="number">3</span>&lt;&lt;<span class="number">2</span>*<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//括号中的3 左移两位，(3&lt;&lt;2*1)得二进制数：0000 1100 b</span></span><br><span class="line"><span class="comment">//按位取反，~(3&lt;&lt;2*1)得1111 0011 b</span></span><br><span class="line"><span class="comment">//假如a 中原来的值为二进制数： a = 1001 1111 b</span></span><br><span class="line"><span class="comment">//所得的数与a 作”位与&amp;”运算，a = (1001 1111 b)&amp;(1111 0011 b),</span></span><br><span class="line"><span class="comment">//经过运算后，a 的值 a=1001 0011 b</span></span><br><span class="line"><span class="comment">// a 的第1 组的bit2、bit3 被清零，而其它位不变。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//上述(~(3&lt;&lt;2*1))中的(1)即为组编号;如清零第3 组bit6、bit7 此处应为3</span></span><br><span class="line"><span class="comment">//括号中的(2)为每组的位数，每组有2 个二进制位;若分成4 个一组，此处即为4</span></span><br><span class="line"><span class="comment">//括号中的(3)是组内所有位都为1 时的值;若分成4 个一组，此处即为二进制数“1111 b”</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//例如对第2 组</span></span><br></pre></td></tr></table></figure>
+
+<p>3.对变量的某几位进行赋值</p>
+<p>寄存器位经过上面的清零操作后，接下来就可以方便地对某几位写入所需要的数值了，<br>且其它位不变，方法见代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a = 1000 0011 b</span></span><br><span class="line"><span class="comment">//此时对清零后的第2 组bit4、bit5 设置成二进制数“01 b ”</span></span><br><span class="line"></span><br><span class="line">a |= (<span class="number">1</span>&lt;&lt;<span class="number">2</span>*<span class="number">2</span>);</span><br><span class="line"><span class="comment">//a = 1001 0011 b，成功设置了第2 组的值，其它组不变</span></span><br></pre></td></tr></table></figure>
+
+<p>4.对变量的某位取反</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a = 1001 0011 b</span></span><br><span class="line"><span class="comment">//把bit6 取反，其它位不变</span></span><br><span class="line"></span><br><span class="line">a ^=(<span class="number">1</span>&lt;&lt;<span class="number">6</span>);</span><br><span class="line"><span class="comment">//a = 1101 0011 b</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-GPIO简介"><a href="#2-GPIO简介" class="headerlink" title="2.GPIO简介"></a>2.GPIO简介</h2><h3 id="1-GPIO简介"><a href="#1-GPIO简介" class="headerlink" title="1.GPIO简介"></a>1.GPIO简介</h3><p>​        GPIO 是通用输入输出端口的简称，简单来说就是STM32 可控制的引脚，STM32 芯片<br>的GPIO 引脚与外部设备连接起来，从而实现与外部通讯、控制以及数据采集的功能。<br>STM32 芯片的GPIO 被分成很多组，每组有16 个引脚，如型号为STM32F103ZET6 型号的<br>芯片有GPIOA、GPIOB、GPIOC 至GPIOG 共7 组GPIO，芯片一共144 个引脚，其中<br>GPIO 就占了一大部分，所有的GPIO 引脚都有基本的输入输出功能。<br>​        最基本的输出功能是由STM32 控制引脚输出高、低电平，实现开关控制，如把GPIO<br>引脚接入到LED 灯，那就可以控制LED 灯的亮灭，引脚接入到继电器或三极管，那就可<br>以通过继电器或三极管控制外部大功率电路的通断。<br>​        最基本的输入功能是检测外部输入电平，如把GPIO 引脚连接到按键，通过电平高低<br>区分按键是否被按下。</p>
+<h3 id="2-GPIO框图"><a href="#2-GPIO框图" class="headerlink" title="2.GPIO框图"></a>2.GPIO框图</h3><p><img src="https://pic.imgdb.cn/item/60a62aa36ae4f77d3564f16d.jpg" alt=""></p>
+<h4 id="1-基本结构分析"><a href="#1-基本结构分析" class="headerlink" title="1.基本结构分析"></a>1.基本结构分析</h4><h5 id="1-保护二极管和上、下拉电阻"><a href="#1-保护二极管和上、下拉电阻" class="headerlink" title="1.保护二极管和上、下拉电阻"></a>1.保护二极管和上、下拉电阻</h5><p>引脚的两个保护二级管可以防止引脚外部过高或过低的电压输入，当引脚电压高于<br>VDD 时，上方的二极管导通，当引脚电压低于VSS 时，下方的二极管导通，防止不正常电<br>压引入芯片导致芯片烧毁。尽管有这样的保护，并不意味着STM32 的引脚能直接外接大功<br>率驱动器件，如直接驱动电机，强制驱动要么电机不转，要么导致芯片烧坏，必须要加大<br>功率及隔离电路驱动。</p>
+<h5 id="2-P-MOS管和N-MOS管"><a href="#2-P-MOS管和N-MOS管" class="headerlink" title="2.P-MOS管和N-MOS管"></a>2.P-MOS管和N-MOS管</h5><p>​        GPIO 引脚线路经过两个保护二极管后，向上流向“输入模式”结构，向下流向“输出<br>模式”结构。先看输出模式部分，线路经过一个由P-MOS 和N-MOS 管组成的单元电路。<br>这个结构使GPIO 具有了“推挽输出”和“开漏输出”两种模式。<br>​        所谓的推挽输出模式，是根据这两个MOS 管的工作方式来命名的。在该结构中输入<br>高电平时，经过反向后，上方的P-MOS 导通，下方的N-MOS 关闭，对外输出高电平；而<br>在该结构中输入低电平时，经过反向后，N-MOS 管导通，P-MOS 关闭，对外输出低电平。<br>当引脚高低电平切换时，两个管子轮流导通，P 管负责灌电流，N 管负责拉电流，使其负<br>载能力和开关速度都比普通的方式有很大的提高。推挽输出的低电平为0 伏，高电平为3.3<br>伏，具体参考下图，它是推挽输出模式时的等效电路。</p>
+<p><img src="https://pic.imgdb.cn/item/60a62b376ae4f77d356810af.jpg" alt=""></p>
+<p>​        而在开漏输出模式时，上方的P-MOS 管完全不工作。如果我们控制输出为0，低电平，<br>则P-MOS 管关闭，N-MOS 管导通，使输出接地，若控制输出为1 (它无法直接输出高电平)<br>时，则P-MOS 管和N-MOS 管都关闭，所以引脚既不输出高电平，也不输出低电平，为高<br>阻态。为正常使用时必须外部接上拉电阻，参考图  中等效电路。它具有“线与”特性，<br>也就是说，若有很多个开漏模式引脚连接到一起时，只有当所有引脚都输出高阻态，才由<br>上拉电阻提供高电平，此高电平的电压为外部上拉电阻所接的电源的电压。若其中一个引<br>脚为低电平，那线路就相当于短路接地，使得整条线路都为低电平，0 伏。<br>​        推挽输出模式一般应用在输出电平为0 和3.3 伏而且需要高速切换开关状态的场合。<br>在STM32 的应用中，除了必须用开漏模式的场合，我们都习惯使用推挽输出模式。<br>​        开漏输出一般应用在I2C、SMBUS 通讯等需要“线与”功能的总线电路中。除此之外，<br>还用在电平不匹配的场合，如需要输出5 伏的高电平，就可以在外部接一个上拉电阻，上<br>拉电源为5 伏，并且把GPIO 设置为开漏模式，当输出高阻态时，由上拉电阻和电源向外<br>输出5 伏的电平，具体见图。</p>
+<p><img src="https://pic.imgdb.cn/item/60a62c9e6ae4f77d356f550d.jpg" alt=""></p>
+<h5 id="3-输出数据寄存器"><a href="#3-输出数据寄存器" class="headerlink" title="3.输出数据寄存器"></a>3.输出数据寄存器</h5><p>前面提到的双MOS 管结构电路的输入信号， 是由GPIO“ 输出数据寄存器GPIOx_ODR”提供的，因此我们通过修改输出数据寄存器的值就可以修改GPIO 引脚的输出电平。而“置位/复位寄存器GPIOx_BSRR”可以通过修改输出数据寄存器的值从而影响电路的输出。</p>
+<h5 id="4-复用功能输出"><a href="#4-复用功能输出" class="headerlink" title="4.复用功能输出"></a>4.复用功能输出</h5><p>“复用功能输出”中的“复用”是指STM32 的其它片上外设对GPIO 引脚进行控制，此时GPIO 引脚用作该外设功能的一部分，算是第二用途。从其它外设引出来的“复用功能输出信号”与GPIO 本身的数据据寄存器都连接到双MOS 管结构的输入中，通过图中的梯形结构作为开关切换选择。例如我们使用USART 串口通讯时，需要用到某个GPIO 引脚作为通讯发送引脚，这个时候就可以把该GPIO 引脚配置成USART 串口复用功能，由串口外设控制该引脚，发送数据。</p>
+<h5 id="5-输入数据寄存器"><a href="#5-输入数据寄存器" class="headerlink" title="5.输入数据寄存器"></a>5.输入数据寄存器</h5><p>看GPIO 结构框图的上半部分，GPIO 引脚经过内部的上、下拉电阻，可以配置成上/下拉输入，然后再连接到施密特触发器，信号经过触发器后，模拟信号转化为0、1 的数字信号，然后存储在“输入数据寄存器GPIOx_IDR”中，通过读取该寄存器就可以了解GPIO 引脚的电平状态。</p>
+<h5 id="6-复用功能输入"><a href="#6-复用功能输入" class="headerlink" title="6.复用功能输入"></a>6.复用功能输入</h5><p>​        与“复用功能输出”模式类似，在“复用功能输入模式”时，GPIO 引脚的信号传输到<br>STM32 其它片上外设，由该外设读取引脚状态。<br>​        同样，如我们使用USART 串口通讯时，需要用到某个GPIO 引脚作为通讯接收引脚，<br>这个时候就可以把该GPIO 引脚配置成USART 串口复用功能，使USART 可以通过该通讯<br>引脚的接收远端数据。</p>
+<h5 id="7-模拟输入输出"><a href="#7-模拟输入输出" class="headerlink" title="7.模拟输入输出"></a>7.模拟输入输出</h5><p>​        当GPIO 引脚用于ADC 采集电压的输入通道时，用作“模拟输入”功能，此时信号是不经过施密特触发器的，因为经过施密特触发器后信号只有0、1 两种状态，所以ADC 外设要采集到原始的模拟信号，信号源输入必须在施密特触发器之前。类似地，当GPIO 引脚用于DAC 作为模拟电压输出通道时，此时作为“模拟输出”功能，DAC 的模拟信号输出就不经过双MOS 管结构，模拟信号直接输出到引脚。</p>
+<p>这里稍微介绍一下GPIO置位和复位的相关操作</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment">2 *函数功能：设置引脚为高电平</span></span><br><span class="line"><span class="comment">3 *参数说明：GPIOx:该参数为GPIO_TypeDef 类型的指针，指向GPIO 端口的地址</span></span><br><span class="line"><span class="comment">4 * GPIO_Pin:选择要设置的GPIO 端口引脚，可输入宏GPIO_Pin_0-15，</span></span><br><span class="line"><span class="comment">5 * 表示GPIOx 端口的0-15 号引脚。</span></span><br><span class="line"><span class="comment">6 */</span></span><br><span class="line"><span class="number">7</span> <span class="function"><span class="keyword">void</span> <span class="title">GPIO_SetBits</span><span class="params">(GPIO_TypeDef* GPIOx, <span class="keyword">uint16_t</span> GPIO_Pin)</span></span></span><br><span class="line"><span class="function">8 </span>&#123;</span><br><span class="line"><span class="number">9</span> <span class="comment">/*设置GPIOx 端口BSRR 寄存器的第GPIO_Pin 位，使其输出高电平*/</span></span><br><span class="line"><span class="number">10</span> <span class="comment">/*因为BSRR 寄存器写0 不影响，</span></span><br><span class="line"><span class="comment">11 宏GPIO_Pin 只是对应位为1，其它位均为0，所以可以直接赋值*/</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">13</span> GPIOx-&gt;BSRR = GPIO_Pin;</span><br><span class="line"><span class="number">14</span> &#125;</span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="number">16</span> <span class="comment">/**</span></span><br><span class="line"><span class="comment">17 *函数功能：设置引脚为低电平</span></span><br><span class="line"><span class="comment">18 *参数说明：GPIOx:该参数为GPIO_TypeDef 类型的指针，指向GPIO 端口的地址</span></span><br><span class="line"><span class="comment">19 * GPIO_Pin:选择要设置的GPIO 端口引脚，可输入宏GPIO_Pin_0-15，</span></span><br><span class="line"><span class="comment">20 * 表示GPIOx 端口的0-15 号引脚。</span></span><br><span class="line"><span class="comment">21 */</span></span><br><span class="line"><span class="number">22</span> <span class="function"><span class="keyword">void</span> <span class="title">GPIO_ResetBits</span><span class="params">(GPIO_TypeDef* GPIOx, <span class="keyword">uint16_t</span> GPIO_Pin)</span></span></span><br><span class="line"><span class="function">23 </span>&#123;</span><br><span class="line"><span class="number">24</span> <span class="comment">/*设置GPIOx 端口BRR 寄存器的第GPIO_Pin 位,使其输出低电平*/</span></span><br><span class="line"><span class="number">25</span> <span class="comment">/*因为BRR 寄存器写0 不影响，</span></span><br><span class="line"><span class="comment">26 宏GPIO_Pin 只是对应位为1，其它位均为0，所以可以直接赋值*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span> <span class="comment">/*控制GPIOB 的引脚10 输出高电平*/</span></span><br><span class="line"><span class="number">3</span> GPIO_SetBits(GPIOB,(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">10</span>));</span><br><span class="line"><span class="number">4</span> <span class="comment">/*控制GPIOB 的引脚10 输出低电平*/</span></span><br><span class="line"><span class="number">5</span> GPIO_ResetBits(GPIOB,(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">10</span>));</span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span> <span class="comment">/*控制GPIOB 的引脚10、引脚11 输出高电平，使用“|”同时控制多个引脚*/</span></span><br><span class="line"><span class="number">8</span> GPIO_SetBits(GPIOB,(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)|(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">11</span>));</span><br><span class="line"><span class="number">9</span> <span class="comment">/*控制GPIOB 的引脚10、引脚11 输出低电平*/</span></span><br><span class="line"><span class="number">10</span> GPIO_ResetBits(GPIOB,(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)|(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">10</span>));</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="number">12</span> <span class="comment">/*控制GPIOA 的引脚8 输出高电平*/</span></span><br><span class="line"><span class="number">13</span> GPIO_SetBits(GPIOA,(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">8</span>));</span><br><span class="line"><span class="number">14</span> <span class="comment">/*控制GPIOB 的引脚9 输出低电平*/</span></span><br><span class="line"><span class="number">15</span> GPIO_ResetBits(GPIOB,(<span class="keyword">uint16_t</span>)(<span class="number">1</span>&lt;&lt;<span class="number">9</span>));</span><br></pre></td></tr></table></figure>
+
+<p>关于引脚参数选择的宏</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="comment">/*GPIO 引脚号定义*/</span></span><br><span class="line"><span class="number">2</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_0 (uint16_t)0x0001) <span class="comment">/*!&lt; 选择Pin0 (1&lt;&lt;0) */</span></span></span><br><span class="line"><span class="number">3</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_1 ((uint16_t)0x0002) <span class="comment">/*!&lt; 选择Pin1 (1&lt;&lt;1)*/</span></span></span><br><span class="line"><span class="number">4</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_2 ((uint16_t)0x0004) <span class="comment">/*!&lt; 选择Pin2 (1&lt;&lt;2)*/</span></span></span><br><span class="line"><span class="number">5</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_3 ((uint16_t)0x0008) <span class="comment">/*!&lt; 选择Pin3 (1&lt;&lt;3)*/</span></span></span><br><span class="line"><span class="number">6</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_4 ((uint16_t)0x0010) <span class="comment">/*!&lt; 选择Pin4 */</span></span></span><br><span class="line"><span class="number">7</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_5 ((uint16_t)0x0020) <span class="comment">/*!&lt; 选择Pin5 */</span></span></span><br><span class="line"><span class="number">8</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_6 ((uint16_t)0x0040) <span class="comment">/*!&lt; 选择Pin6 */</span></span></span><br><span class="line"><span class="number">9</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_7 ((uint16_t)0x0080) <span class="comment">/*!&lt; 选择Pin7 */</span></span></span><br><span class="line"><span class="number">10</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_8 ((uint16_t)0x0100) <span class="comment">/*!&lt; 选择Pin8 */</span></span></span><br><span class="line"><span class="number">11</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_9 ((uint16_t)0x0200) <span class="comment">/*!&lt; 选择Pin9 */</span></span></span><br><span class="line"><span class="number">12</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_10 ((uint16_t)0x0400) <span class="comment">/*!&lt; 选择Pin10 */</span></span></span><br><span class="line"><span class="number">13</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_11 ((uint16_t)0x0800) <span class="comment">/*!&lt; 选择Pin11 */</span></span></span><br><span class="line"><span class="number">14</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_12 ((uint16_t)0x1000) <span class="comment">/*!&lt; 选择Pin12 */</span></span></span><br><span class="line"><span class="number">15</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_13 ((uint16_t)0x2000) <span class="comment">/*!&lt; 选择Pin13 */</span></span></span><br><span class="line"><span class="number">16</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_14 ((uint16_t)0x4000) <span class="comment">/*!&lt; 选择Pin14 */</span></span></span><br><span class="line"><span class="number">17</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_15 ((uint16_t)0x8000) <span class="comment">/*!&lt; 选择Pin15 */</span></span></span><br><span class="line"><span class="number">18</span> <span class="meta">#<span class="meta-keyword">define</span> GPIO_Pin_All ((uint16_t)0xFFFF) <span class="comment">/*!&lt; 选择全部引脚 */</span></span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">/*这些宏代表的参数是某位置“ 1 ” 其它位置“ 0 ” 的数值， 其中最后一个</span></span><br><span class="line"><span class="comment">“GPIO_Pin_ALL”是所有数据位都为“1”，所以用它可以一次控制设置整个端口的0-15</span></span><br><span class="line"><span class="comment">所有引脚*/</span></span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/ckowu6h1t002bw0ii0l4l2jf6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2021/ckowu6h22002ww0ii074nc39r/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            EG2113D技术报告
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/ckowu6h1x002mw0ii937d3ye3/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">MOSFET和IGBT栅极驱动器电路基本原理</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'BX6xQGIDhs5gno5KEut4pOH5-gzGzoHsz',
+        app_key: 'Lxewu78LgA3pqBTYuWKHdUk5',
+        path: window.location.pathname,
+        notify: true,
+        verify: false,
+        avatar: 'monsterid',
+        placeholder: '老妹，可带劲了，给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> 基于图灵测试的聊天机器人-槑堃
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/favicon.jpg" alt="岛上书店"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://woshibushinidekuiyangpangtouyu.lofter.com/" target="_blank" rel="noopener">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我与友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['愿你在被打击时，记起你的珍贵，抵抗恶意。', '爱你所爱，行你所行，听从你心，无问西东。', '想要的都拥有，得不到的都释怀。'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=5307982&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>
