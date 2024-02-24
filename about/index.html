@@ -18,15 +18,15 @@
   <meta name="author" content="Kunta Mei">
   <meta name="keywords" content="">
   
-    <meta name="description" content="姓名：Kunta Mei 性别：Male 邮箱：Kuntamei@gmail.com">
+    <meta name="description" content="姓名：Kunta Mei 性别：Male 邮箱：kuntamei@gmail.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
 <meta property="og:url" content="http://example.com/about/index.html">
 <meta property="og:site_name" content="Kunta&#39;s Blog">
-<meta property="og:description" content="姓名：Kunta Mei 性别：Male 邮箱：Kuntamei@gmail.com">
+<meta property="og:description" content="姓名：Kunta Mei 性别：Male 邮箱：kuntamei@gmail.com">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-24T09:29:05.200Z">
-<meta property="article:modified_time" content="2024-02-24T09:29:05.200Z">
+<meta property="article:published_time" content="2024-02-24T15:11:45.691Z">
+<meta property="article:modified_time" content="2024-02-24T15:11:45.691Z">
 <meta property="article:author" content="Kunta Mei">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -188,7 +188,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -224,10 +224,42 @@
 <article class="page-content">
   <p>姓名：Kunta Mei</p>
 <p>性别：Male</p>
-<p>邮箱：<a href="mailto:Kuntamei@gmail.com">Kuntamei@gmail.com</a></p>
+<p>邮箱：<a href="mailto:kuntamei@gmail.com">kuntamei@gmail.com</a></p>
 
 
   
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.8/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://comments-one-flame.vercel.app/","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
 
 </article>
 
