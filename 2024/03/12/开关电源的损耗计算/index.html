@@ -18,24 +18,24 @@
   <meta name="author" content="Kunta Mei">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2022年度总结 其实一直想要去做这样的一个总结，它既包含过去一年的生活经历又包含过去一年的心路历程，同时也基于前一年的成长，对未来留有一定期盼。今年暑假在N1公司也向我的mentor描述了很多次这样一个想法(会把它记录在我的Hexo博客和个人订阅号上)，因此这篇总结也算是我俩的一个约定，所以Let’s Go！ 本文将包含而不限于以下几个方面：  校内和校外工作 校内和校外人际关系 个人性格与&amp;q">
+    <meta name="description" content="开关电源损耗计算 开关管损耗 硬开关损耗  Conduction loss    首先确定开关管流过的电流(列出表达式)   计算导通阶段中的RMS电流   考虑开关管温度对导通电阻影响以及开关管个数，计算处最终的导通损耗     Drive loss   Drive Loss主要是由开关管的栅极电荷造成   考虑开关频率计算出最终的栅极电荷损耗，即驱动损耗     Switching loss">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2022年度总结">
-<meta property="og:url" content="http://example.com/2023/02/15/2022%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="开关电源的损耗计算">
+<meta property="og:url" content="http://example.com/2024/03/12/%E5%BC%80%E5%85%B3%E7%94%B5%E6%BA%90%E7%9A%84%E6%8D%9F%E8%80%97%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="Kunta&#39;s Blog">
-<meta property="og:description" content="2022年度总结 其实一直想要去做这样的一个总结，它既包含过去一年的生活经历又包含过去一年的心路历程，同时也基于前一年的成长，对未来留有一定期盼。今年暑假在N1公司也向我的mentor描述了很多次这样一个想法(会把它记录在我的Hexo博客和个人订阅号上)，因此这篇总结也算是我俩的一个约定，所以Let’s Go！ 本文将包含而不限于以下几个方面：  校内和校外工作 校内和校外人际关系 个人性格与&amp;q">
+<meta property="og:description" content="开关电源损耗计算 开关管损耗 硬开关损耗  Conduction loss    首先确定开关管流过的电流(列出表达式)   计算导通阶段中的RMS电流   考虑开关管温度对导通电阻影响以及开关管个数，计算处最终的导通损耗     Drive loss   Drive Loss主要是由开关管的栅极电荷造成   考虑开关频率计算出最终的栅极电荷损耗，即驱动损耗     Switching loss">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-15T12:46:25.000Z">
-<meta property="article:modified_time" content="2024-03-03T15:18:47.478Z">
+<meta property="article:published_time" content="2024-03-12T08:46:25.000Z">
+<meta property="article:modified_time" content="2024-03-12T13:46:08.951Z">
 <meta property="article:author" content="Kunta Mei">
-<meta property="article:tag" content="个人总结">
+<meta property="article:tag" content="硬件知识">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>2022年度总结 - Kunta&#39;s Blog</title>
+  <title>开关电源的损耗计算 - Kunta&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="2022年度总结"></span>
+            <span id="subtitle" data-typed-text="开关电源的损耗计算"></span>
           
         </div>
 
@@ -214,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-15 20:46" pubdate>
-          2023年2月15日 晚上
+        <time datetime="2024-03-12 16:46" pubdate>
+          2024年3月12日 下午
         </time>
       </span>
     
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k 字
+          802 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          33 分钟
+          7 分钟
         
       </span>
     
@@ -274,80 +274,154 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">2022年度总结</h1>
+            <h1 id="seo-header">开关电源的损耗计算</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>2022年度总结</h1>
-<p>其实一直想要去做这样的一个总结，它既包含过去一年的生活经历又包含过去一年的心路历程，同时也基于前一年的成长，对未来留有一定期盼。今年暑假在N1公司也向我的mentor描述了很多次这样一个想法(会把它记录在我的Hexo博客和个人订阅号上)，因此这篇总结也算是我俩的一个约定，所以Let’s Go！</p>
-<p>本文将包含而不限于以下几个方面：</p>
-<ul>
-<li>校内和校外工作</li>
-<li>校内和校外人际关系</li>
-<li>个人性格与&quot;社会&quot;环境探讨</li>
-<li>对&quot;能力&quot;和&quot;合作&quot;的重新定义</li>
-<li>2022的Success和Failure</li>
-<li>未来展望</li>
-</ul>
-<h2 id="几乎-不可完成-的事">几乎&quot;不可完成&quot;的事</h2>
-<p>我的研究生生涯主要是跟各种项目捆绑在一起，企业和军工均有，但军工好像是我的主基调。研一的时候还算比较幸运靠着初高中以及本科的底子做出来了一个当时不知道如何应用但却是看起来比较有意义的东西，如果我靠着这个东西，我感觉我研究生很快就毕业了，但很不幸，我接手了一个&quot;烂摊子&quot;(一个学长完全靠着乐观梭哈和投机行为做的半半成品)，它成为了一个完完整整的军工项目也成为了我毕业论文的一大部分，在和导师极限拉扯下，我和导师达成了如果完成了这个项目那么在满足毕业条件下的其余所有时间基本可以由我自由支配的协议。</p>
-<p>为了弥补本科没有企业实践和想要自由支配时间的美好愿望，2021的我为了快速完成项目开始疯狂PUSH自己，但是在过程中我发现事情没有那么简单，学长&quot;编造&quot;了不少东西且对exact point部分眼神恍惚而迷离，我后续再也没跟他沟通此。但为了达成快速毕业目标，我只能孤身投入其中，中间因为没有任务进展经常被喷。21年底在宁波出差后跌跌撞撞完成了样机的制作，返校后我迅速撰写了毕业论文全部主章节，但因为测量仪器损坏，毕业论文数据全部作废(个人觉得仪器损坏其实是人祸)，所以我基本上又得重新开始实验工作，而且中途我因为对某些数据质疑和导师产生了激烈的矛盾。</p>
-<p>过年因为解决一些之前的梭哈和投机行为基本无休，开学后南京有点小疫情，本来预计开学就出差项目验收的计划被推迟了半个月，后续因为导师家庭原因，由我带着我的一个学弟前往长沙进行项目验收，虽然长沙也出了些小插曲，但最后验收还算顺利。出差前我面试了G2公司的Intern，顺利通过了，回到学校后因为上海疫情的突然爆发，加上导师以损坏仪器数据不完整和疫情为由将我卡在学校，虽然没布置太多活，但因为仪器原因，我只好以自己名义从别的学校借来仪器来推进实验，同时这段时间又进行了一些那些耳熟能详大公司的Intern Interview和操作系统编写以及处理器的学习，很幸运的是，我进行Interview的公司只有一家fail其余都通过了。时间轮转到6月初，此时我已经被困在学校两个月了，此时导师终于松口让我出行，但说我必须一个月回来一次，一次可能要半个月，我口头答应了，但在准备的后续两天里，突然又跟我安排了一个空军的活以及再做一套样机，对契约的漠视让我火冒三丈，经过激烈的斗争后学院安排我回家度过一段时间。</p>
-<p>标题中不可完成指的是对项目技术细节的把控、本被卡住的出行以及学校分工中Responsibility的缺失。</p>
-<h2 id="踉跄出行—我的Internship">踉跄出行—我的Internship</h2>
-<p>六月被学校放行回家，根据疫情我选择了我的destination：N1公司，不得不说N1公司是我从出生到现在遇到过最人性化的地方，这段Career让我对技术研发、人际沟通以及Platform有了新的理解。作为一个顶点上的WLB公司，实习生的体验是非常美妙的，1:1指导、拥抱前沿的技术、free talk-environment以及拥有一定自由发挥的extensibility。我永远不会忘记临行前与Manager的free talk，在对话中他给了我一些从另一种高度设身处地的建议以及对我的人生has no limits的美好祝愿，希望对未来生活不留遗憾。后续因为某些原因我相继去了G1和G2公司，中途也去了一些重点实验室以及与初创公司合作完成了对一件美好实物的application，希望能在2023年在生活中能看到它的影子。G1公司被广大网友誉为最难进的公司，甚至有人宁愿不要top2的学历而愿意选择它(虽然我觉得是口嗨)，里面的人大多一个人就是一个团队，亲身体验过后我才感受到那让人窒息的智力压制，我似乎将我那个组的高考人均排名从个位数加了三个有效数字，实在抱歉哈哈。它给我带来了一种新的高效工作视角，专注、效率、系统是这里的代名词，正因为此，世界上绝大多数人也都在享受它所带来的convenience。G2是一家注重compliance和integrity公司，对细节的把控极其贪婪，每一个step都必须经过很detail的design和review，正因对quality的强力把控，它的成长生涯基本从第二次工业革命一直延续至今，这里也有许许多多可可爱爱的人，而我的故事在这还并未结束。</p>
-<p>总结一下三家公司以及和初创以及其它重点实验室给我带来的新视角：</p>
+                <h1>开关电源损耗计算</h1>
+<h2 id="开关管损耗">开关管损耗</h2>
+<h3 id="硬开关损耗">硬开关损耗</h3>
 <ol>
-<li>对研发的定义：研发不指单纯的design，任何系统性的大工程的设计离不开数量众多的工程师进行合作协调，其中前期调研、项目方案确定、demo设计、产品完整方案设计落地、测试与维护其实都是研发，其实我个人感觉一个伟大系统工程越是需要测试与维护才能让它维持更长的生命周期，这在一个伟大的企业更是如此，其实无论是上述那种研发人员，只要足够耐心多留心完整流程，其实最后都会有不错的结局。</li>
-<li>对沟通的理解：在学生时代，一些出色的学生可以从一而终完成一件小的task，甚至是比较困难的功能性模块实现。但到了一个big enterprise company，想要一个人完成一个复杂系统的实现已然不太现实，像学生时代那样亦步亦趋的工作无法满足实际需要，同时在企业部门内、跨部门的沟通和协作会非常多。所以big enterprise company里有效沟通在日常工作会显得非常重要，这种有效沟通主要就是经过思考，简洁表达exact meaning的行为，说起来比较容易，但实际上操作起来还是比较困难的。</li>
-<li>对环境的思考：外企相比于其它工作地方(包括学校和实验室)的人际关系还是要单纯不少的，具体表现在外企中绝大部分人可以focus在自己的工作中，人与人之间的勾心斗角要少很多很多。以前我认为外企可能会流程繁琐，效率低下，实际体验后发现在外企稍微淡薄的人情下反而更有人情味，因为可以无所顾虑表达exact meaning，并且有各种工具和流程进行约束，在这种情况下我反而觉得这是一个大系统高效运转克服熵增的最好解决办法。于我来说，这种环境更能激发我对待事物的积极性。</li>
+<li>Conduction loss</li>
 </ol>
-<p>总体而言，过去一段时光Internship使我做出了以下改变：</p>
 <ul>
-<li>沟通方式的改变(注重friendly有效沟通)，变得更加主动(针对友好leader而言)，做事情抓key point，内耗情况明显减少。(From N1 company)</li>
-<li>专注于系统结构的效率问题，creativity往往产生于对于某种例行操作或者流程的优化，很大的系统在刚上线或者投产的时候并不是一个全局最优的结果，后续有creativity的工作很容易在降本增效、服务体验以及科学技术本身的革命。(From G1 company)</li>
-<li>更加诚信，诚信在工作中很重要，至少个人感觉在公有制之外诚信很重要，研究生和项目当中因为诚信问题被人坑害了不少，诚信更像是一个基石，这里用基石强烈表达了对它的贪婪程度，人们往往会与更加reliable的伙伴合作，某种程度来说，它能更好地扩大你的影响力。(From G2 Company)</li>
-<li>拒绝能力大幅度提高，这也是无奈之举，现在的我根本不会接手任何与我有责任和义务的事情，忙会帮，只是形式有所改变，这也是来自于本科研究生血与泪的教训。</li>
-<li>Make presentation能力大大增强。</li>
-</ul>
-<h2 id="Trade-Off—我过去一年所完成的事">Trade Off—我过去一年所完成的事</h2>
-<p>回顾2022年，我好像取得了一些具有milestones，这些milestones都偏向于工程，具体如下(时间不分前后):</p>
-<ol>
-<li>JG项目的顺利实地试验以及成功验收</li>
-<li>基于RISC-V的稍微复杂Operation System实现，着重于底层系统的实现以及如何在一个高复杂系统情况下进行高效debug的工具设计</li>
-<li>基于北斗定位的GPS地图的精细化改进和实现，利用卡尔曼滤波在考虑Hardware noise情况下对X-Track工程项目进行改进</li>
-<li>Internship中Three Things(第三件还在进行)
-<ol>
-<li>XXX(😏)</li>
-<li>XXX(😏)</li>
-<li>XXX(😏)</li>
-</ol>
+<li>
+<p>首先确定开关管流过的电流(列出表达式)</p>
 </li>
-<li>成为XX初创企业技术解决方案提供者，拿到了一点点期权</li>
+<li>
+<p>计算导通阶段中的RMS电流</p>
+</li>
+<li>
+<p>考虑开关管温度对导通电阻影响以及开关管个数，计算处最终的导通损耗</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>Drive loss</p>
+<ul>
+<li>
+<p>Drive Loss主要是由开关管的栅极电荷造成</p>
+</li>
+<li>
+<p>考虑开关频率计算出最终的栅极电荷损耗，即驱动损耗</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Switching loss</p>
+<p>即开通关断交越面积损耗+漏极电荷所造成的损耗</p>
+<ul>
+<li>
+<p>首先确定栅极驱动器(如有)的Rsource和Rsink电阻(开通为Source，关断为Sink，有的地方也分为HI和LO)以及开关管封装内的电阻</p>
+</li>
+<li>
+<p>将开通和关断的平台电压前后的充电放电阶段近似等效为线性充放电，以确定最终的充放电时间</p>
+</li>
+<li>
+<p>计算出开通关断过程中电流的表达式</p>
+</li>
+<li>
+<p>求积分计算最终开通和关断的损耗</p>
+</li>
+<li>
+<p>绘制出不同Vds电压下输出电容曲线，可以对输出电容取平均值再计算损耗(也可以取中间值，只是近似计算)</p>
+</li>
+<li>
+<p>汇总最终损耗</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Leak Inductor loss</p>
+<ul>
+<li>利用电感储能公式以及最大电流计算最终漏感损耗</li>
+</ul>
+</li>
 </ol>
-<p>一件事情只要不是无法再细分的单一化简单行为，必然存在Trade Off的情况，以人类目前的科学智慧无法发挥任何客观存在物质100%潜质，任何工程事物包括极具张力的艺术作品从某种意义来说都是妥协的产物。工程中的任务很有趣也会枯燥，有趣是对工程实践落地的喜悦，而枯燥则是对Trade Off来说的。怎么在这种Trade Off中去寻找成长和提升也成了我过去一年的思考题。从现在来看，Trade Off本身带来的成长会比较有限，且这种成长只需要适应企业一段实践便会习得，所以从技术或者工程角度可以更加关注工程项目执行规范流程、上下游企业的合作以及技术方案的提供，而从人际本身来看，或许这就有点偏离于自己能够努力的范畴了。</p>
-<h2 id="Weakness—我缺少的和失去的">Weakness—我缺少的和失去的</h2>
-<p>就去年一整年来说，我确实Complete了一些有趣或者有点意义的事，但我也发现我存在不少亟待改进的问题：</p>
+<h3 id="软开关损耗">软开关损耗</h3>
+<p>软开关通过增加辅助电感和电容，达到开关管交越面积的减小(甚至为0)，从而基本消除了开关损耗和漏极电荷所造成的损耗，软开关情况下基本只用考虑驱动损耗。</p>
+<h3 id="同步整流管损耗">同步整流管损耗</h3>
+<ol>
+<li>
+<p>Conduction loss<br>
+ 同硬开关损耗</p>
+</li>
+<li>
+<p>Driver loss</p>
+<p>同硬开关损耗</p>
+</li>
+<li>
+<p>Deadtime Conduction loss</p>
 <ul>
-<li>与人沟通中在表达自己观点偏向于<strong>Aggressive</strong>，尤其在自己认定且亲身经历的事情容易不太接受别人的观点</li>
-<li>在描述事情或者理论方案时候<strong>语速过快</strong>，容易很快板书甚至很快讲解完具体细节，留给别人理解时间特别少</li>
-<li>对解答别人的提问<strong>缺少耐心</strong>，在我主观认为别人故意问我或者抱有一些非正常问题时情绪明显</li>
-<li>在不涉及工作内容情况下<strong>废话过多</strong>，且年纪大了后<strong>容易忘事</strong></li>
-<li>无法对待特别讨厌的合作伙伴(多指不完成本应该的工作甩锅偷窃的)(应表现出平常心，这点以后尤其要注意）</li>
+<li>考虑二极管温度的温度变化和死区时间计算最终的损耗</li>
 </ul>
-<p>而关于我失去的部分主要是指对生活以及专业技能成长上的耐心缺失，对生活耐心的缺失我感觉对于去年来说是循序渐进贯穿始终，长时间出差、实习种长时间的通勤以及疫情和各种琐事的处理让我生活变得饱满的同时又让我略显疲惫，这种疲惫感在年底达到巅峰。而对专业技能的成长的耐心缺失是去实习前已经做了点自己还算有意义的事情，不知道是年龄大的原因还是频繁社交、工作和处理琐事所致。另外因为JG长时间高度集中压力所致，说话和行为在某些时候会变得极度理性，现在处理很多事情完全是左脑形式，按照固定范式行动，缺少灵活性和机动性，而且会变得极度厌恶风险和不确定的事物。这些方面如何改变，也是毕业之前的一段思考题。</p>
-<h2 id="未来的一些想法和工作安排">未来的一些想法和工作安排</h2>
-<p>对于工作来说，肯定是循序渐进为主，摸清工作流程，以效率和有效沟通来推进职场中的成长，紧抓key point垂直汇报呈现，希望在如网上所说在这种不太卷的公司下更大范围地追求生活意义。</p>
-<p>而对于工作之外的时间，我有如下想法要在2023年实施：</p>
+</li>
+<li>
+<p>Body-diode reverse loss</p>
 <ul>
-<li>一月一篇个人成长记录+一篇知乎精答+一份技术前瞻性文章</li>
-<li>每年会有一到两个软硬件结合的小project去release(会体现在第一条上面)</li>
-<li>多和不同行业不同领域大佬交流心得</li>
-<li>寻找生活中的幸福点和乐子</li>
+<li>利用电荷能量公式计算最终的损耗</li>
 </ul>
-<p>其实于我本人而言，我还是更愿意去做一些能够真切出现在生活中的一些事情，其实我之前做的有些事情已经充分体现在生活中(落地)，每天无论是走在街上、回到家中以及打开电脑或多或少会接触到我所充分参与的事物中，不自觉地体验那些我所参与过的产品服务中，会让我感觉真实存在一般，虽然当时落地满满的成就感已经几乎消殆，但只要心放空体会还是会有极大的知足感，我也算是深切地参与到社会的历史进程中了。</p>
-<p>我也该在毕业前为我定下初步地定下一个三年计划，时间很长也很紧凑，希望2023年的我能如期发展获得满满的成就感！</p>
+</li>
+</ol>
+<h2 id="PCB损耗">PCB损耗</h2>
+<ul>
+<li>
+<p>PCB Resistor loss</p>
+<ul>
+<li>利用电阻和电阻率公式计算(可折算成OZ，利用铜厚来计算)</li>
+<li>简化后的公式只包括路径长度、OZ常量、铜厚常量、线宽以及层数</li>
+</ul>
+</li>
+<li>
+<p>Lead Resistor loss</p>
+<p>需要考虑铜的阻抗随温度变化情况</p>
+</li>
+<li>
+<p>Vias Resistor loss</p>
+<ul>
+<li>
+<p>利用电阻和电阻率公式计算(可折算成OZ，利用铜厚来计算)</p>
+</li>
+<li>
+<p>简化后的公式只包括路径长度、OZ常量、铜厚常量、线宽以及过孔个数</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Current Resistor loss<br>
+不同类型的电阻损耗不同，需要使用不同方法计算</p>
+</li>
+<li>
+<p>TBD</p>
+</li>
+</ul>
+<h2 id="磁损耗">磁损耗</h2>
+<h3 id="电感损耗">电感损耗</h3>
+<ul>
+<li>
+<p>Core loss</p>
+<ul>
+<li>
+<p>根据磁芯材质确定Steinmetz经验公式中的参数，B为磁通密度振幅</p>
+</li>
+<li>
+<p>Steinmetz经验公式只适用于正弦波，不能适用于非正弦激励的损耗，因此可以利用变压器的重复磁化速率来计算等效的正弦频率</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Winding loss</p>
+<p>平面变压器的绕组损耗计算跟Trace路径损耗计算方式一致</p>
+</li>
+</ul>
+<h3 id="变压器损耗">变压器损耗</h3>
+<p>与电感损耗内容保持一致</p>
+<h2 id="Input-and-Output-Ripple损耗">Input and Output Ripple损耗</h2>
+<p>通过传递函数、拉普拉斯变换以及傅里叶变换近似求解Input and Output Ripple所造成的损耗</p>
+<p>此部分损耗主要来自于输入输出纹波在输入输出电容上造成的损耗</p>
+<p>[1] MOSFET 和IGBT 栅极驱动器电路的基本原理 Texas Instruments Application Note</p>
+<p>[2] Efficiency of Buck Converter ROHM Application Note</p>
 
                 
               </div>
@@ -366,7 +440,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">个人记录及读书笔记</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" class="category-chain-item">技术文档</a>
   
   
 
@@ -381,7 +455,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="print-no-link">#个人总结</a>
+        <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/" class="print-no-link">#硬件知识</a>
       
     </div>
   
@@ -393,8 +467,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2022年度总结</div>
-      <div>http://example.com/2023/02/15/2022年度总结/</div>
+      <div>开关电源的损耗计算</div>
+      <div>http://example.com/2024/03/12/开关电源的损耗计算/</div>
     </div>
     <div class="license-meta">
       
@@ -406,7 +480,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月15日</div>
+          <div>2024年3月12日</div>
         </div>
       
       
@@ -438,15 +512,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/28/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="2023年度总结">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023年度总结</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/02/28/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="2023年度总结">
+                        <span class="hidden-mobile">2023年度总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
