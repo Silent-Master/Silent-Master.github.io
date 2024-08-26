@@ -31,26 +31,26 @@
   <meta name="author" content="Kunta Mei">
   <meta name="keywords" content="">
   
-    <meta name="description" content="从零开始编写一个处理器(CPU) 这篇文章将会非常冗长，因为会设计到处理器设计的方方面面。同样，为了言语能够不那么晦涩，本文将从简单的CPU设计入手，结合网上比较丰富的资源来系统讲解和实战一下CPU的设计。">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从零开始编写一个处理器">
-<meta property="og:url" content="http://example.com/2024/06/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%92%B0%E5%86%99%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="关于自己的最长一份实习和自己的第一份工作">
+<meta property="og:url" content="http://example.com/2024/07/24/%E5%85%B3%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%80%E9%95%BF%E4%B8%80%E4%BB%BD%E5%AE%9E%E4%B9%A0%E5%92%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BB%BD%E5%B7%A5%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Kunta&#39;s Blog">
-<meta property="og:description" content="从零开始编写一个处理器(CPU) 这篇文章将会非常冗长，因为会设计到处理器设计的方方面面。同样，为了言语能够不那么晦涩，本文将从简单的CPU设计入手，结合网上比较丰富的资源来系统讲解和实战一下CPU的设计。">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AACPU.jpg">
-<meta property="article:published_time" content="2024-06-18T08:46:25.000Z">
-<meta property="article:modified_time" content="2024-08-04T07:44:18.058Z">
+<meta property="og:image" content="http://example.com/img/2024%E5%B9%B4%E4%B8%AD.jpg">
+<meta property="article:published_time" content="2024-07-24T14:46:25.000Z">
+<meta property="article:modified_time" content="2024-08-26T16:05:46.350Z">
 <meta property="article:author" content="Kunta Mei">
-<meta property="article:tag" content="软件相关">
+<meta property="article:tag" content="个人总结">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AACPU.jpg">
+<meta name="twitter:image" content="http://example.com/img/2024%E5%B9%B4%E4%B8%AD.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>从零开始编写一个处理器 - Kunta&#39;s Blog</title>
+  <title>关于自己的最长一份实习和自己的第一份工作 - Kunta&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -258,7 +258,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="从零开始编写一个处理器"></span>
+            <span id="subtitle" data-typed-text="关于自己的最长一份实习和自己的第一份工作"></span>
           
         </div>
 
@@ -269,8 +269,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-18 16:46" pubdate>
-          2024年6月18日 下午
+        <time datetime="2024-07-24 22:46" pubdate>
+          2024年7月24日 晚上
         </time>
       </span>
     
@@ -281,7 +281,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          88 字
+          333 字
         
       </span>
     
@@ -292,7 +292,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -329,16 +329,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">从零开始编写一个处理器</h1>
+            <h1 id="seo-header">关于自己的最长一份实习和自己的第一份工作</h1>
             
             
-              <div class="markdown-body">
-                
-                <h1>从零开始编写一个处理器(CPU)</h1>
-<p>这篇文章将会非常冗长，因为会设计到处理器设计的方方面面。同样，为了言语能够不那么晦涩，本文将从简单的CPU设计入手，结合网上比较丰富的资源来系统讲解和实战一下CPU的设计。</p>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="271a7335674509f3be4c57b19266c554ded8a32075bef66a573785095b8673c1">4ee4460d76fb11b0c80cf77cc6c6567f8fb2fe8bbdc96cf9e362a5c0b016e684d37e34a94d92abc397b1739e66f64aee88cadde8abb69415bdea7e507d2ec2b2d23ead255d8df6c4836eb79b2ff04bde3a2c202ddce0586200c420a8ff4db61f6316fb24487305128c4b9ace8bf3af4cb3f2a805315c93a5e8018abd97a85f0b586886ab5c46decbf1abe30fbcd660cbeca5289362703f5fdba97c75da7243aecf1f85a12f631e512fa22d68438a632b601776b0d3062049bc3800fd7dd561332ccb1d63d9cc8c0698c9a5d7fddd5fc169e1e396caf426eaa9ee3d0397f8a95a86aae1dc006626f71af6f3259d0eebf078b636b8b73d200df420db99cbc99d05764b3ab922723212e6b35b087b5ba124b27697881d83a6d6e04bb356397ffc3dc35191e8fc45eeccb7c512325e36e48bed0af801d5a742c3770b21221fc2488d8a5d55fcadab2e5711462a44fdf6ce4a55e0d9fb9061fcf677908703a59b53b2845b944696ec59b00a502238e5a76522984d116181f49b37838fda09b17b2b2540bb18ebefc695a4fa331ddb6e6b802182dc7d88640d1db3ccc6e8a0604e256f84d756a487e3f257c737e09afe9c323e8226b3e07d0c4a0d3b1f2e4d43ee77855bf93aa0fc8e4f2bdd51a661e1afbd28fbe5e3a446e7c49f5cbfecf0336cba15bf52cfa498fc34c478fbe530c1318573ae0855ffc45c6e94b1cbafacdbb3e7b7c1224cb4302f71d154e4319a48dc32014e81a465ea0a6b34bdd668f0661dabf6d6053ff89e32b4bee0f06d1caae390f0c9ccdbd7fc3716991b02ac12f7fc2e5089b90364486de23024bcac3ee956b957fd8f0759983e72ab7a58d62718f46d790e4385848d6c1893928cd46cfd19eab18b36f77927501ca7f1636a5d50e65cc728703d52d365d421425642c70a189b0d0c3f9978f5a10d1f3283a475e732cb303abf1269cad67ddc02b9f9459fb0d118b1fed16ce0d58f005cfee53c3f7622ed7c1f3b8d72691fab93027e84630fb30970f2f25b39db4c979e8aced15894dd989a82ef24c82ae43fbec7c15b6f2ace45f9281edffca3cd835e177ccde7ee67e9d347deff0fdf2f875c5b4ea3852469f070d03c109b712e95cf357d9f396baf7bbe5afc8b0d5c0f57814db65ae9673b5a48c636050b93ddef961f083fe9c9b88921bcf8451997e7518dc8d9233022848a2be1fd6c483e174e965c7d536ab6a97ca7314f079d35a868dc667a70cd9b6c17909adc3c1413e9b3774320e16cacd0284e0c1bc92a25bcc2a13cbb041a6f152bb5973218f9cb248e2147d8ada2c7f05e0c821ebf0c0744855cfcf9c2242af63c18411d6d65a155dd8f500234574edc816cde838bedb1a88d49e37a6263d54b9497c00728c6df8c35e45b7d84889d5cfb27c0a05e14855bf07f02e5a1811ea9c550ae284d25fa444af55e3178a3f78dc58df391f481124aa30ef5b935e6bce5d6df1a5bc6628b84733df2375483980679568027d0512d68ce28a8b5f6b337664616b6631a2b300d3744ef517624beefab8bf2907f8981d446a039ef4f44a32bf932ae2fa2c128046127a41890b6995e3e602abd8714b1cf1ff71ccd9403c76651d62eb687de953796c2398723bb0a3f1d8ed5ac8a027036e6903ed4891ea0ac799ff9aa5e2c4f92e58dbb503e2721737b6556176b0683da9d205a4cbfd41133cc37e9bc670e4f26cb3586b627564dbebe282cdae3076ef36f3d2c6d941de48c7a8f3cba3b723a2ba33c747005a8a944ed</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -354,7 +363,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/" class="category-chain-item">软件设计</a>
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">个人记录及读书笔记</a>
   
   
 
@@ -369,7 +378,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/" class="print-no-link">#软件相关</a>
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="print-no-link">#个人总结</a>
       
     </div>
   
@@ -381,8 +390,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>从零开始编写一个处理器</div>
-      <div>http://example.com/2024/06/18/从零开始撰写一个操作系统/</div>
+      <div>关于自己的最长一份实习和自己的第一份工作</div>
+      <div>http://example.com/2024/07/24/关于自己的最长一份实习和自己的第一份工作/</div>
     </div>
     <div class="license-meta">
       
@@ -394,7 +403,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月18日</div>
+          <div>2024年7月24日</div>
         </div>
       
       
@@ -426,9 +435,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/24/%E5%85%B3%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%80%E9%95%BF%E4%B8%80%E4%BB%BD%E5%AE%9E%E4%B9%A0%E5%92%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BB%BD%E5%B7%A5%E4%BD%9C/" title="关于自己的最长一份实习和自己的第一份工作">
+                      <a href="/2024/07/24/2024%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/" title="2024年中总结">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">关于自己的最长一份实习和自己的第一份工作</span>
+                        <span class="hidden-mobile">2024年中总结</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -436,8 +445,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/28/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="2023年度总结">
-                        <span class="hidden-mobile">2023年度总结</span>
+                      <a href="/2024/06/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%92%B0%E5%86%99%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="从零开始编写一个处理器">
+                        <span class="hidden-mobile">从零开始编写一个处理器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -655,6 +664,23 @@
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass') || document.querySelector('hbe-prefix')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   
