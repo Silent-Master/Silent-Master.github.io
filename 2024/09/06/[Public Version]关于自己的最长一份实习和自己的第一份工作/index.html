@@ -1,0 +1,924 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css"><!--我的APlayer的样式-->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script><!--APlayer的依赖-->
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script><!--Meting的依赖-->
+<meting-js
+    server="netease"
+    type="playlist"
+    autoplay=false 
+    lrc-type=3
+	fixed=true 
+    id="12402120564">
+</meting-js> 
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kunta Mei">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="关于自己的最长一份实习和自己的第一份工作 2024年9月份是我将宣告第一份工作正式结束，这份长达一年零三个月的第一份正式工作，给我带来了一种不一样的体验。好巧不巧，我最长的一份的实习是在GE进行的，它的持续时间刚好也为一年零三个月。为此，我想去做一个对比，因为两份工作都是在相当大的制造业公司，且工作性质和内容均偏向电子工程师，所以我期望既将这篇博客作为流水账，同时又从两次不同经历挖掘异同点，从更加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Public Version 关于自己的最长一份实习和自己的第一份工作">
+<meta property="og:url" content="http://example.com/2024/09/06/[Public%20Version]%E5%85%B3%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%80%E9%95%BF%E4%B8%80%E4%BB%BD%E5%AE%9E%E4%B9%A0%E5%92%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BB%BD%E5%B7%A5%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Kunta&#39;s Blog">
+<meta property="og:description" content="关于自己的最长一份实习和自己的第一份工作 2024年9月份是我将宣告第一份工作正式结束，这份长达一年零三个月的第一份正式工作，给我带来了一种不一样的体验。好巧不巧，我最长的一份的实习是在GE进行的，它的持续时间刚好也为一年零三个月。为此，我想去做一个对比，因为两份工作都是在相当大的制造业公司，且工作性质和内容均偏向电子工程师，所以我期望既将这篇博客作为流水账，同时又从两次不同经历挖掘异同点，从更加">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/GE_Delta.jpg">
+<meta property="article:published_time" content="2024-09-06T14:46:25.000Z">
+<meta property="article:modified_time" content="2024-09-15T18:57:10.659Z">
+<meta property="article:author" content="Kunta Mei">
+<meta property="article:tag" content="个人总结">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/GE_Delta.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Public Version 关于自己的最长一份实习和自己的第一份工作 - Kunta&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Kunta&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>资源集</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://airpano.org.cn/360photo_list.php" target="_self">
+                    <i class="iconfont icon-map"></i>
+                    <span>累了吗，来放松！</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://pan.quark.cn/s/ca0451875743" target="_self">
+                    <i class="iconfont icon-book"></i>
+                    <span>资料分享</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://www.lofter.com/blog/woshibushinidekuiyangpangtouyu" target="_self">
+                    <i class="iconfont icon-image"></i>
+                    <span>个人旅行相关</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Public Version 关于自己的最长一份实习和自己的第一份工作"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-06 22:46" pubdate>
+          2024年9月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Public Version 关于自己的最长一份实习和自己的第一份工作</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>关于自己的最长一份实习和自己的第一份工作</h1>
+<p>2024年9月份是我将宣告第一份工作正式结束，这份长达一年零三个月的第一份正式工作，给我带来了一种不一样的体验。好巧不巧，我最长的一份的实习是在GE进行的，它的持续时间刚好也为一年零三个月。为此，我想去做一个对比，因为两份工作都是在相当大的制造业公司，且工作性质和内容均偏向电子工程师，所以我期望既将这篇博客作为流水账，同时又从两次不同经历挖掘异同点，从更加全面和客观的角度对自己的未来起到指引和警示作用。</p>
+<p>本文将包含而不限于以下几个方面：</p>
+<ul>
+<li>
+<p>两份制造业外资企业的历史渊源</p>
+</li>
+<li>
+<p>两份制造业外资企业的工作内容和职责</p>
+</li>
+<li>
+<p>两份制造业外资企业的管理方式和组织架构以及人文环境</p>
+</li>
+<li>
+<p>我对两份制造业外资企业的感受以及个人定位</p>
+</li>
+<li>
+<p>得与失、优与劣，对与错？</p>
+</li>
+<li>
+<p>我从两份制造业外资企业中所学到的</p>
+</li>
+<li>
+<p>未来我该如何思索和做判断</p>
+</li>
+</ul>
+<h2 id="两份制造业外资企业的历史渊源">两份制造业外资企业的历史渊源</h2>
+<p>我所呆的两家制造业外企分别名为GE和Delta。</p>
+<p>先对两家企业进行简短的综述性概括：</p>
+<p>通用电气（英语：General Electric Company，简称GE）是源自美国的跨国综合企业，经营产业包括电子工业、能源、运输工业、航空航天、医疗与金融服务；总部位于波士顿，公司则在纽约州注册。通用电气成立于1892年，由托马斯·爱迪生、查尔斯·科芬和J·P·摩根共同创办。公司业务遍及世界100多个国家，拥有员工约28万7千人。截至2022年，通用电气的营业额达到765.7亿美元，涵盖家电、航空、配电产品、能源、金融、医疗、照明、媒体、娱乐、轨道交通和国防承包商等领域。2024年4月2日，通用电气拆分为GE航天、GE Vernova和GE医疗三家公司。</p>
+<p>台达电子工业股份有限公司（简称“台达”）成立于1971年，总部位于台湾省台北市。创始人郑崇华以30万元作为启动资金，从一个15人小工厂，依托代工起家，发展为一个在全球拥有100多个营业据点、41座生产工厂、55家研发中心，并雇佣7万多名员工，年销售额高达127亿美元，年均复合增长率超过35%的商业帝国。台达的业务范畴包括电源管理、元器件、交通、自动化和基础设施。此外，台达长期关注环境议题，秉持“环保 节能 爱地球”的经营使命，持续开发创新节能产品及解决方案，以减轻全球暖化对人类生存的冲击。</p>
+<p>我是研究生阶段在GE呆了一段时间，我申请实习生的那个时候，GE只是提出了拆分的Proposal，但还未正式执行，所以我相当于是在蓝标的GE(三合一)呆了一段时间，同时因为呆的时间足够长，又见证了它的拆分，拆分后我在紫标GE Healthcare(通用医疗)又呆了一段时间，以至于在离职填Form的时候，发现我的ID是GE最后一名实习生，同时又是GE HC第一位实习生，真是给了我当时不小的惊喜。</p>
+<p>Delta是我正式投递的第一份工作，面试的时候我是在英伟达的Phone Room进行的，考虑到离家近(Base：Wuhan)和工作强度以及招聘我的学长人格魅力相关的情况，我最终拒掉一些非常有想象力的Offer选择了它。不过最近离职后，我和朋友们也交流过，或许这也并不是一件坏事，它或许会成为人生后续阶段一个强力助力。</p>
+<p>以上便是两家公司简单概述。</p>
+<h2 id="两份制造业外资企业的工作内容和职责">两份制造业外资企业的工作内容和职责</h2>
+<p>GE我所在的部门是医疗部门，因为当时上海疫情原因，我将Base选择在了Wuxi，这里主要是研发和生产一些Patient Care Equipments，像超声、心电、麻醉等，我那时主要的工作内容和职责聚焦在心电这一块。GE作为集电力、医疗和航空三大板块为一体的公司，由19世纪爱迪生先生创办，完完整整地走了美国第二个工业革命的历史进程，它的管理体系和作业流程是相当完善的。我实习的第一个月主要是课程上面的学习，这种课程上的学习周期很长，它包含了DFMEA、QMS、TDR、DCP、Lean管理(精益求精)等内容，每一部分的内容很细，对于初入职场的人来说，完善的工作流程和体系化的管理方式能让新人以更全局的姿态去了解制造业和供应链的方方面面，加上周围的人都非常Nice，很多不懂的问题可以通过与他们面对面交流直接高效地得到解决方案。此外我和部门Director共坐一张办公桌，进去的时候，同事们都打趣我说，整个公司最好的位置留给我了。后来想想也确实是这样，基本上部门所有重要会议，甚至包括与华尔街的、和重要供应商以及合作伙伴的会议我都可以参与，有些重要的对话我也可以在旁边旁听，甚至有的人生抉择的时候，我的leader也会坐在我身旁给我一些他为我设身处地考虑的建议，如此看来，这份实习的性价比简直了。</p>
+<p>Delta我所在的部门是为数据中心提供电力支持的部门，回想到这，想起来我之前在NV实习看到Delta模组用于当时最先进的H100，A100上，这也算是一个机缘巧合来到这里吧。Delta的供应链属于台系，从日本萧条的几十年开始，美国那边的科技公司就将供应链从日本转移到台湾，而台湾的制造业体系很大程度上受到日本的影响，精细化管理比当时的大陆要好很多很多，加上当时大陆还刚刚开始改革开放，所以人口密集型(为美国超级科技公司服务代工)的一批公司迎着这阵风迅速发展起来。加上近两年AI的爆火，着实又迅速提升了台湾制造业在全球领域的重要地位。Delta基本上大部分业务围绕着电源展开，还有少部分工业自动化和零部件的相关业务，其实国际上一直有一个观点，就是电源虽然很重要，但电源基本上在各个应用场景下都只是一个辅助的工作，仅仅是提供能量源而已。这句话我是不完全赞同的，虽然大部分电源确确实实只是在供电可靠的角度上保证应用的良好运行，但好的电源设计可以提高能源利用率和资源利用率，这两个利用率虽不能决定应用行业的发展方向(这就是这个行业的局限)，但至少从专业领域来说，这个行业本身的发展趋势便是如此。另外，特种电源比如在航空和军工中它的作用很多时候远远大于应用本身，这类行业很喜欢用发生器这个词，而发生器的最主要能量来源就是电源，所以这里的电源跟常规电源有所不同，学术上喜欢用特种电源来称呼它，当然它本身也跟常规化电源不太一样，虽然是电源本身原理大致相同，但特种电源上还是需要在客制化的方向做很多文章的。但很奇怪的是，因为我在部门呆的时间不够久，所以这一年给我的感觉是我流程仍未走得明白，很多事情的处理上也会显得不知所措，为什么会有这种情况呢，我会在后续的文字中来描述它。</p>
+<p>以下是两份工作的职责和内容对比：</p>
+<p><strong>Delta</strong></p>
+<ul>
+<li>
+<p>工作职责</p>
+<ul>
+<li>
+<p>数据中心电源产品相关技术开发</p>
+</li>
+<li>
+<p>熟悉电力电子线路及半导体器件的应用，基于DSP控制的调试</p>
+</li>
+<li>
+<p>研发专案规划执行:与合作部门沟通、协调、及时调整目标和进度</p>
+</li>
+<li>
+<p>解决技术问题、应用新技术、达成专案目标</p>
+</li>
+<li>
+<p>按照设计流程完成产品设计并导入生产</p>
+</li>
+</ul>
+</li>
+<li>
+<p>工作内容</p>
+<p>测试为主，工作面比较单一，目前一年来的工作内容主要是根据leader的设计进行各种测试，测试中遇到的各种问题加以反馈，在leader的建议下进行改善。从内容上说，能自己决策的方面很少，更多地偏向于维护和测试的工作，因为数据中心电源方向更精细化了，很多时候连debug都算不上，只能算是和不同供应商开会讨论，以Push生产相关进程。</p>
+</li>
+<li>
+<p>工作方式</p>
+<p>沟通为主，因为制造业相关原因，也不涉及整机相关的制造，数据中心的电源更偏向于工艺一些，所以很多时候电子出身但对工艺和机械并不是很了解的话，需要与有关部门进行大量沟通以推进事情准确无误进行，所以很多时候更感觉自己是一个加强版本，稍微懂点技术的PM，因为需要沟通的事情很多，所以大部分时候来回跑，也来不及对过程中的事物进行仔细思考。</p>
+</li>
+<li>
+<p>集思广益还是单打独斗</p>
+<p>由Leader直属决定，很大程度上是单打独斗，基本上没有Review的流程，leader经验丰富就跟着leader走就行，自己能决策的方面很少，但做事流程的时间上大大减小。</p>
+</li>
+<li>
+<p>工作流程体会</p>
+<p>稍微有点混乱，但是节奏比较快，混乱的感觉可能会让你做事不了解前因后果，但节奏比较快的好处是，你可以在工作的前两年尽可能地走完一个流程，这是欧美企业很多时候不能提供的，加上平台的原因，下一份工作市场能给出比较高的溢价。</p>
+</li>
+</ul>
+<p><strong>GE HC</strong></p>
+<ul>
+<li>
+<p>Job Responsibilities</p>
+<ul>
+<li>
+<p>Designing the following electrical components and interconnects: digital, analog, power supply solutions</p>
+</li>
+<li>
+<p>Engaging in all phases of new product introduction, including concept, architecture, documentation, design, prototype, test, supplier interfaces, manufacturing introduction and service support</p>
+</li>
+<li>
+<p>Identifying and developing new opportunities to leverage Strategic Sourcing objectives and Common Technology initiatives in the MR Product line</p>
+</li>
+<li>
+<p>Ensuring reliability, performance and delivery through supplier relationships</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Work Content</p>
+<p>Customer application support and answers, debugging, circuit design, failure analysis, and root cause tracing are all available. Although foreign companies are more likely to treat people as screws, from the perspective of a new employee who has just joined the job, they can provide a lot of help. The opportunity to discuss with each other also allows us to learn about all aspects of the manufacturing industry. The technical depth may not be very high in the first two years, but we can learn a lot about the way of doing things and the efficiency of the process. Of course, because of the very detailed design review of the process, every The time period for this event will be very long, which is not suitable for impatient people.</p>
+</li>
+<li>
+<p>Work Method</p>
+<p>Discussions are put first. Decisions are made together by everyone. Basically, the boss decides the general direction. In order to avoid making mistakes or making fewer mistakes, everyone will hold a meeting to discuss the execution of each step. The advantage of this is that the success or failure of this matter is determined. It will be related to everyone, and everyone will bear some responsibility for it. There will be no one-sided statement, or even a situation where one person will take the blame after something goes wrong. Because the working method will be designed in all aspects, the work will be more divergent in the first two years, and I can look at the problem from a global attitude. Compared with Delta, this is very good. But as time goes by, this type of job may not be a good choice for people with particularly high growth requirements.</p>
+</li>
+<li>
+<p>Brainstorm or Go it alone</p>
+<p>Brainstorming, there are very rich Design Review and various topic discussions. Every decision that cannot be made will often be discussed by team members. Can make some decisions by yourself and have more time on the work process.</p>
+</li>
+<li>
+<p>Work process experience</p>
+<p>Let’s talk about the platform first. The market is sometimes willing to give such companies a higher premium (note that I wrote sometimes). The atmosphere among colleagues is very good, the workload is not heavy, and they can balance their life and work well. You will have a deeper understanding of processes and global operations. The disadvantage is that the growth rate will be higher in the first few years. As time goes by, the growth may gradually decrease. This is why European and American foreign companies often want higher promotion. , need to be self-motivated after work.</p>
+</li>
+</ul>
+<h2 id="两份制造业外资企业的管理方式和组织架构以及人文环境">两份制造业外资企业的管理方式和组织架构以及人文环境</h2>
+<p>先来描述一下管理方式和组织架构。其实从公司的角度来说，员工最终的目的都是沿着公司制定的既有路线走，当然路线中允许分支存在，也是所谓的预研部门。所以不论什么企业，最终的目的都是将实际工作转化为实实在在的效益，因为企业不是做慈善的，主要还是要为了发展和盈利。从盈利的主要观点出发，再来区分两家企业的管理方式和组织架构，两家公司都是比较具有规模的制造业外资企业。GE HC因为历史方面原因，加上08年金融危机后，GE从世界第一开始逐渐滑落，但仍然保留有之前管理的影子，他的管理会比Delta更精细化一点，因为涉及的是整机，所以过程工序中所需要的工程师会更多一些，但这也正是欧美外企更偏向于螺丝钉一点的原因。而Delta主要是由研发工程师占为主导的，研发工程师会负责产品的方方面面，虽然也有分工区分，但是整体人员区分度不算特别大，所以每一个人所负责的东西和面要稍微广一些，但话说回来，因为一个是模组，一个是整机，总体上看还是GE HC视野和工作职能上要更加占优一些。上节中也说到，GE是以开会Design Review为主导，所以很多事情的讨论是由大家共同讨论决策而出，而Delta至少我所在的那个部门更像是一言堂(因为新人会有一段时间去适应公司的流程和制度，同时因为在应用场景方面的经验不足，所以很多时候也决定不了什么)，很多项目的推进主要是由你主导的leader决定。但有一点很奇怪的是，也是我来这一年多发现的，我发现就是leader和leader之间也没有Design Review，所以很多时候就导致每个team都在做相同的东西，所以可以说它有一点闭塞吧。</p>
+<p>对于管理方式和组织架构，总体而言，GE HC更偏向于精细化管理，流程上的琐事会多一些，但是因为项目少(整机形式)，对全局思维的视野要更好，当然这只是在工作的前几年，后期会因为Design Review太多，会太多，流程上太繁琐，可能在工作中对深度的积累不够，但如果对自己自我驱动的话，这个问题可以得到很好的解决。而Delta至少我所在的部门的管理方式更多的是以leader为主，单兵作战多点开花的模式，相同职能的人员之间的交流有点过分地少了，所以很多时候新人的成长性并不高，更多地是平台给予了这里部分人很高的溢价。</p>
+<p>而人文环境这一块，台企和美资企业肯定有不一样的地方，但每个企业都会有可可爱爱的人，也会有让人disgusting的存在。横向对比来看，GE HC中虽然我是实习生，于我而言，Delta干过的活我其实在GE已经系数干过了，下图为GE leader当时对我实习前所问问题的回复，事实证明，后续在GE中所参与的远远超过这份邮件中所描述的。在GE的时光里，我没有因为任何事情和团队成员闹过不愉快和起过摩擦，所以后来Team中的Member也跟我说过，这里是他见过人际关系最好的地方了，我想对我来说也是。反观Delta，有的时候真能将自己气死，之前在年度总结中也说过，原来组之前老员工因为对leader，对工资不满意，每天开启脏话模式，对待事情消极、糊弄，也从来不给我们新人任何document，经常让我们像个无头苍蝇一样到处乱跑，所以刚来这家公司的半年可以说是毫无成长，甚至我刚来第一个月就准备run了，后来还是想想至少经历一年后再启航吧。两家公司在事情处理上都有推诿扯皮的现象发生，但GE HC更多的是团队内部和团队外部(比如说China和India之间的分歧对抗)，对内还是其乐融融的，而Delta则是团队内部有分歧对抗，对外却统一口径，保持一致，这一点差得还是很大的。至少从个人做事的角度上来说，体验感Delta远不如GE，Delta流程管控要相比于GE更混乱一点，这一点我觉得的主要原因就是相关职能部门的人并不是本专业背景出身，加上责任意识未强化到位，而GE这一点我感觉还是非常值得肯定的。但这不是说Delta毫无优势可言，因为模组不同于整机，所以每个新人分配的任务和机种也大不相同，如果分配到的是偏向工艺少一点，偏向设计多一点的机种，新人成长性会非常nice；如过分配的是重复性工作多一些，工艺面多一点的话，可能技术上的提高不会很强，但与人沟通技能这块会有提高。而GE也正如我之前老板所说，他非常适合新人在这里进行系统的流程培训，这里的做事流程和方式才是最应该学习的，而技能和深度上，更多地还是靠自己。</p>
+<p><img src="https://ooo.0x0.ooo/2024/09/16/O4h2gN.png" srcset="/img/loading.gif" lazyload alt="O4h2gN.png" title="实习邮件"></p>
+<h2 id="我对两份制造业外资企业的感受以及个人定位">我对两份制造业外资企业的感受以及个人定位</h2>
+<p>感受前两节中也大致谈及到了一些，这里就不做过多赘述。</p>
+<p>个人定位这一块还是需要简单谈谈的，这里的个人定位更多地是考量你的leader甚至团队管理者对团队所呈现的定位，也与这些管理者的风格和性格有关，有的管理者愿意看到员工的成长，愿意给予员工更大的privilege，员工的体验当然是我得到重视了；而有的技术管理者只愿意自己埋头设计，下面的员工只需要盲目帮他测试，汇报结果就行，那员工自然会觉得自己是一个耗材，是一个牛马。从定位上来看，因为在GE HC不止我的直属leader，还有不同职能部门的小leader都是鼓励式的方式，所以从个人体验还是有被重视的感觉。</p>
+<h2 id="得与失、优与劣，对与错？">得与失、优与劣，对与错？</h2>
+<p>得与失：</p>
+<p>先来说说在GE的得与失，得到的是全方位的，视野、工作方式、做事流程和优先级、沟通能力等；失去的方面主要是实习会占据一部份时间，会导致没有在自己擅长的方面更进一步，当然这也不完全算失去吧，总有trade off，这从我的角度来看还是非常值得的。</p>
+<p>再来谈谈在Delta的得与失，得到了制造业一些管理方式做事流程，自己看看能从现有的管理上加以改进，以在保证任务完成质量情况下，实现更高效率，Delta的工作给我带来的更多的是反思，是对自己的审视，也是对公司以及部门的审视，这对投资思路来说是一种另类的帮助。而失去方面，因为内耗，导致下班后自由探索时间大量减少，很多以前擅长业务方面已经荒废了；也有对未来的迷茫，我甚至难以想象，如果我一直干下去，我会是什么样子，因为难以想象也太过抽象，所以最终做了resign这个决定。</p>
+<p>优与劣：</p>
+<p>两家公司都存在Trade Off的问题，虽然情感主观上认为GE HC要比Delta要好，但理性回来，Delta给了我更多的思考深度，不单是工作内容方面，还有对生活以及未来规划的考量，它让我知道我该以什么姿态去面对生活，去面对人生发生的种种意外和惊喜。</p>
+<p>对与错：</p>
+<p>从前几年成长角度来说，选择Delta肯定是错的，但它带来的深度和思考比安居于GE对个人未来发展还是要好一点，所以就不谈论对错了吧，半斤八两哈哈。</p>
+<h2 id="我从两份制造业外资企业中所学到的">我从两份制造业外资企业中所学到的</h2>
+<p>GE中所学也在前面几节中论述了很多，这里主要来总结以下从Delta中学到的：</p>
+<ol>
+<li>
+<p>Cross Function能力大大增强，学会了跨职能和不同角色的人打交道，以推进事情的进程</p>
+</li>
+<li>
+<p>洞察事情发展的走向，并提前做出判断和预防措施</p>
+</li>
+<li>
+<p>邮件撰写能力，虽然这个能力之前有在实习中得到锻炼，但在Delta还是写了一些比较切中要害的邮件，虽然没人看和关注</p>
+</li>
+<li>
+<p>早起，五点能起来学点东西，因为晚上被消耗后实在提不起兴趣，英语这一部分应该在该阶段也有提升</p>
+</li>
+<li>
+<p>与人交流能力，这个能力是在换组后半年提高的</p>
+</li>
+<li>
+<p>对自己、社会以及工作环境的深刻反思，时刻提醒自己，自己是来创造价值且寻求进步的，如果不满足应该拜托内耗立刻离开</p>
+</li>
+</ol>
+<h2 id="未来我该如何思索和做判断">未来我该如何思索和做判断</h2>
+<p>从第一份正式工作结束开始，我也给自己设定了一个目标。就是后续无论学习还是工作，每隔一个月得稍微在自己的总结中稍微夹带一点对现阶段的思考，这对未来的小方向以及支线任务还是能起到不错的帮助。判断一定要果断，做了决定就不再过多停留，或驻足凝望，一定要尽可能向着自己目标前进，做到不偏航、也不偏离既定路线很远。</p>
+<p>衷心希望第一份工作的离职能成为未来发展的强力动力，也希望自己能实现自己的期望目标，干了这碗毒鸡汤，梦想还是要有的，万一实现了呢！</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">个人记录及读书笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="print-no-link">#个人总结</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Public Version 关于自己的最长一份实习和自己的第一份工作</div>
+      <div>http://example.com/2024/09/06/[Public Version]关于自己的最长一份实习和自己的第一份工作/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Kunta Mei</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/16/%5B%E6%81%B6%E9%BE%99%E5%92%86%E5%93%AE%20Version%5D%E5%85%B3%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%80%E9%95%BF%E4%B8%80%E4%BB%BD%E5%AE%9E%E4%B9%A0%E5%92%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BB%BD%E5%B7%A5%E4%BD%9C/" title="恶龙咆哮 Version 关于自己的最长一份实习和自己的第一份工作">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">恶龙咆哮 Version 关于自己的最长一份实习和自己的第一份工作</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/24/2024%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/" title="2024年中总结">
+                        <span class="hidden-mobile">2024年中总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.8/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo.kuntamei.cn","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
