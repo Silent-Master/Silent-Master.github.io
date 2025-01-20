@@ -31,26 +31,26 @@
   <meta name="author" content="Kunta Mei">
   <meta name="keywords" content="">
   
-    <meta name="description" content="电机相关知识(硬件+软件) 本篇文档主要来自于本科和线下时间对Electric Motor Control的总结，软件方面结合之前步进电机控制的大作业对SPWM和自己后续所了解的FOC来一次深入的思考归纳。 回到最基本的电机 第一台电动机的灵感源于迈克尔·法拉第发现的电磁感应现象。1831年，迈克尔·法拉第和约瑟夫·亨利在实验室通过实验首次成功运行了电机。1834年，M. Jacobi发明了第一台">
+    <meta name="description" content="2024年度总结   换工作前后的生活变化   因好心借钱被骗的小插曲   投资主旋律   反思2024的重要决策和复盘情况   我的既定目标的完成情况   下一年的Schedule   换工作前后的生活变化 众所周知，我在2024.9月离开了一家老牌台资企业，回到了我所认为比较适合自己的欧美外企。在之前的年中总结中谈到，因为感觉上一家公司工作职责受限，视野很小，并且充当接口人的事情特别多，为了在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="电机相关知识(归纳_硬件+软件)">
-<meta property="og:url" content="http://example.com/2024/11/01/%E7%94%B5%E6%9C%BA%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:title" content="2024年度总结">
+<meta property="og:url" content="http://example.com/2025/01/01/2024%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Kunta&#39;s Blog">
-<meta property="og:description" content="电机相关知识(硬件+软件) 本篇文档主要来自于本科和线下时间对Electric Motor Control的总结，软件方面结合之前步进电机控制的大作业对SPWM和自己后续所了解的FOC来一次深入的思考归纳。 回到最基本的电机 第一台电动机的灵感源于迈克尔·法拉第发现的电磁感应现象。1831年，迈克尔·法拉第和约瑟夫·亨利在实验室通过实验首次成功运行了电机。1834年，M. Jacobi发明了第一台">
+<meta property="og:description" content="2024年度总结   换工作前后的生活变化   因好心借钱被骗的小插曲   投资主旋律   反思2024的重要决策和复盘情况   我的既定目标的完成情况   下一年的Schedule   换工作前后的生活变化 众所周知，我在2024.9月离开了一家老牌台资企业，回到了我所认为比较适合自己的欧美外企。在之前的年中总结中谈到，因为感觉上一家公司工作职责受限，视野很小，并且充当接口人的事情特别多，为了在">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA.jpg">
-<meta property="article:published_time" content="2024-10-31T23:46:25.000Z">
-<meta property="article:modified_time" content="2024-12-19T14:25:28.793Z">
+<meta property="og:image" content="http://example.com/img/2024%E5%B9%B4%E5%BA%A6.jpg">
+<meta property="article:published_time" content="2025-01-01T14:46:25.000Z">
+<meta property="article:modified_time" content="2025-01-20T00:41:09.131Z">
 <meta property="article:author" content="Kunta Mei">
-<meta property="article:tag" content="技术">
+<meta property="article:tag" content="个人总结">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA.jpg">
+<meta name="twitter:image" content="http://example.com/img/2024%E5%B9%B4%E5%BA%A6.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>电机相关知识(归纳_硬件+软件) - Kunta&#39;s Blog</title>
+  <title>2024年度总结 - Kunta&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -270,7 +270,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="电机相关知识(归纳_硬件+软件)"></span>
+            <span id="subtitle" data-typed-text="2024年度总结"></span>
           
         </div>
 
@@ -281,8 +281,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-01 07:46" pubdate>
-          2024年11月1日 早上
+        <time datetime="2025-01-01 22:46" pubdate>
+          2025年1月1日 晚上
         </time>
       </span>
     
@@ -293,7 +293,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          3.5k 字
         
       </span>
     
@@ -304,7 +304,7 @@
         
         
         
-          10 分钟
+          29 分钟
         
       </span>
     
@@ -341,57 +341,96 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">电机相关知识(归纳_硬件+软件)</h1>
+            <h1 id="seo-header">2024年度总结</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>电机相关知识(硬件+软件)</h1>
-<p>本篇文档主要来自于本科和线下时间对<strong>Electric Motor Control</strong>的总结，软件方面结合之前步进电机控制的大作业对SPWM和自己后续所了解的FOC来一次深入的思考归纳。</p>
-<h2 id="回到最基本的电机">回到最基本的电机</h2>
-<p>第一台电动机的灵感源于迈克尔·法拉第发现的电磁感应现象。1831年，迈克尔·法拉第和约瑟夫·亨利在实验室通过实验首次成功运行了电机。1834年，M. Jacobi发明了第一台实用的直流电机，从扭矩产生的角度来看，这种直流电机是所有电机的原型。1888年，尼古拉·特斯拉因发明交流电机而获得专利，交流电机包含同步电机、磁阻电机和感应电机等多种类型。1895年之后，三相电源、分布式定子绕组和鼠笼式转子相继被开发出来，随后三相感应电动机不断发展，并于1896年投入商业应用。</p>
-<p>随着电机的改进，它们的驱动技术也有了许多进步。在20世纪60年代，使用功率半导体器件的电力电子变换器的出现，使得可以制造出针对特定系统应用定制操作特性的电机。此外，使用具有高性能数字信号处理功能的微控制器，工程师可以将先进的控制技术应用于电机，极大地提高了电机驱动系统的性能。</p>
-<p>我们可以把市面上的电机分为DC和AC两大类，如下图所示：</p>
-<p><img src="https://ooo.0x0.ooo/2024/12/19/OE5vXU.png" srcset="/img/loading.gif" lazyload alt="电机种类.png" title="电机种类"></p>
-<h3 id="电机的分类">电机的分类</h3>
-<p>如下A，B，C分别代表直流电机、交流同步电机和交流异步电机(也称感应电机)。</p>
-<p><strong>直流电机</strong></p>
-<p><img src="https://ooo.0x0.ooo/2024/12/19/OE5gxY.png" srcset="/img/loading.gif" lazyload alt="电机种类.png" title="电机种类"></p>
-<p>直流电机旋转是转子通过利用电流承载导体在定子产生的磁场中所受到的力来旋转，如A所示。或者，我们可以从A所示的两个磁场的角度来考虑直流电机的工作原理，<strong>定子磁场是静止磁场，由固定的直流电和永磁材料产生，转子虽然旋转，但由于电刷的作用，每到一个转角便会产生换向，转子中的电流分布始终保持一致，两个固定的磁场产生固定扭矩从而导致转子不停转动。</strong></p>
-<p><strong>交流电机</strong></p>
-<p><img src="https://ooo.0x0.ooo/2024/12/19/OE5mJv.png" srcset="/img/loading.gif" lazyload alt="交流电机.png"></p>
-<p>和直流电机不同，交流电机拥有两个固定的磁场区域，定子上产生的磁场和转子上产生的磁场始终以相同速度旋转，彼此之间保持相对静止<strong>并维持一个固定的角度</strong>，从而使它们之间产生恒定的力，以维持转子运转。</p>
-<p>在同步电机中，转子上的磁场由永磁体或由与定子交流电源分离的直流电源供电的励磁绕组产生。在该电机中，转子磁场相对于转子是固定的。因此，为了产生扭矩，转子应以与定子旋转磁场相同的速度旋转。该速度称为同步速度。这就是为什么这种电机被称为同步电机的原因。另一方面，在感应电动机中，转子磁场是由交流电源产生的。转子励磁中使用的交流电通过电磁感应从定子传输。由于这一重要特征，该电机被称为感应电机。</p>
-<h2 id="持续产生扭矩的要求">持续产生扭矩的要求</h2>
-<p>电机驱动系统涉及到三个方面的能量转换，其中Electric System通过Magnetic System转化为Mechanical Energy，其中磁场是最为重要的能量转化介质。</p>
-<p>下图是磁性材料的BH曲线和电感曲线：</p>
-<p><img src="https://ooo.0x0.ooo/2024/12/19/OE5plq.png" srcset="/img/loading.gif" lazyload alt="曲线.png" title="曲线"></p>
-<p>可以看出磁性材料的磁感应强度不能随着电流的无限增大而增加，加上电感在实际应用中的定义式为</p>
-<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mi>λ</mi><mi>i</mi></mfrac><mo>=</mo><mi>N</mi><mfrac><mi>ϕ</mi><mi>i</mi></mfrac><mspace width="1em"/><mo stretchy="false">(</mo><mtext>H or Wb/A</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L = \frac{\lambda}{i} = N \frac{\phi}{i} \quad (\text{H or Wb/A})
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">i</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">i</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">H or Wb/A</span></span><span class="mclose">)</span></span></span></span></span></p>
-<p>可以发现随着电流的增大，磁性元件也会出现饱和现象，工程应用中为了使其免受温度和电流的影响，要么是选择抗饱和能力强的磁性材料，要么是在磁性材料上增加气隙。</p>
-<p><img src="https://ooo.0x0.ooo/2024/12/19/OE5PBc.png" srcset="/img/loading.gif" lazyload alt="OE5PBc.png"></p>
-<p>在这里利用磁导这个概念(磁导是衡量物体阻碍导磁能力的物理量)</p>
-<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mo>=</mo><mi>i</mi><mi>λ</mi><mtext>​</mtext><mo>=</mo><mi>i</mi><mi>N</mi><mi>ϕ</mi><mtext>​</mtext><mo>=</mo><mi mathvariant="normal">ℜ</mi><mi>N</mi><mn>2</mn><mtext>​</mtext><mo>∝</mo><mi mathvariant="normal">ℜ</mi><mn>1</mn><mtext>​</mtext><mo stretchy="false">(</mo><mi>F</mi><mo>=</mo><mi mathvariant="normal">ℜ</mi><mi>ϕ</mi><mo>=</mo><mi>N</mi><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L= 
-i
-λ
-​
- = 
-i
-Nϕ
-​
- = 
-ℜ
-N 
-2
- 
-​
- ∝ 
-ℜ
-1
-​
- (F=ℜϕ=Ni)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">iλ</span><span class="mord">​</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">i</span><span class="mord mathnormal">Nϕ</span><span class="mord">​</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">ℜ</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord">2​</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">ℜ1​</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">ℜ</span><span class="mord mathnormal">ϕ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span></span></p>
+                <h1>2024年度总结</h1>
+<ul>
+<li>
+<p>换工作前后的生活变化</p>
+</li>
+<li>
+<p>因好心借钱被骗的小插曲</p>
+</li>
+<li>
+<p>投资主旋律</p>
+</li>
+<li>
+<p>反思2024的重要决策和复盘情况</p>
+</li>
+<li>
+<p>我的既定目标的完成情况</p>
+</li>
+<li>
+<p>下一年的Schedule</p>
+</li>
+</ul>
+<h2 id="换工作前后的生活变化">换工作前后的生活变化</h2>
+<p>众所周知，我在2024.9月离开了一家老牌台资企业，回到了我所认为比较适合自己的欧美外企。在之前的年中总结中谈到，因为感觉上一家公司工作职责受限，视野很小，并且充当接口人的事情特别多，为了在有限的时间里积累不同的工作和行业经验，同时不让自己局限在很小一块，我动身前往了现在所在的公司。截至2024年年底，我在新公司的工作时间恰好为3个月，这三个月里，在工作中对事情的把握情况要比上一家好很多很多，加上因为刚来，Leader对我的定义还是学习为主，这三个月我主要承担Research和一些Platform脚手架的Development工作，事情分配下来的自主设计privilege比较大，也能在约定俗成的时间内输出一些Share Powerpoints，加上工作内容更偏向System一些，所以也会spare一些时间用来看前沿的论文和专利，并有充足时间从集大成的书籍中打好domain area的基本知识。但和我之前总结对GE中所描述的一样，欧美外企的流程会很繁琐，有的很简单的事情会因为流程审批和软件使用以及版权相关问题，自己电脑需要3天的工作量在公司可能会一个月以上才能尘埃落定，这对于急性子的我来说，也确实有点煎熬。</p>
+<p>除开三个月的工作内容来说，抛开后面会介绍的小插曲，整体心态和面对问题、解决问题的态度上都比上一家要好不少，虽然可能每家大公司每个人只会负责一个很小的domain area，但more flexible的工作方式和工作时间以及生活完美划分开的同事圈会给自己的生活留下一个buffer gap，也能更多地思考未来一年多我该沉淀一些什么，也能让自己enjoy time。本科到研究生，我基本上一直住在校外，租了各种各样的房子，毕业后的第一次租房我给自己留了很大的预算，并让父母把我的示波器、FPGA编译平台、直流电源、焊台以及各种嵌入式开发平台给我邮寄到新租的房子中，以便在下班时间简单驱动自己。虽然也不常在一处居住，但很大的空间感和整齐划一的开发环境确实能让整个人放松不少，加上这次也整了个超大的厨房，有的时候也会简单做点东西为平淡的生活找点乐子(冬至的时候就被强行拉去参加包饺子比赛)。下班后可以自由分配的时间变多后，也可以更加有想法地去执行一些事情，因为单单从公司工作内容上去寻找自己的强烈动机和自驱方向还是很难的，最近跟公司老员工沟通更加印证了这一点，所以我会在后面的时间里将自我的显著提高放在下班之外的时间。</p>
+<p>整体来说生活还是比较轻松写意的，但现在中美对抗加剧，中国能实现自我一定成长和work life balance的外企越来越少了，当然短期对我影响不大，但还是希望公司和同事能在后面长久的时间里在中国继续存续下去。</p>
+<h2 id="因好心借钱被骗的小插曲">因好心借钱被骗的小插曲</h2>
+<p>在换新工作后，我有一个很搞心态的插曲事情发生，以至于我在11月上中旬三周的时间里心情和工作状态很差，起因是我换工作的第一天有一位不是很熟的北京人以老丈人住院为由，向我借了大额资金，等国外保险报销回来后就还我。考虑到今年的投资还算顺利，并且之前在NV实习期间简单接触也没觉得人有多坏，就留了一个心眼打了电子借条将钱借出去了。后来因为多次找我借钱又被当时北京的一些学生拉进受害群才发现自己被骗，截止到2024年年底，此人已再也联系不上，以至于当初11月三周处理起诉、报警、法院文件撰写等事情忙得焦头烂额。后续向父母坦白了这件事，父母心态还是非常好的，他们说就当股市钱投资失败了，现在这个事情已经到了拆前调解阶段，后面还需公告以及上庭等，也不知道后续一年多时间能不能顺利结束。在这个事情发生后，我对自己进行了深刻反思，因为自己的轻信导致财产和精神两损失，不过也通过这个事情和各种不同受害者、国家公职职能人员、公安以及老赖的沟通，我自己作为一个基层老百姓逐步了解到了国家对这种事情的政策方针，对执法效率和社会环境以及信任有了新的认识和理解。</p>
+<p>此次事情之后，我对资金的安全意识有了显著提高，之前本着借急不借穷的观点也随之改变，往后的日子里，还是能不借钱就不接借钱，以免造成后面精神、时间和财产方面的多面损失，给本就繁忙的日程安排添堵。</p>
+<h2 id="投资主旋律">投资主旋律</h2>
+<p>在24年被骗之前的10个月里，投资收益还是非常喜人的，这一年我主要投资了大型科技公司，也着重对银行行业进行了筛选和投资，并且在高点的时候抛售出了长江电力等一些重型能源型股票，但被骗后，因为没有富余精力去关注投资这一方面，所以在11月份还是cliff了不少，好在从全年来看，11月份的亏损微不足道。</p>
+<p>2024年，我的主要目光还是聚焦在数据中心、高股息以及中期期权方面，数据中心因为随着美国科技公司的暴涨以及Nvidia出货量的增加，数据中心相关的板块，例如电力能源、半导体芯片、硬件组装、硬件即服务和软件即服务的营业额大幅增长，相关企业也在炒作和实际营业额大幅上涨的背景下市值屡创新高，最主要的这方面经济主体还是以美国7巨头为主。另一方面，在美联储希望稍微降低就业率并保持低通胀，所以在上半年加息后，美元利率达到高位后，市场有所起色，并且下半年有了显著的降息预期(只不过美国还是因为AI初级阶段导致就业火爆)，这方面结合美元背景下的全球经济，对中国对利率的管理有了正确的认识，一是美元降息，如果China不follow美国降息，那必然会影响出口，作为国民经济的三架马车之一，中国也肯定会显著降息(并且房地产也是一个主要因素，用于降低居民负债率)，所以这个时候除了热点和炒作领域，投资者会更关注利润率和分红方面，所以高股息也是去年的一个主旋律；二是因为数据中心和AI的腾飞，会导致这一方面的股票换手率特别高，波动幅度特别大，所以24年在这一方面的期权操作还是挺多的，这也是我在24年对投资的一种全新感悟，就是目标是整体盈利，不在乎过程中操作的亏损和盈利，这也是这么多年以来投资心态的凝练，所以整体上从接触期货、期权至今，这方面的收益率也是相当不错的；第三个方面就是我对供应链的关注度比以前提高了很多，在中美贸易对抗下，无论什么产业，即使是软件，它的底层服务硬件也离不开全球供应链的支持，加上外资的频繁撤离，新的全球供应链体系会如何发展，那些显著依赖全球供应链的企业又会有什么动向和发展趋势呢，这也是我很着重想了解和确认的，关于理解成果，可能要到25年年底才能知道我的理解是否是正确的。</p>
+<h2 id="反思2024的重要决策和复盘情况">反思2024的重要决策和复盘情况</h2>
+<p>关于借钱的事情，这里就不作过多反思了，24年的主要决策如下：</p>
+<ol>
+<li>
+<p>选择在毕业第一家公司多呆2个月</p>
+</li>
+<li>
+<p>离职</p>
+</li>
+<li>
+<p>新的努力方向</p>
+</li>
+</ol>
+<p>对于第一条，因为其实在上家公司很早的时候，就有其它企业的HR联系我，我其实很早很早的时候就已经有还不错的offer了，而且在当前环境下，因为我之前实习还有做的项目比较硬核，所以在市场上还是能摸一摸虾的。在之前的blog中说过，是因为组里一位女生有闪光点，加上跟leader商榷了下午的自由支配时间，所以多留下了两个月，最后还是因为过于内耗离开了。Backtrack it，我觉得我还是应该在这种选择的时候果断一些，之前考虑到是不是未呆满一年，可能resume不好看且给人浮躁的感觉，现在想来还是要即时止损，若与自己的预期规划相差甚远，且自己在环境中做出努力了且没有改善效果，就一定要果断离开，因为这样会与长远规划相悖，并加深自己的内耗。</p>
+<p>对于第二条，当然是非常正确和明智的，因为我的考量是若是当前环境没有成长的话，即使base cliff也一定要离开，回头看看，因为大环境原因，上一家公司我所在的部门我那一届也只有我一个人真正意义上地离开了。其实大部分人因为salary和舒适度，没有成长也继续留在那，并且因为工作内容成长性有限，加上cozy的环境，所以工作上也是以陪伴为主，公平性和活力也明显不足，对新员工的一笔不小的sign on也是影响她们三年内离开的不小因素。但企业不是做慈善的，很多企业明面上的sign on会遏制住几年内的promotion、发展机会和视野，不知道对别人咋样，反正对我来说，肯定对我毕业第一年的insight影响很大。</p>
+<p>第三条，我在新公司也在逐步摸索中，在自由度和学习程度上提升肯定是非常明显的，下班后的规划和进度虽然因为11月的那件事有所滞后，但整体还是向前推进，所以这方面25年也要持续加强。</p>
+<p>因为新公司英语环境会稍微多一点，但因为很多大公司现在策略都是Local对Local，若是这方面的环境不足，还是只能稍微将自己的起床时间提前以保证无论什么时候interview都不会出现卡壳的情况。</p>
+<h2 id="我的既定目标的完成情况">我的既定目标的完成情况</h2>
+<ul>
+<li>
+<p>健身计划，尤其是消灭脂肪肝计划 ---- 因为11月份处理借钱事情，之前已经有腹肌雏形的身体又反弹回去了，现在又开始断续开始，希望从25年开始一直坚持下去</p>
+</li>
+<li>
+<p>电机的资料和输出总结 ---- 完成基本控制概述和SPWM部分相关内容，25年需要继续完善控制细节、Code、边界条件和市场技术分析</p>
+</li>
+<li>
+<p>从零开始做一个CPU ---- 说来惭愧，因为借钱的事情，这个写了几页就没继续了，还是得从qemu出发，从系统角度来撰写，25年必须推进</p>
+</li>
+<li>
+<p>实操书籍编撰写 ---- 这也是败笔，只完成了一章节，大概20页吧，25年肯定有的忙了</p>
+</li>
+<li>
+<p>量化期权程序化操作以及AI知识方面学习 ---- 在起步，这方面的兴趣较大，但上面内容肯定是主线</p>
+</li>
+<li>
+<p>黑神话悟空 ---- 一周目已通关，但因为本人有点晕3D，所以通关后卸载游戏了，这也是导致上面工作内容滞后的一个因素</p>
+</li>
+</ul>
+<h2 id="下一年的Schedule">下一年的Schedule</h2>
+<p><strong>对上面既定目标还未完成的部分持续进行推进</strong>，并增加以下内容：</p>
+<ul>
+<li>
+<p>阅读两本历史书籍，国内一本，国外一本，并markdown读书笔记</p>
+</li>
+<li>
+<p>两地深度游(偏向于自然风光)，若有机会passport到手并放任通行，英国和新加坡二选一</p>
+</li>
+<li>
+<p>投资收益期望能有30%以上哈(现有股票资金)，是不是要做一个layout专门放这个</p>
+</li>
+<li>
+<p>下半年签证申请，希望不要出乱子</p>
+</li>
+</ul>
 
                 
               </div>
@@ -410,7 +449,7 @@ N
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">个人记录及读书笔记</a>
   
   
 
@@ -425,7 +464,7 @@ N
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8A%80%E6%9C%AF/" class="print-no-link">#技术</a>
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="print-no-link">#个人总结</a>
       
     </div>
   
@@ -437,8 +476,8 @@ N
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>电机相关知识(归纳_硬件+软件)</div>
-      <div>http://example.com/2024/11/01/电机相关知识/</div>
+      <div>2024年度总结</div>
+      <div>http://example.com/2025/01/01/2024年度总结/</div>
     </div>
     <div class="license-meta">
       
@@ -450,7 +489,7 @@ N
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月1日</div>
+          <div>2025年1月1日</div>
         </div>
       
       
@@ -482,9 +521,9 @@ N
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/02/%E6%9C%9F%E6%9D%83%E9%87%8F%E5%8C%96%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="期权量化相关知识">
+                      <a href="/2030/12/31/%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E7%81%B5%E6%84%9F%E5%92%8C%E5%B0%8F%E6%83%B3%E6%B3%95/" title="生活中的灵感和小想法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">期权量化相关知识</span>
+                        <span class="hidden-mobile">生活中的灵感和小想法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -492,8 +531,8 @@ N
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/26/%E6%96%B0%E5%B7%A5%E4%BD%9C%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%9C%88%E4%BD%93%E4%BC%9A/" title="新工作第一个月体会">
-                        <span class="hidden-mobile">新工作第一个月体会</span>
+                      <a href="/2024/11/02/%E6%9C%9F%E6%9D%83%E9%87%8F%E5%8C%96%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" title="期权量化相关知识">
+                        <span class="hidden-mobile">期权量化相关知识</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
